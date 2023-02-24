@@ -101,7 +101,7 @@ const TripComp = () => {
                   ))}
                 </div>
               </div>
-              <NavLink to={`/wisata-page/${data.nama}`}>
+              <NavLink to={`detail/${data.nama}`}>
                 <div className="LocationCardMenu">
                   <div className="titleCardMenu">
                     Taman Sakura Kebun Raya Cibodas

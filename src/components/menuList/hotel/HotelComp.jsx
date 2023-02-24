@@ -78,7 +78,7 @@ const HotelComp = () => {
           {berhitung1.map((data, i) => (
             <div className="cardMenu" key={i}>
               <div className="imageContent">
-                <NavLink to={`/hotel-page/${data.nama}`}>
+                <NavLink to={`detail/${data.nama}`}>
                   <div
                     style={{
                       backgroundImage: `url(${slides[currentIndex].img})`,
