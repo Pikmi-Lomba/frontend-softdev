@@ -1,0 +1,335 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.EventComp {
+  margin: 5em;
+  color: var(--Black100);
+
+  .title {
+    margin: 60px auto;
+    text-align: center;
+    font-size: 40px;
+  }
+  .contentMenu {
+    justify-content: space-between;
+    align-items: flex-end;
+    .infoMenu {
+      gap: 8px;
+      .subTitleMenu {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 48px;
+      }
+      .numberPlaces {
+        font-size: 16px;
+        color: var(--Black70);
+      }
+    }
+    .filterMenu {
+      .btn2 {
+        padding: 6px 15px;
+        border: none;
+        &::after {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .cardsMenu {
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    padding: 32px 0;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .cardMenu {
+      cursor: pointer;
+      width: 380px;
+      height: 467px;
+      filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+      background: var(--white40);
+      border-radius: 20px 20px 20px 20px;
+      margin: 0 16px 40px 0;
+
+      .imageContent {
+        img {
+          width: 380px;
+          height: 340px;
+          border-radius: 20px 20px 0 0;
+        }
+      }
+      .Tampung {
+        padding-top: 4px;
+
+        height: 127px;
+        padding-left: 10px;
+        // gap: 8px;
+        color: var(--Black100);
+        background: var(--white40);
+        border-radius: 0 0 20px 20px;
+        .KatEvent {
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 15px;
+          border: 2px solid var(--zompColor50);
+          // width: 42px;
+          width: 20%;
+          padding: 4px;
+          text-align: center;
+          // margin-top: 20px;
+          margin-bottom: 5px;
+        }
+        .titleCardMenu {
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 20px;
+          margin-bottom: 1px;
+        }
+        .subTitleCardMenu {
+          font-size: 8px;
+          font-weight: 400;
+          color: var(--Black80);
+          margin-bottom: 1px;
+        }
+        .descCardMenu {
+          font-size: 10px;
+          font-weight: 400;
+          color: var(--Black100);
+          margin-bottom: 5px;
+        }
+
+        .register {
+          font-size: 12px;
+          line-height: 14.52px;
+          color: var(--Black70);
+        }
+      }
+    }
+  }
+
+  .loadMore {
+    margin-top: 40px;
+    text-align: center;
+    .btn {
+      padding: 12px;
+      gap: 10px;
+      width: 100px;
+      height: 41px;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+  }
+}
+
+//table
+@media screen and (max-width: 768px) {
+  .EventComp {
+    margin: 3em;
+    color: var(--Black100);
+
+    .title {
+      margin: 40px auto;
+      text-align: center;
+      font-size: 32px;
+    }
+    .contentMenu {
+      justify-content: space-between;
+      align-items: flex-end;
+      .infoMenu {
+        gap: 8px;
+        .subTitleMenu {
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 48px;
+        }
+        .numberPlaces {
+          font-size: 16px;
+          color: var(--Black70);
+        }
+      }
+      .filterMenu {
+        .btn2 {
+          padding: 6px 15px;
+          border: none;
+          &::after {
+            border: none;
+          }
+        }
+      }
+    }
+
+    .cardsMenu {
+      padding: 32px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .cardMenu {
+        cursor: pointer;
+        width: 300px;
+        height: 467px;
+        filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+        background: var(--white40);
+        border-radius: 20px 20px 20px 20px;
+        margin: 0 16px 40px 0;
+
+        .imageContent {
+          img {
+            width: 300px;
+            height: 280px;
+            border-radius: 20px 20px 0 0;
+          }
+        }
+        .Tampung {
+          padding-top: 4px;
+
+          height: 127px;
+          padding-left: 10px;
+          // gap: 8px;
+          color: var(--Black100);
+          background: var(--white40);
+          border-radius: 0 0 20px 20px;
+          .KatEvent {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 15px;
+            border: 2px solid var(--zompColor50);
+            // width: 42px;
+            width: 20%;
+            padding: 4px;
+            text-align: center;
+            // margin-top: 20px;
+            margin-bottom: 5px;
+          }
+          .titleCardMenu {
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 20px;
+            margin-bottom: 1px;
+          }
+          .subTitleCardMenu {
+            font-size: 8px;
+            font-weight: 400;
+            color: var(--Black80);
+            margin-bottom: 1px;
+          }
+          .descCardMenu {
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--Black100);
+            margin-bottom: 5px;
+          }
+
+          .register {
+            font-size: 12px;
+            line-height: 14.52px;
+            color: var(--Black70);
+          }
+        }
+      }
+    }
+
+    .loadMore {
+      margin-top: 40px;
+      text-align: center;
+      .btn {
+        padding: 12px;
+        gap: 10px;
+        width: 100px;
+        height: 41px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+// handphone
+@media screen and (max-width: 476px) {
+  .EventComp {
+    margin: 0;
+    color: var(--Black100);
+
+    .title {
+      margin: 32px auto;
+      text-align: center;
+      font-size: 24px;
+    }
+    .contentMenu {
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 0 1.5em;
+      .infoMenu {
+        gap: 8px;
+        .subTitleMenu {
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 48px;
+        }
+        .numberPlaces {
+          font-size: 16px;
+          color: var(--Black70);
+        }
+      }
+      .filterMenu {
+        .btn2 {
+          padding: 6px 15px;
+          border: none;
+          &::after {
+            border: none;
+          }
+        }
+      }
+    }
+    .cardsMenu {
+      padding: 32px 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}

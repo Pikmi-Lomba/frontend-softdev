@@ -1,0 +1,323 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.home {
+  height: 80vh;
+  background: linear-gradient(rgba(33, 33, 33, 0.522), rgba(33, 33, 33, 0.522)),
+    url("../../assets/image/img-hero.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: auto 40px;
+  position: relative;
+
+  .setContainer {
+    .homeText {
+      text-align: center;
+
+      .title {
+        color: var(--whiteColor);
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 2.5rem;
+      }
+
+      .subTitle {
+        color: var(--whiteColor);
+        opacity: 0.9;
+        font-size: 13px;
+        font-weight: 300;
+        padding: 1rem 0;
+        max-width: 70%;
+        text-align: center;
+        margin: auto;
+      }
+    }
+
+    .homeCardContainer {
+      flex-wrap: wrap;
+      width: 80%;
+      border-radius: 1rem;
+      // padding: 2rem;
+      padding: 0.5rem 2rem 0 2rem;
+      background: var(--zompColor50);
+      position: absolute;
+      gap: 1rem;
+      justify-content: space-between;
+      bottom: 0%;
+      transform: translate(-50%);
+      left: 50%;
+      box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.45);
+      .homeCard {
+        width: 70%;
+        padding-left: 2em;
+        padding-right: 2em;
+        margin-left: auto;
+        margin-right: auto;
+
+        .cardItem {
+          color: var(--Black100);
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          // width: 50px;
+          // height: 100px;
+          // background-color: yellow;
+          gap: 4px;
+          padding: 4px 4px 0 0;
+          border-radius: 12px 12px 0 0;
+          // margin-right: 32px;
+          .icon {
+            width: 50px;
+            height: 50px;
+            // color: black;
+          }
+
+          .nameCardItem {
+            // color: black;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+          }
+        }
+        .activeMenu {
+          background-color: #333;
+        }
+      }
+      .LocationCard {
+        background: white;
+        // flex-grow: 2;
+        height: 46px;
+        width: 200px;
+        //   order: 1;
+        justify-content: center;
+        gap: 8px;
+        padding: 11px 20px 11px 20px;
+        input {
+          width: 100%;
+          // background: var(--inputColor);
+          border: none;
+          list-style: none;
+          padding: 10px;
+          font-size: 13px;
+          font-weight: 500;
+        }
+        &::placeholder {
+          font-size: 13px;
+          opacity: 0.5;
+          font-weight: 400;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 480px) {
+  .home {
+    height: 70vh;
+    background: linear-gradient(
+        rgba(33, 33, 33, 0.522),
+        rgba(33, 33, 33, 0.522)
+      ),
+      url("../../assets/image/img-hero.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: auto 20px;
+    position: relative;
+
+    .setContainer {
+      .homeText {
+        text-align: center;
+
+        .title {
+          color: var(--whiteColor);
+          font-size: 2rem;
+          font-weight: 700;
+          line-height: 2.5rem;
+        }
+
+        .subTitle {
+          color: var(--whiteColor);
+          opacity: 0.9;
+          font-size: 13px;
+          font-weight: 300;
+          padding: 1rem 0;
+          max-width: 70%;
+          text-align: center;
+          margin: auto;
+        }
+      }
+
+      .homeCardContainer {
+        display: inline-block;
+        flex-wrap: wrap;
+        width: 100%;
+        border-radius: 1rem;
+        // padding: 2rem;
+        padding: 0.5rem 2rem 0 2rem;
+        background: var(--zompColor50);
+        position: absolute;
+        gap: 1rem;
+        justify-content: space-between;
+        bottom: 0%;
+        transform: translate(-50%);
+        left: 50%;
+        box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.45);
+        .homeCard {
+          width: 200px;
+          padding-left: 2em;
+          padding-right: 2em;
+          margin-left: auto;
+          margin-right: auto;
+
+          .cardItem {
+            color: var(--Black100);
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            padding: 4px 4px 0 0;
+            border-radius: 12px 12px 0 0;
+            .icon {
+              width: 30px;
+              height: 30px;
+              // color: black;
+            }
+
+            .nameCardItem {
+              // color: black;
+              font-size: 18px;
+              font-weight: 700;
+              line-height: 22px;
+            }
+          }
+          .activeMenu {
+            background-color: #333;
+          }
+        }
+        .LocationCard {
+          background: white;
+          height: 46px;
+          width: 100px;
+          margin-left: auto;
+          margin-right: auto;
+          justify-content: center;
+          gap: 8px;
+          padding: 11px 20px 11px 20px;
+          input {
+            width: 100%;
+            // background: var(--inputColor);
+            border: none;
+            list-style: none;
+            padding: 10px;
+            font-size: 13px;
+            font-weight: 500;
+          }
+          &::placeholder {
+            font-size: 13px;
+            opacity: 0.5;
+            font-weight: 400;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .icon44 {
+    position: absolute;
+    top: 40%;
+    font-size: 20px;
+    left: -6%;
+  }
+  .icon55 {
+    position: absolute;
+    top: 40%;
+    font-size: 20px;
+    right: -6%;
+  }
+}
+
+// .marcell {
+//   position: relative;
+// }
+
+.icon44 {
+  position: absolute;
+  top: 40%;
+  font-size: 20px;
+  left: -8%;
+  z-index: 999px;
+}
+.icon55 {
+  position: absolute;
+  top: 40%;
+  font-size: 20px;
+  right: -8%;
+  z-index: 999px;
+}
+
+.ac {
+  background-color: red;
+}

@@ -1,0 +1,98 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.navbarContainer {
+  .header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--white10);
+    z-index: 1000;
+    padding: 14px 42px;
+    .navMenu {
+      ul {
+        li {
+          padding: 0.5rem;
+          .menu {
+            margin-right: 20px;
+            cursor: pointer;
+            color: var(--Black90);
+          }
+        }
+      }
+    }
+    .logoNavbar {
+      color: yellow;
+    }
+    .btn {
+      padding: 10px 20px;
+      color: var(--CulturedColor20);
+    }
+  }
+  .activeNavbar {
+    background: var(--Black70);
+  }
+}
+
+.active-nav {
+  background: #000;
+}
+
+@media screen and (max-width: 768px) {
+  .navbarContainer {
+    .navMenu {
+      order: 2;
+    }
+    .logoNavbar {
+      order: 1;
+    }
+    .btn {
+      order: 3;
+    }
+  }
+}

@@ -1,0 +1,258 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.detailHotel {
+  padding-top: 5em;
+  // margin-bottom: 100em;
+  margin: 0 5em 100em 5em;
+  // background-color: aliceblue;
+  position: relative;
+  hr {
+    border: 1px solid var(--Black100);
+    margin: 64px 0;
+  }
+  .topbar {
+    margin-top: 64px;
+    justify-content: space-between;
+    align-items: flex-start;
+    .leftContent {
+      .title {
+        font-weight: 700;
+        font-size: 24px;
+        margin-bottom: 16px;
+      }
+      .location {
+        margin-bottom: 8px;
+      }
+      .location,
+      .telepon {
+        .icon {
+          width: 18px;
+          height: 18px;
+        }
+        .locationContent {
+          font-weight: 500;
+          font-size: 15px;
+        }
+      }
+    }
+    .rightContent {
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      .title {
+        color: var(--PumpkinColor50);
+        font-size: 32px;
+        span {
+          color: var(--white50);
+        }
+        .malam {
+          color: var(--PumpkinColor50);
+          font-size: 14px;
+        }
+      }
+      .contentShare {
+        .locationDiv {
+          background: var(--white40);
+          border: 2px solid var(--zompColor50);
+          //  margin-right: 5px;
+          padding: 8px;
+          height: 46px;
+          width: 54px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-right: 12px;
+          .icon {
+            // font-size: 20px;
+            width: 22px;
+            height: 22px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+  .imageDetail {
+    width: 100%;
+    height: 600px;
+    margin-top: 64px;
+    margin-bottom: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .satu {
+      width: 580px;
+      height: 600px;
+      background-color: #37787c;
+      border-radius: 100px 0 0 0;
+    }
+
+    .rightImages {
+      width: 580px;
+      height: 600px;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .rightImage {
+        //   justify-content: flex-end;
+        justify-content: space-between;
+
+        display: flex;
+        .dua {
+          width: 280px;
+          height: 300px;
+          background-color: #2c2d2f;
+        }
+        .tiga {
+          width: 280px;
+          height: 300px;
+          background-color: rebeccapurple;
+        }
+      }
+      .rightBottomImage {
+        position: relative;
+        .empat {
+          position: relative;
+          width: 580px;
+          height: 290px;
+          background: #fa8a44;
+          margin-top: 10px;
+          border-radius: 0 0 100px 0;
+        }
+        .getAllPhoto {
+          position: absolute;
+          cursor: pointer;
+          bottom: 15px;
+          right: 70px;
+          background: var(--CulturedColor60);
+          border: 2px solid var(--zompColor50);
+          padding: 8px;
+          .icon {
+            width: 20px;
+            height: 20px;
+          }
+          .Content {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .contentsDetail {
+    color: var(--Black100);
+    // background-color: yellow;
+    .overview {
+      .title {
+        font-weight: bold;
+        font-size: 20px;
+        padding-bottom: 16px;
+      }
+      .content {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 400;
+      }
+    }
+    .fasilitas {
+      .title {
+        font-weight: bold;
+        font-size: 20px;
+        padding-bottom: 16px;
+      }
+      .content {
+        width: 50%;
+        height: 220px;
+        // background-color: #37787c;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        p {
+          font-size: 16px;
+          font-weight: 500;
+          // color: white;
+          margin-bottom: 24px;
+        }
+      }
+    }
+    .price {
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      .content {
+        justify-content: center;
+        .cardPrice {
+          flex-direction: column;
+          justify-content: center;
+          width: 198px;
+          height: 100px;
+          margin-right: 16px;
+          background-color: var(--white40);
+          img {
+            width: 150px;
+          }
+          .priceHotel {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 24.2px;
+          }
+        }
+      }
+    }
+    .location {
+      .title {
+        font-weight: bold;
+        font-size: 20px;
+        padding-bottom: 16px;
+      }
+    }
+  }
+}
