@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../../../components/navbar/Navbar";
 import "./detailfood.scss";
 import { MdLocationPin, MdCall, MdShare, MdFavorite } from "react-icons/md";
@@ -7,6 +7,7 @@ import { CgMenuGridO } from "react-icons/cg";
 
 const DetailFood = () => {
   const { id } = useParams();
+  const berhitung = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   return (
     <>
       <Navbar />
@@ -27,18 +28,18 @@ const DetailFood = () => {
             </div>
           </div>
           <div className="rightTopbar flex">
-            <div className="location">
+            <div className="location radius-4">
               <MdLocationPin className="icon" />
             </div>
-            <div className="location">
-              <MdLocationPin className="icon" />
+            <div className="location radius-4">
+              <MdFavorite className="icon" />
             </div>
-            <div className="location">
-              <MdLocationPin className="icon" />
+            <div className="location radius-4">
+              <MdShare className="icon" />
             </div>
-            <div className="location flex">
+            <div className="location flex radius-4">
+              <MdLocationPin className="icon" />
               <p className="subtitle2">Website</p>
-              <MdLocationPin className="icon" />
             </div>
           </div>
         </div>
@@ -54,9 +55,28 @@ const DetailFood = () => {
               <img src={image} className="empat" />
               <div className="getAllPhoto flex radius-2">
                 <CgMenuGridO className="icon" />
-                <p className="Content">Tampilkan semua foto</p>
+                <Link to={`image`} className="Content">
+                  Tampilkan semua foto
+                </Link>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="Menu">
+          <div className="topBar flex">
+            <div className="title">Menu Kuliner </div>
+            <Link to={`food_menu`} className="filterMenu radius btn">
+              Lihat Detail
+            </Link>
+          </div>
+          <div className="cardsMenu flex">
+            {berhitung.map((data) => (
+              <div className="cardMenu ">
+                <img className="image radius-3" src={image} alt=""></img>
+                <p className="nameCard">Chocolate Tiramisu</p>
+                <p className="priceMenu">Harga Mulai Dari Rp. 215.000</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

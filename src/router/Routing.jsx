@@ -15,6 +15,8 @@ import {
   HotelPage,
   EventPage,
 } from "../pages";
+import DetailMenuFood from "../pages/menuPages/food/DetailMenu";
+import DetailImageFood from "../pages/menuPages/food/DetailImage";
 
 const Routing = () => {
   return (
@@ -28,6 +30,8 @@ const Routing = () => {
           <Route path="/kuliner-page">
             <Route index element={<FoodPage />} />
             <Route path="detail/:id" element={<DetailFood />} />
+            <Route path="detail/:id/food_menu" element={<DetailMenuFood />} />
+            <Route path="detail/:id/image" element={<DetailImageFood />} />
           </Route>
           {/* Hotel Menu */}
           <Route path="/hotel-page">

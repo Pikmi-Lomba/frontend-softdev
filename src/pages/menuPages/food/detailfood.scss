@@ -70,9 +70,14 @@
       }
     }
     .rightTopbar {
-      background: #000;
       align-self: flex-end;
       justify-self: flex-end;
+      .location {
+        margin-right: 12px;
+        border: 2px solid var(--zompColor50);
+        padding: 6px;
+        cursor: pointer;
+      }
     }
   }
   .imageDetail {
@@ -136,7 +141,45 @@
           }
           .Content {
             font-size: 14px;
+            color: var(--Black100);
           }
+        }
+      }
+    }
+  }
+  .Menu {
+    .topBar {
+      justify-content: space-between;
+      padding-bottom: 40px;
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .filterMenu {
+        background: var(--zompColor50);
+        color: var(--white20);
+        font-size: 14px;
+      }
+    }
+    .cardsMenu {
+      flex-wrap: wrap;
+      justify-content: center;
+      .cardMenu {
+        // background: var(--PumpkinColor40);
+        // width: 280px;
+        // height: 320px;
+        border-radius: 12px 12px 0 0;
+        margin-bottom: 36px;
+        margin-right: 18px;
+        .image {
+          background-size: cover;
+          height: 260px;
+          width: 280px;
+        }
+        .nameCard {
+          font-size: 16px;
+          line-height: 20px;
+          font-weight: 700;
         }
       }
     }
