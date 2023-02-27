@@ -72,7 +72,7 @@ const TripComp = () => {
             </select>
           </div>
         </div>
-        <div className="cardsMenu">
+        <div className="cardSliderMenu">
           {berhitung.map((data, i) => (
             <div className="cardMenu" key={i}>
               <div className="imageContent">
@@ -110,7 +110,7 @@ const TripComp = () => {
                     <div className="pusing flex">
                       <MdLocationPin className="icon" />
 
-                      <div className="place"> Jl. Taman Cibodas, ...</div>
+                      <div className="place"> Jl. Tama</div>
                     </div>
 
                     <div className="range"> Berjarak 500 meter </div>

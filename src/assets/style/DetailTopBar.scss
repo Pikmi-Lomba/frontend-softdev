@@ -1,0 +1,75 @@
+.topContentMenu {
+  padding-top: 60px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .leftTopbar {
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .location {
+      gap: 2px;
+      padding-bottom: 4px;
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+      .subtitle {
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+  }
+  .rightTopbar {
+    justify-self: flex-end;
+    align-self: flex-end;
+    .location {
+      margin-right: 12px;
+      border: 2px solid var(--zompColor50);
+      padding: 6px;
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topContentMenu {
+    justify-content: space-between;
+    .leftTopbar {
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        align-self: center;
+        justify-self: center;
+      }
+      .location {
+        gap: 8px;
+        padding-bottom: 4px;
+        .icon {
+          width: 25px;
+          height: 25px;
+        }
+        .subtitle {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+    .rightTopbar {
+      padding-top: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .topContentMenu {
+    .leftTopbar {
+      .location {
+        .icon {
+          width: 50px;
+          height: 50px;
+        }
+      }
+    }
+  }
+}

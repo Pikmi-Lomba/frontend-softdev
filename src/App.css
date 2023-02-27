@@ -114,8 +114,9 @@ input {
 .active {
   border-bottom: 2px solid var(--zompColor50);
   background: var(--white20);
+  /* color: var(--white20); */
   border-radius: 12px 12px 0 0;
-  padding: 0px;
+  padding: -20px;
   /* color: var(--white20); */
 }
 

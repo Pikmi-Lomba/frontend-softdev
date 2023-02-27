@@ -74,7 +74,7 @@ const HotelComp = () => {
             </select>
           </div>
         </div>
-        <div className="cardsMenu">
+        <div className="cardSliderMenu">
           {berhitung1.map((data, i) => (
             <div className="cardMenu" key={i}>
               <div className="imageContent">

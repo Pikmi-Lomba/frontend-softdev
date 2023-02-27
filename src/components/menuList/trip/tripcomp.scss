@@ -153,6 +153,7 @@
           font-weight: bold;
         }
         .contentLocation {
+          // flex-direction: row;
           justify-content: space-between;
           .pusing {
             .icon {
@@ -221,109 +222,18 @@
         }
       }
     }
-    .cardsMenu {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      .cardMenu {
-        height: 240px;
-        width: 160px;
-        // margin: 0 20px;
-        margin-bottom: 40px;
-        position: relative;
-        color: var(--Black100);
-        margin-right: 8px;
-        margin-left: 8px;
-
-        .imageContent {
-          .imgMenu {
-            width: 160px;
-            height: 160px;
-            background-position: center;
-            background-size: cover;
-            transition-duration: 500ms;
-            position: relative;
-          }
-          .leftIcon {
-            position: absolute;
-            top: 30%;
-            background: var(--CulturedColor70);
-
-            left: 3%;
-            border-radius: 50%;
-            font-size: 20px;
-          }
-
-          .rightIcon {
-            position: absolute;
-            top: 30%;
-            right: 3%;
-            background: var(--CulturedColor70);
-            border-radius: 50%;
-            font-size: 20px;
-          }
-
-          .dots {
-            display: flex;
-            position: absolute;
-            top: 60%;
-            left: 35%;
-            .dot {
-              color: black;
-              font-size: 20px;
-            }
-          }
-          .icon {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-
-            width: 20px;
-            height: 20px;
-            background: var(--CulturedColor50);
-            border-radius: 9999px;
-          }
-          img {
-            width: 280px;
-            height: 280px;
-          }
-        }
-
-        .LocationCardMenu {
-          color: #151618;
-          .titleCardMenu {
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 4px;
-          }
-          .contentLocation {
-            justify-content: space-between;
-            flex-direction: column;
-
-            .pusing {
-              .icon {
-                width: 20px;
-                height: 20px;
-              }
-              .place {
-                color: var(--Black70);
-                font-size: 12px;
-              }
-            }
-            .range {
-              font-size: 12px;
-              line-height: 14.52px;
-              color: var(--Black70);
-            }
-          }
-        }
-      }
-    }
   }
 }
 
 // mobile
 @media screen and (max-width: 468px) {
+  .tripComp {
+    margin: 10px;
+    color: var(--Black100);
+  }
+  .titlePage {
+    margin: 60px auto;
+    text-align: center;
+    font-size: 24px;
+  }
 }

@@ -1,0 +1,187 @@
+.cardSliderMenu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  .cardMenu {
+    height: 330px;
+    width: 280px;
+    margin: 0 16px 40px 0;
+    position: relative;
+    color: var(--Black100);
+
+    .imageContent {
+      .imgMenu {
+        width: 280px;
+        height: 280px;
+        background-position: center;
+        background-size: cover;
+        transition-duration: 500ms;
+        position: relative;
+      }
+      .leftIcon {
+        position: absolute;
+        top: 40%;
+        background: var(--CulturedColor70);
+
+        left: 3%;
+        border-radius: 50%;
+        font-size: 24px;
+      }
+
+      .rightIcon {
+        position: absolute;
+        top: 40%;
+        right: 3%;
+        background: var(--CulturedColor70);
+        border-radius: 50%;
+        font-size: 24px;
+      }
+
+      .dots {
+        display: flex;
+        position: absolute;
+        top: 78%;
+        left: 45%;
+        .dot {
+          color: black;
+          font-size: 24px;
+        }
+      }
+      .icon {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+
+        width: 24px;
+        height: 24px;
+        background: var(--CulturedColor50);
+        border-radius: 9999px;
+      }
+      img {
+        width: 280px;
+        height: 280px;
+      }
+    }
+
+    .LocationCardMenu {
+      color: var(--Black100);
+      .titleCardMenu {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      .contentLocation {
+        justify-content: space-between;
+        .pusing {
+          .icon {
+            width: 20px;
+            height: 20px;
+          }
+          .place {
+            color: var(--Black70);
+            font-size: 12px;
+          }
+        }
+        .range {
+          font-size: 12px;
+          line-height: 14.52px;
+          color: var(--Black70);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .cardSliderMenu {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .cardMenu {
+      height: 330px;
+      width: 280px;
+      margin: 0 8px 40px 0;
+      position: relative;
+      color: var(--Black100);
+
+      .imageContent {
+        .imgMenu {
+          width: 280px;
+          height: 280px;
+          background-position: center;
+          background-size: cover;
+          transition-duration: 500ms;
+          position: relative;
+        }
+        .leftIcon {
+          position: absolute;
+          top: 40%;
+          background: var(--CulturedColor70);
+
+          left: 3%;
+          border-radius: 50%;
+          font-size: 24px;
+        }
+
+        .rightIcon {
+          position: absolute;
+          top: 40%;
+          right: 3%;
+          background: var(--CulturedColor70);
+          border-radius: 50%;
+          font-size: 24px;
+        }
+
+        .dots {
+          display: flex;
+          position: absolute;
+          top: 78%;
+          left: 45%;
+          .dot {
+            color: black;
+            font-size: 24px;
+          }
+        }
+        .icon {
+          position: absolute;
+          right: 15px;
+          top: 15px;
+
+          width: 24px;
+          height: 24px;
+          background: var(--CulturedColor50);
+          border-radius: 9999px;
+        }
+        img {
+          width: 280px;
+          height: 280px;
+        }
+      }
+
+      .LocationCardMenu {
+        color: var(--Black100);
+        .titleCardMenu {
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .contentLocation {
+          justify-content: space-between;
+          .pusing {
+            .icon {
+              width: 20px;
+              height: 20px;
+            }
+            .place {
+              color: var(--Black70);
+              font-size: 12px;
+            }
+          }
+          .range {
+            font-size: 12px;
+            line-height: 14.52px;
+            color: var(--Black70);
+          }
+        }
+      }
+    }
+  }
+}

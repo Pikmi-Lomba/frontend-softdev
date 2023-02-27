@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import Navbar from "../../../components/navbar/Navbar";
 import "./detailfood.scss";
 import { MdLocationPin, MdCall, MdShare, MdFavorite } from "react-icons/md";
-import image from "../../../assets/image/animal1.jpg";
+import image from "../../../assets/image/animal3.jpg";
 import { CgMenuGridO } from "react-icons/cg";
 
 const DetailFood = () => {
@@ -12,7 +12,7 @@ const DetailFood = () => {
     <>
       <Navbar />
       <div className="detailFood">
-        <div className="topbar flex">
+        <div className="topContentMenu flex">
           <div className="leftTopbar">
             <div className="title">The Harvest Cake Depok</div>
             <div className="location flex">
@@ -43,25 +43,33 @@ const DetailFood = () => {
             </div>
           </div>
         </div>
-        <div className="imageDetail">
-          <img src={image} className="satu" />
-
-          <div className="rightImages">
-            <div className="rightImage flex">
-              <img src={image} className="dua" />
-              <img src={image} className="tiga" />
+        {/* Image Grid  */}
+        <div className="bodyPhoto">
+          <div className="gridGallery">
+            <div className="gridItem">
+              <img src={image} alt="" />
             </div>
-            <div className="rightBottomImage">
-              <img src={image} className="empat" />
+            <div className="gridItem">
+              <img src={image} alt="" />
+            </div>
+            <div className="gridItem">
               <div className="getAllPhoto flex radius-2">
                 <CgMenuGridO className="icon" />
                 <Link to={`image`} className="Content">
                   Tampilkan semua foto
                 </Link>
               </div>
+              <img src={image} alt="" />
+            </div>
+            <div className="gridItem">
+              <img src={image} alt="" />
+            </div>
+            <div className="gridItem">
+              <img src={image} alt="" />
             </div>
           </div>
         </div>
+        {/* Menu Food */}
         <div className="Menu">
           <div className="topBar flex">
             <div className="title">Menu Kuliner </div>

@@ -2,6 +2,8 @@ import "./detailhotel.scss";
 import image from "../../../assets/image/animal1.jpg";
 import { CgMenuGridO } from "react-icons/cg";
 import hotel from "../../../assets/image/hotel1.png";
+import { Link } from "react-router-dom";
+// import "./new.css";
 
 // Icon
 import { MdLocationPin, MdCall, MdShare, MdFavorite } from "react-icons/md";
@@ -45,20 +47,28 @@ const DetailHotel = () => {
             </div>
           </div>
         </div>
-        <div className="imageDetail">
-          <img src={image} className="satu" />
-
-          <div className="rightImages">
-            <div className="rightImage flex">
-              <img src={image} className="dua" />
-              <img src={image} className="tiga" />
+        <div className="bodyPhoto">
+          <div className="gridGallery">
+            <div className="gridItem">
+              <img src={image} alt="" />
             </div>
-            <div className="rightBottomImage">
-              <img src={image} className="empat" />
+            <div className="gridItem">
+              <img src={image} alt="" />
+            </div>
+            <div className="gridItem">
               <div className="getAllPhoto flex radius-2">
                 <CgMenuGridO className="icon" />
-                <p className="Content">Tampilkan semua foto</p>
+                <Link to={`image`} className="Content">
+                  Tampilkan semua foto
+                </Link>
               </div>
+              <img src={image} alt="" />
+            </div>
+            <div className="gridItem">
+              <img src={image} alt="" />
+            </div>
+            <div className="gridItem">
+              <img src={image} alt="" />
             </div>
           </div>
         </div>
@@ -86,9 +96,17 @@ const DetailHotel = () => {
             </div>
           </div>
           <hr />
-          <div className="price">
+          <div className="price ">
             <h1 className="title">Harga Banding Booking Hotel</h1>
-            <div className="content flex">
+            <div className="content horizontal-content">
+              <div className="cardPrice radius-2 flex">
+                <img src={hotel} alt="hotelLogo.png" />
+                <p className="priceHotel">Rp. 580,000</p>
+              </div>
+              <div className="cardPrice radius-2 flex">
+                <img src={hotel} alt="hotelLogo.png" />
+                <p className="priceHotel">Rp. 580,000</p>
+              </div>
               <div className="cardPrice radius-2 flex">
                 <img src={hotel} alt="hotelLogo.png" />
                 <p className="priceHotel">Rp. 580,000</p>
@@ -111,20 +129,13 @@ const DetailHotel = () => {
               </div>
             </div>
           </div>
+          {/* <div className="horizontal-content">
+
+          </div> */}
           <hr />
           <div className="location">
             <h1 className="title">Lokasi</h1>
-            <div className="maps">
-              {/* <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.118473088656!2d106.8272174143421!3d-6.378704864168379!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec0869e31b4f%3A0xaa40278d69385917!2sHotel%20Bumi%20Wiyata!5e0!3m2!1sid!2sid!4v1676391249990!5m2!1sid!2sid"
-                width="400"
-                height="300"
-                style="border:0;"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe> */}
-            </div>
+            <div className="maps"></div>
           </div>
           <hr />
         </div>
