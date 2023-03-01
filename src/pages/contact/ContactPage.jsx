@@ -1,4 +1,4 @@
-import About from "../../components/aboutUS/AboutUs";
+import ContactComp from "../../components/Contact/Contact";
 import HeroComp from "../../components/hero/Hero";
 import NavbarComp from "../../components/navbar/Navbar";
 
@@ -7,7 +7,7 @@ const ContactPage = () => {
     <>
       <NavbarComp />
       <HeroComp />
-      <About />
+      <ContactComp />
     </>
   );
 };

@@ -1,23 +1,15 @@
 .aboutComp {
   margin-top: 5rem;
-  padding: 0px 60px;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  .textAbout {
-    //  flex-grow: 8;
-    flex-direction: column;
-    padding: 2rem;
-    width: 550px;
-    //  margin-right: 4rem;
+  .topbarInfo {
+    text-align: center;
     .title {
-      align-self: flex-start;
+      font-size: 48px;
+      font-weight: 700;
     }
-  }
-  .imgAbout {
-    //  flex-grow: 4;
-    width: 400px;
-    img {
-      border-radius: 100px 40px 0 40px;
+    .subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--Black70);
     }
   }
 }

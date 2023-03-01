@@ -1,5 +1,5 @@
-import About from "../components/aboutUS/AboutUs";
 import HeroComp from "../components/hero/Hero";
+import LandingComp from "../components/landing/landing";
 import NavbarComp from "../components/navbar/Navbar";
 
 const LandingPage = () => {
@@ -7,7 +7,7 @@ const LandingPage = () => {
     <div className="colorWeb">
       <NavbarComp />
       <HeroComp />
-      <About />
+      <LandingComp />
     </div>
   );
 };

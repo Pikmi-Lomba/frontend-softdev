@@ -1,0 +1,249 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.contactComponent {
+  margin: 5em;
+  color: var(--Black100);
+  .topbarInfo {
+    text-align: center;
+    .title {
+      font-size: 48px;
+      font-weight: 700;
+    }
+    .subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--Black70);
+    }
+  }
+
+  .formContainer {
+    margin: 60px 0;
+    flex-direction: column;
+    .form {
+      flex-direction: column;
+      align-items: flex-start;
+      // background-color: yellow;
+      width: 80%;
+      padding: 40px;
+      background: var(--CulturedColor60);
+
+      .topForm {
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        width: 100%;
+        justify-content: space-between;
+
+        .nameForm {
+          width: 45%;
+        }
+        .subjectForm {
+          width: 45%;
+        }
+      }
+      .bottomForm {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 100%;
+        .emailForm {
+          margin-bottom: 20px;
+        }
+        .emailForm,
+        .PesanForm {
+          width: 100%;
+        }
+      }
+      .btn {
+        margin: 20px 0;
+        align-self: center;
+      }
+      .nameTitle {
+        font-size: 16px;
+        font-weight: 600;
+        padding-bottom: 8px;
+      }
+    }
+  }
+  .cardsInformation {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .informationContact {
+      width: 80%;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .cardInformationContact {
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        // width: 161px;
+        // height: 147px;
+        .circle {
+          width: 120px;
+          height: 120px;
+          border-radius: 50%;
+          background: var(--white10);
+          justify-content: center;
+          gap: 8px;
+          .icon {
+            width: 40px;
+            height: 40px;
+          }
+        }
+        .infomationName {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.inputForm {
+  width: 100%;
+  border: none;
+  height: 45px;
+  padding-left: 20px;
+}
+
+.inputForm::placeholder {
+  color: var(--Black70);
+}
+
+@media screen and (max-width: 1000px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 468px) {
+  .contactComponent {
+    margin: 5em 0;
+    .formContainer {
+      margin: 60px 0;
+      flex-direction: column;
+      .form {
+        flex-direction: column;
+        align-items: flex-start;
+        // background-color: yellow;
+        width: 80%;
+        padding: 20px;
+        background: var(--CulturedColor60);
+
+        .topForm {
+          flex-direction: column;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+          width: 100%;
+          justify-content: space-between;
+
+          .nameForm {
+            width: 100%;
+            margin-bottom: 20px;
+          }
+          .subjectForm {
+            width: 100%;
+          }
+        }
+        .bottomForm {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          width: 100%;
+          .emailForm {
+            margin-bottom: 20px;
+          }
+          .emailForm,
+          .PesanForm {
+            width: 100%;
+          }
+        }
+
+        .nameTitle {
+          font-size: 16px;
+          font-weight: 600;
+          padding-bottom: 8px;
+        }
+      }
+    }
+    .cardsInformation {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .informationContact {
+        width: 80%;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        .cardInformationContact {
+          flex-direction: column;
+          flex-wrap: wrap;
+          justify-content: center;
+          // width: 161px;
+          // height: 147px;
+          margin: 10px 0;
+          .circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--white10);
+            justify-content: center;
+            gap: 8px;
+            .icon {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          .infomationName {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
