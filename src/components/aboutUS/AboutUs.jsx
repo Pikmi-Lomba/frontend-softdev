@@ -1,5 +1,5 @@
 import "./about.scss";
-import image from "../../assets/image/img-hero.jpg";
+import { MenuFeature } from "../landing/MenuFeature";
 
 const AboutComp = () => {
   return (
@@ -9,6 +9,15 @@ const AboutComp = () => {
           <h1 className="title">About Us</h1>
           <p className="subtitle">Lorem ipsum dolor sit amet.</p>
         </div>
+        {MenuFeature.map((data) => (
+          <div className="featureContent1 flex">
+            <div className="imageFeature">{data.image}</div>
+            <div className="contentFeature flex">
+              <p className="titleFeature">{data.title}</p>
+              <p className="paraFeature">{data.description}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   );

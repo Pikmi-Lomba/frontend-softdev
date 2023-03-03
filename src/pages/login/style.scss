@@ -1,0 +1,226 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.privateRoute {
+  height: 100vh;
+  flex-wrap: wrap;
+  .cardForm {
+    flex: 1;
+    height: 100vh;
+    justify-content: center;
+    width: 100%;
+
+    .formLogin {
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+
+      .contents {
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 24px;
+        gap: 4px;
+      }
+      .getUser {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .email,
+        .password {
+          width: 100%;
+          height: 45px;
+          background: white;
+          margin-bottom: 20px;
+          .icon {
+            width: 15%;
+          }
+          input {
+            width: 85%;
+          }
+        }
+
+        .password {
+          .eye {
+            width: 100%;
+            position: relative;
+            .inputPass {
+              position: relative;
+              width: 100%;
+            }
+
+            .eyeIcon {
+              position: absolute;
+              color: var(--Black70);
+              top: 30%;
+              right: 5%;
+            }
+          }
+        }
+        input {
+          border: none;
+          height: 45px;
+          outline: none;
+        }
+        input:focus {
+          border-bottom: 2px solid var(--zompColor50);
+        }
+        .link {
+          align-self: flex-start;
+          padding: 20px 0;
+        }
+      }
+      .icon {
+        color: var(--zompColor50);
+      }
+      .btn {
+        width: 130px;
+      }
+    }
+  }
+  .imageLog {
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 20px;
+    img {
+      width: 100%;
+      height: 90vh;
+      border-radius: 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .privateRoute {
+    height: 100vh;
+    flex-wrap: wrap;
+    .cardForm {
+      flex: 1;
+      height: 100vh;
+      justify-content: center;
+      width: 100%;
+      background: url(../../assets/image/img-hero.jpg);
+      .formLogin {
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        padding: 20px 0;
+        backdrop-filter: blur(25px) saturate(180%);
+        -webkit-backdrop-filter: blur(25px) saturate(180%);
+        background-color: rgba(97, 130, 78, 0.75);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.125);
+        .contents {
+          flex-direction: column;
+          justify-content: center;
+          margin-bottom: 24px;
+          gap: 4px;
+        }
+        .getUser {
+          width: 60%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          .email,
+          .password {
+            width: 100%;
+            height: 45px;
+            background: white;
+            margin-bottom: 20px;
+            .icon {
+              width: 15%;
+            }
+            input {
+              width: 85%;
+            }
+          }
+
+          .password {
+            .eye {
+              width: 100%;
+              position: relative;
+              .inputPass {
+                position: relative;
+                width: 100%;
+              }
+
+              .eyeIcon {
+                position: absolute;
+                color: var(--Black70);
+                top: 30%;
+                right: 5%;
+              }
+            }
+          }
+          input {
+            border: none;
+            height: 45px;
+            outline: none;
+          }
+          input:focus {
+            border-bottom: 2px solid var(--zompColor50);
+          }
+          .link {
+            align-self: flex-start;
+            padding: 20px 0;
+          }
+        }
+        .icon {
+          color: var(--zompColor50);
+        }
+        .btn {
+          width: 130px;
+        }
+      }
+    }
+    .imageLog {
+      display: none;
+    }
+  }
+}

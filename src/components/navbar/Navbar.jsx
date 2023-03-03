@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 
 import "./navbar.css";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
   const [nav, setNav] = useState(false);
@@ -35,7 +35,9 @@ function Navbar() {
         <h2>Logo</h2>
       </div>
       <div className="nav-icons">
-        <button className="btn radius-3">Login </button>
+        <Link to={`/login`} className="btn radius-3">
+          Login{" "}
+        </Link>
       </div>
       <div className="hamburger" onClick={handleNav}>
         {!nav ? (
@@ -59,7 +61,9 @@ function Navbar() {
         </ul>
         <div className="mobile-menu-bottom">
           <div className="menu-icons">
-            <button className="btn radius-3">Login</button>
+            <Link to={`/login`} className="btn radius-3">
+              Login
+            </Link>
           </div>
         </div>
       </div>

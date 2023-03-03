@@ -1,10 +1,11 @@
 import "./landing.scss";
-import { FaLocationArrow } from "react-icons/fa";
+import { MenuFeature } from "./MenuFeature";
+import Slider from "react-slick";
 import image from "../../assets/image/img-hero.jpg";
 
-import Slider from "react-slick";
+// Icons
+import { FaLocationArrow } from "react-icons/fa";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
-import { MenuFeature } from "./MenuFeature";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;

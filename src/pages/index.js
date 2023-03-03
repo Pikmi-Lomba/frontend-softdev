@@ -11,3 +11,7 @@ export { default as FoodPage } from "./menuPages/food/FoodPage";
 export { default as TripPage } from "./menuPages/trip/TripPage";
 export { default as EventPage } from "./menuPages/eventPage/EventPage";
 export { default as FlightPage } from "./menuPages/flight/FlightPage";
+
+// Auth
+export { default as LoginPage } from "./login/Login";
+export { default as SignupPage } from "./login/Signup";

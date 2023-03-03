@@ -2,6 +2,7 @@
   margin-top: 5rem;
   .topbarInfo {
     text-align: center;
+    margin-bottom: 60px;
     .title {
       font-size: 48px;
       font-weight: 700;
@@ -10,6 +11,94 @@
       font-size: 16px;
       font-weight: 500;
       color: var(--Black70);
+    }
+  }
+
+  .featureContent1 {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 120px;
+    .imageFeature {
+      width: 250px;
+      height: 200px;
+      img {
+        height: 200px;
+        border-radius: 20px;
+      }
+    }
+
+    .contentFeature {
+      width: 480px;
+      flex-direction: column;
+      flex-wrap: wrap;
+
+      padding: 20px;
+      .titleFeature {
+        font-size: 36px;
+      }
+    }
+  }
+  .featureContent1:nth-child(odd) {
+    .imageFeature {
+      order: 2;
+    }
+    .contentFeature {
+      order: 1;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .aboutComp {
+    .featureContent1 {
+      align-self: center;
+    }
+    .featureContent1:nth-child(odd) {
+      .imageFeature {
+        order: 2;
+      }
+      .contentFeature {
+        order: 1;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .aboutComp {
+    .featureContent1:nth-child(odd) {
+      .imageFeature {
+        order: 1;
+      }
+      .contentFeature {
+        order: 2;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .aboutComp {
+    .featureContent1 {
+      align-self: center;
+      .contentFeature {
+        width: 100%;
+        .titleFeature {
+          font-size: 24px;
+          text-align: center;
+        }
+        .paraFeature {
+          text-align: center;
+        }
+      }
+    }
+    .featureContent1:nth-child(odd) {
+      .imageFeature {
+        order: 1;
+      }
+      .contentFeature {
+        order: 2;
+      }
     }
   }
 }

@@ -14,6 +14,8 @@ import {
   TripPage,
   HotelPage,
   EventPage,
+  LoginPage,
+  SignupPage,
 } from "../pages";
 import DetailMenuFood from "../pages/menuPages/food/DetailMenu";
 import DetailImageFood from "../pages/menuPages/food/DetailImage";
@@ -50,6 +52,11 @@ const Routing = () => {
           </Route>
           {/* Flight Menu */}
           <Route path="/penerbangan-page" element={<FlightPage />} />
+
+          {/* Login & Signup */}
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<SignupPage />} />
+
           {/* Private Route */}
 
           <Route path="/dashboard-admin">
