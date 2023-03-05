@@ -19,6 +19,7 @@ import {
 } from "../pages";
 import DetailMenuFood from "../pages/menuPages/food/DetailMenu";
 import DetailImageFood from "../pages/menuPages/food/DetailImage";
+import MitraPages from "../pages/dashboard/manageAcount/mitra";
 
 const Routing = () => {
   return (
@@ -61,6 +62,7 @@ const Routing = () => {
 
           <Route path="/dashboard-admin">
             <Route index element={<Dashboard />} />
+            <Route path="mitra" element={<MitraPages />} />
           </Route>
         </Routes>
       </BrowserRouter>
