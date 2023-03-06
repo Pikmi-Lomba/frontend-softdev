@@ -2,6 +2,8 @@ import "./sidebar.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import TopBarDash from "../navbar/TopbarDash";
+import { MdPerson, MdPeople, MdLogout } from "react-icons/md";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
   return (
@@ -13,35 +15,35 @@ const Sidebar = ({ children }) => {
         <div className="logo">Logo</div>
         <hr className="garis" />
         <div className="menuSidebar flex">
-          <div className="MenuSide flex">
+          <NavLink to={`/dashboard-admin/`} className="MenuSide flex">
             <AiOutlineClose className="icon " />
             <p className="nameMenuSide">Dashboard</p>
-          </div>
+          </NavLink>
           <div className="titleDash">
             <p className="titleMenuDash">Pengguna</p>
           </div>
           <hr className="garis" />
-          <div className="MenuSide flex">
-            <AiOutlineClose className="icon " />
+          <NavLink to={`/dashboard-admin/user`} className="MenuSide flex">
+            <MdPerson className="icon " />
             <p className="nameMenuSide">Pengguna</p>
-          </div>
-          <div className="MenuSide flex">
-            <AiOutlineClose className="icon " />
+          </NavLink>
+          <NavLink to={`/dashboard-admin/mitra`} className="MenuSide flex">
+            <MdPeople className="icon " />
             <p className="nameMenuSide">Mitra</p>
-          </div>
+          </NavLink>
           <div className="titleDash">
             <p className="titleMenuDash">Menu Utama</p>
           </div>
           <hr className="garis" />
-          <div className="MenuSide flex">
+          <NavLink to={`/dashboard-admin/event`} className="MenuSide flex ">
             <AiOutlineClose className="icon " />
             <p className="nameMenuSide">Menu Event</p>
-          </div>
+          </NavLink>
         </div>
-        <div className="logout flex">
-          <AiOutlineClose className="icon " />
+        <NavLink to={`/login`} className="logout flex">
+          <MdLogout className="icon " />
           <p className="nameMenuSide">Logout</p>
-        </div>
+        </NavLink>
       </section>
       <div className="RightDash">
         <TopBarDash />

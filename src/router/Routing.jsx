@@ -20,6 +20,9 @@ import {
 import DetailMenuFood from "../pages/menuPages/food/DetailMenu";
 import DetailImageFood from "../pages/menuPages/food/DetailImage";
 import MitraPages from "../pages/dashboard/manageAcount/mitra";
+import ManageEvent from "../pages/dashboard/manageMenu/ManageEvent";
+import DetailEventDash from "../pages/dashboard/manageMenu/actionsEvent/DetailEvent";
+import CreateManageEvent from "../pages/dashboard/manageMenu/actionsEvent/CreateEvent";
 
 const Routing = () => {
   return (
@@ -62,7 +65,16 @@ const Routing = () => {
 
           <Route path="/dashboard-admin">
             <Route index element={<Dashboard />} />
-            <Route path="mitra" element={<MitraPages />} />
+          </Route>
+          {/* Manage Account Mitra */}
+          <Route path="/dashboard-admin/mitra">
+            <Route index element={<MitraPages />} />
+          </Route>
+          {/* Manage Menu Event */}
+          <Route path="/dashboard-admin/event">
+            <Route index element={<ManageEvent />} />
+            <Route path="detail/:id" element={<DetailEventDash />} />
+            <Route path="create" element={<CreateManageEvent />} />
           </Route>
         </Routes>
       </BrowserRouter>
