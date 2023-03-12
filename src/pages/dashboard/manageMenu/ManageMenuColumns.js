@@ -3,19 +3,19 @@ import ActionManageEvents from "./ActionManageEvent";
 export const MenuColumns = [
   { field: "id", headerName: "ID", width: 90 },
   {
-    field: "firstName",
+    field: "nama_mitra",
     headerName: "Event Organizer",
     width: 180,
     editable: true,
   },
   {
-    field: "lastName",
+    field: "name_event",
     headerName: "Nama Event",
     width: 200,
     editable: true,
   },
   {
-    field: "age",
+    field: "kategory_event",
     headerName: "Kategori",
     width: 150,
     editable: true,

@@ -1,23 +1,46 @@
 import Sidebar from "../../../components/sidebar/Sidebar";
 import "./manageMenu.scss";
-import { AiOutlineSearch } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { MenuColumns } from "./ManageMenuColumns";
+import { useEffect, useState } from "react";
+import { getDataEvent } from "../../../apis/Api";
 
 const ManageEvent = () => {
-  const Menurows = [
-    { id: 1, lastName: "Duha", firstName: "Jon", age: 35 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-  ];
+  const [dataEvent, setDataEvent] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // const [data, setData] = useState(dataEvent);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    getDataEvent()
+      .then((res) => {
+        console.log("res", res.data.event);
+        setDataEvent(res.data.event);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [loading]);
+
+  console.log(dataEvent);
+
+  // const handleSearch = (e) => {
+  //   const getSearch = e.target.value;
+  //   setSearch(getSearch);
+  //   if (getSearch !== "") {
+  //     const searchData = dataEvent.filter((item) =>
+  //       item.name_event.toLowerCase().includes(getSearch)
+  //     );
+  //     setDataEvent(searchData);
+  //   } else {
+  //     setLoading(true);
+  //     setDataEvent(dataEvent);
+  //   }
+  // };
 
   return (
     <>
@@ -28,10 +51,17 @@ const ManageEvent = () => {
             <h5 className="subTitle">{`Dashboard > Menu Event`}</h5>
           </div>
           <div className="centerContent flex">
-            <div className="searchComponent radius-2">
+            {/* <div className="searchComponent radius-2">
               <AiOutlineSearch className="icon" />
-              <input type="text" placeholder="Search..." />
-            </div>
+              <input
+                type="text"
+                value={search}
+                placeholder="Search..."
+                onChange={(e) => {
+                  handleSearch(e);
+                }}
+              />
+            </div> */}
             <div className="addData">
               <Link
                 to={`/dashboard-admin/event/create`}
@@ -44,7 +74,7 @@ const ManageEvent = () => {
           <div className="FormData">
             <Box sx={{ height: 371, width: "100%" }}>
               <DataGrid
-                rows={Menurows}
+                rows={dataEvent}
                 columns={MenuColumns}
                 getRowId={(row) => row.id}
                 initialState={{

@@ -15,7 +15,7 @@ const EventComp = () => {
   useEffect(() => {
     getDataEvent() // axios.get(url fetch api)
       .then((res) => {
-        console.log(res.data.event.slice(0, limitData));
+        console.log(res.data.event);
         setDataEvent(res.data.event.slice(0, limitData));
         setIsLoading(false);
       })

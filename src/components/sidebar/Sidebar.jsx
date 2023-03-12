@@ -2,7 +2,8 @@ import "./sidebar.scss";
 import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import TopBarDash from "../navbar/TopbarDash";
-import { MdPerson, MdPeople, MdLogout } from "react-icons/md";
+import { MdPerson, MdPeople, MdLogout, MdFestival } from "react-icons/md";
+import { BsGrid3X3GapFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = ({ children }) => {
@@ -16,7 +17,7 @@ const Sidebar = ({ children }) => {
         <hr className="garis" />
         <div className="menuSidebar flex">
           <NavLink to={`/dashboard-admin/`} className="MenuSide flex">
-            <AiOutlineClose className="icon " />
+            <BsGrid3X3GapFill className="icon " />
             <p className="nameMenuSide">Dashboard</p>
           </NavLink>
           <div className="titleDash">
@@ -36,7 +37,7 @@ const Sidebar = ({ children }) => {
           </div>
           <hr className="garis" />
           <NavLink to={`/dashboard-admin/event`} className="MenuSide flex ">
-            <AiOutlineClose className="icon " />
+            <MdFestival className="icon " />
             <p className="nameMenuSide">Menu Event</p>
           </NavLink>
         </div>
