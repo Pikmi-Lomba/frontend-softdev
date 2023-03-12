@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // Icons
 import { MdOutlineMailOutline, MdLockOutline } from "react-icons/md";
@@ -7,13 +8,49 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
+import { AxiosLocal } from "../../apis/Api";
+import { useRef } from "react";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errMsg, setErrMsg] = useState("");
+  const [navigate, setNavigate] = useState(false);
+
   // Show Password
   const [showPassword, setShowPassword] = useState(false);
   const isShowPassword = () => {
     setShowPassword(!showPassword);
   };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    AxiosLocal.post("/users/login", {
+      email: email,
+      password: password,
+    })
+      .then((res) => {
+        Cookies.set("token", res.data.data.accessToken);
+        setNavigate(true);
+        setEmail("");
+        setPassword("");
+      })
+      .catch((err) => {
+        if (!err?.response) {
+          setErrMsg("No Server Response");
+        } else if (err.response?.status === 400) {
+          setErrMsg(err.response?.data?.message);
+        } else if (err.response?.status === 401) {
+          setErrMsg(err.response?.data?.message);
+        } else {
+          setErrMsg("Login Failed");
+        }
+      });
+  };
+
+  if (navigate) {
+    return <Navigate to="/dashboard-admin" />;
+  }
 
   return (
     <>
@@ -27,11 +64,18 @@ const LoginPage = () => {
               <h2 className="title">Masuk</h2>
               <p className="subtitle">Silahkan masuk untuk melanjutkan</p>
             </div>
-            <form className="getUser">
+            <form className="getUser" onSubmit={submit}>
               <div className="email flex ">
                 <MdOutlineMailOutline className="icon" />
 
-                <input type="email" placeholder="Email" required />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  required
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                />
               </div>
               <div className="password flex ">
                 <MdLockOutline className="icon" />
@@ -41,12 +85,16 @@ const LoginPage = () => {
                     required
                     placeholder="Passoword"
                     className="inputPass "
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                    }}
                   />
                   <div className="eyeIcon" onClick={isShowPassword}>
                     {showPassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                   </div>
                 </div>
               </div>
+              {errMsg && <div>{errMsg}</div>}
               <button className="btn radius-2">Masuk Sekarang</button>
               <div className="link">
                 Belum Punya akun? <Link to={`/register`}>Daftar</Link>

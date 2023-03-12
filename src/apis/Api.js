@@ -22,3 +22,7 @@ export const getDataEvent = async () => {
 //   const response = await AxiosInstance.post("/auth/login");
 //   return response.data;
 // };
+
+export const AxiosLocal = axios.create({
+  baseURL: "http://localhost:5000/api",
+});

@@ -5,8 +5,21 @@ import TopBarDash from "../navbar/TopbarDash";
 import { MdPerson, MdPeople, MdLogout, MdFestival } from "react-icons/md";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import { Auth } from "../../utils/Auth";
+import { Navigate } from "react-router-dom";
+import { useState } from "react";
 
 const Sidebar = ({ children }) => {
+  const [navigate, setNavigate] = useState(false);
+
+  const handleLogout = () => {
+    Auth.signOut();
+    setNavigate(true);
+  };
+
+  if (navigate) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div className="flex">
       <div className="Toggle">
@@ -41,7 +54,7 @@ const Sidebar = ({ children }) => {
             <p className="nameMenuSide">Menu Event</p>
           </NavLink>
         </div>
-        <NavLink to={`/login`} className="logout flex">
+        <NavLink to={`/login`} className="logout flex" onClick={handleLogout}>
           <MdLogout className="icon " />
           <p className="nameMenuSide">Logout</p>
         </NavLink>

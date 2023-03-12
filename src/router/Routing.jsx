@@ -23,6 +23,7 @@ import MitraPages from "../pages/dashboard/manageAcount/mitra";
 import ManageEvent from "../pages/dashboard/manageMenu/ManageEvent";
 import DetailEventDash from "../pages/dashboard/manageMenu/actionsEvent/DetailEvent";
 import CreateManageEvent from "../pages/dashboard/manageMenu/actionsEvent/CreateEvent";
+import PrivateRoute from "./PrivateRouting";
 
 const Routing = () => {
   return (
@@ -63,18 +64,20 @@ const Routing = () => {
 
           {/* Private Route */}
 
-          <Route path="/dashboard-admin">
-            <Route index element={<Dashboard />} />
-          </Route>
-          {/* Manage Account Mitra */}
-          <Route path="/dashboard-admin/mitra">
-            <Route index element={<MitraPages />} />
-          </Route>
-          {/* Manage Menu Event */}
-          <Route path="/dashboard-admin/event">
-            <Route index element={<ManageEvent />} />
-            <Route path="detail/:id" element={<DetailEventDash />} />
-            <Route path="create" element={<CreateManageEvent />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard-admin">
+              <Route index element={<Dashboard />} />
+            </Route>
+            {/* Manage Account Mitra */}
+            <Route path="/dashboard-admin/mitra">
+              <Route index element={<MitraPages />} />
+            </Route>
+            {/* Manage Menu Event */}
+            <Route path="/dashboard-admin/event">
+              <Route index element={<ManageEvent />} />
+              <Route path="detail/:id" element={<DetailEventDash />} />
+              <Route path="create" element={<CreateManageEvent />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
