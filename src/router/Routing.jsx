@@ -24,6 +24,10 @@ import ManageEvent from "../pages/dashboard/manageMenu/ManageEvent";
 import DetailEventDash from "../pages/dashboard/manageMenu/actionsEvent/DetailEvent";
 import CreateManageEvent from "../pages/dashboard/manageMenu/actionsEvent/CreateEvent";
 import PrivateRoute from "./PrivateRouting";
+import CreateMitra from "../pages/dashboard/manageAcount/actionsMitra/CreateMitra";
+import UpdateMitraDash from "../pages/dashboard/manageAcount/actionsMitra/UpdateMitra";
+import DetailMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DetailMitra";
+import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
   return (
@@ -71,6 +75,10 @@ const Routing = () => {
             {/* Manage Account Mitra */}
             <Route path="/dashboard-admin/mitra">
               <Route index element={<MitraPages />} />
+              <Route path="create" element={<CreateMitra />} />
+              <Route path="update/:id" element={<UpdateMitraDash />} />
+              <Route path="delete/:id" element={<DeleteMitraDash />} />
+              <Route path="detail/:id" element={<DetailMitraDash />} />
             </Route>
             {/* Manage Menu Event */}
             <Route path="/dashboard-admin/event">

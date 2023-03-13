@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import Cookies from "js-cookie";
 
 // export const AxiosInstance = axios.create({
 //   baseURL: "https://63e7dba65f3e35d898e9c8a7.mockapi.io/event",
@@ -26,3 +26,14 @@ export const getDataEvent = async () => {
 export const AxiosLocal = axios.create({
   baseURL: "http://localhost:5000/api",
 });
+
+// export const getDataMitra = async () => {
+//   const { token } = Cookies.get("token");
+
+//   const response = await AxiosLocal.get("/mitra", {
+//     headers: {
+//       Authorization: "Bearer " + token,
+//     },
+//   });
+//   return response.data.data.mitra;
+// };
