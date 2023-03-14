@@ -27,7 +27,7 @@ import PrivateRoute from "./PrivateRouting";
 import CreateMitra from "../pages/dashboard/manageAcount/actionsMitra/CreateMitra";
 import UpdateMitraDash from "../pages/dashboard/manageAcount/actionsMitra/UpdateMitra";
 import DetailMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DetailMitra";
-import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
+// import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
   return (
@@ -77,7 +77,7 @@ const Routing = () => {
               <Route index element={<MitraPages />} />
               <Route path="create" element={<CreateMitra />} />
               <Route path="update/:id" element={<UpdateMitraDash />} />
-              <Route path="delete/:id" element={<DeleteMitraDash />} />
+              {/* <Route path="delete/:id" element={<DeleteMitraDash />} /> */}
               <Route path="detail/:id" element={<DetailMitraDash />} />
             </Route>
             {/* Manage Menu Event */}

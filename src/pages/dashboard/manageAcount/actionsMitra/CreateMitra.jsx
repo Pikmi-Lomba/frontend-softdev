@@ -40,8 +40,8 @@ const CreateMitra = () => {
   const handleAddData = async (e) => {
     e.preventDefault();
 
-    const errors = validate(dataForm);
-    setIsSubmit(true);
+    // const errors = validate(dataForm);
+    // setIsSubmit(true);
 
     const dataMitra = new FormData();
     dataMitra.append("nama_mitra", dataForm.nama_mitra);
@@ -51,26 +51,40 @@ const CreateMitra = () => {
     dataMitra.append("telepon", dataForm.handphone_mitra);
     dataMitra.append("ktp_image", dataForm.image_mitra);
 
-    console.log(dataMitra);
+    // console.log(dataMitra);
 
-    e.preventDefault();
-    if (Object.keys(errors).length === 0 && isSubmit) {
-      await AxiosLocal.post("/mitra", dataMitra, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
+    await AxiosLocal.post("/mitra", dataMitra, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        console.log("berhasil");
+        setNavigate(true);
       })
-        .then((res) => {
-          console.log(res);
-          console.log("berhasil");
-          setNavigate(true);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      Object.values(errors).map((err) => alert(err));
-    }
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // e.preventDefault();
+    // if (Object.keys(errors).length === 0 && isSubmit) {
+    //   await AxiosLocal.post("/mitra", dataMitra, {
+    //     headers: {
+    //       Authorization: "Bearer " + token,
+    //     },
+    //   })
+    //     .then((res) => {
+    //       console.log(res);
+    //       console.log("berhasil");
+    //       setNavigate(true);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // } else {
+    //   Object.values(errors).map((err) => alert(err));
+    // }
   };
 
   // Validations for Required form

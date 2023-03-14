@@ -4,28 +4,29 @@ import "../manageMenu/manageMenu.scss";
 import { Tooltip } from "@mui/material";
 import { RiEdit2Line } from "react-icons/ri";
 import { MdDeleteOutline, MdInfoOutline } from "react-icons/md";
-// import { AxiosLocal } from "../../../apis/Api";
-// import Cookies from "js-cookie";
+import { AxiosLocal } from "../../../apis/Api";
+import Cookies from "js-cookie";
 
 const ActionManageMitra = ({ params }) => {
-  // const { id_mitra } = params.row;
-  // const { token } = Cookies.get("token");
+  const { id_mitra } = params.row;
+  const { token } = Cookies.get("token");
 
-  // const handleDelete = () => {
-  //   AxiosLocal.delete(`/mitra/${id_mitra}`, {
-  //     headers: {
-  //       Authorization: "Bearer " + token,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //       console.log("bisa di hapus");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //       console.log("gagal dihapus");
-  //     });
-  // };
+  const handleDelete = () => {
+    console.log(id_mitra);
+    AxiosLocal.delete(`/mitra/${id_mitra}`, {
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        console.log("Berhasil dihapus ");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("gagal woy");
+      });
+  };
   return (
     <div className="Actions flex">
       <Tooltip title="View Event details">
@@ -44,13 +45,18 @@ const ActionManageMitra = ({ params }) => {
           <RiEdit2Line className="icon" />
         </Link>
       </Tooltip>
-      <Tooltip title="Delete Menu Event">
+      {/* <Tooltip title="Delete Menu Event">
         <Link
           to={`/dashboard-admin/mitra/delete/${params.row.id_mitra}`}
           className="action"
         >
           <MdDeleteOutline className="icon" />
         </Link>
+      </Tooltip> */}
+      <Tooltip title="Delete Menu Event">
+        <button onClick={handleDelete} className="action">
+          <MdDeleteOutline className="icon" />
+        </button>
       </Tooltip>
     </div>
   );
