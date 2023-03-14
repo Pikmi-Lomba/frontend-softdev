@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import "../manageMenu/manageMenu.scss";
-
 import { Tooltip } from "@mui/material";
 import { RiEdit2Line } from "react-icons/ri";
 import { MdDeleteOutline, MdInfoOutline } from "react-icons/md";
@@ -9,14 +8,12 @@ import Cookies from "js-cookie";
 
 const ActionManageMitra = ({ params }) => {
   const { id_mitra } = params.row;
-  const { token } = Cookies.get("token");
+  const token = Cookies.get("token");
 
-  const handleDelete = () => {
-    console.log(id_mitra);
+  const handleDelete = (id_mitra) => {
     AxiosLocal.delete(`/mitra/${id_mitra}`, {
       headers: {
         Authorization: "Bearer " + token,
-        "Content-Type": "application/json",
       },
     })
       .then(() => {
@@ -24,7 +21,6 @@ const ActionManageMitra = ({ params }) => {
       })
       .catch((err) => {
         console.log(err);
-        console.log("gagal woy");
       });
   };
   return (
@@ -54,7 +50,7 @@ const ActionManageMitra = ({ params }) => {
         </Link>
       </Tooltip> */}
       <Tooltip title="Delete Menu Event">
-        <button onClick={handleDelete} className="action">
+        <button onClick={() => handleDelete(id_mitra)} className="action">
           <MdDeleteOutline className="icon" />
         </button>
       </Tooltip>

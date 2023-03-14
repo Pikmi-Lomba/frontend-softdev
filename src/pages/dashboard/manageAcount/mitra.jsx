@@ -48,6 +48,7 @@ const MitraPages = () => {
               </Link>
             </div>
           </div>
+
           <div className="FormData">
             <Box sx={{ height: 371, width: "100%" }}>
               <DataGrid
