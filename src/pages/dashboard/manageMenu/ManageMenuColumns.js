@@ -1,33 +1,29 @@
 import ActionManageEvents from "./ActionManageEvent";
 
 export const MenuColumns = [
-  { field: "id", headerName: "ID", width: 90 },
+  { field: "id_event", headerName: "ID", width: 90 },
   {
-    field: "nama_mitra",
+    field: "event_organizer",
     headerName: "Event Organizer",
-    width: 180,
+    width: 220,
     editable: true,
   },
   {
-    field: "name_event",
+    field: "nama_event",
     headerName: "Nama Event",
-    width: 200,
+    width: 250,
     editable: true,
   },
   {
-    field: "kategory_event",
+    field: "kategori",
     headerName: "Kategori",
     width: 150,
     editable: true,
   },
   {
-    field: "fullName",
+    field: "phone",
     headerName: "No Handphone",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
     width: 180,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
   },
   {
     field: "actions",

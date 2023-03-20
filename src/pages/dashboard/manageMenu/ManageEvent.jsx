@@ -5,26 +5,25 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { MenuColumns } from "./ManageMenuColumns";
 import { useEffect, useState } from "react";
-import { getDataEvent } from "../../../apis/Api";
+import { AxiosLocal, getDataEvent } from "../../../apis/Api";
 
 const ManageEvent = () => {
   const [dataEvent, setDataEvent] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setisLoading] = useState(true);
 
   // const [data, setData] = useState(dataEvent);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    getDataEvent()
+    AxiosLocal.get("/events")
       .then((res) => {
-        console.log("res", res.data.event);
-        setDataEvent(res.data.event);
-        setLoading(false);
+        setDataEvent(res.data.data.event);
+        setisLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [loading]);
+  }, [isLoading]);
 
   console.log(dataEvent);
 
@@ -76,7 +75,7 @@ const ManageEvent = () => {
               <DataGrid
                 rows={dataEvent}
                 columns={MenuColumns}
-                getRowId={(row) => row.id}
+                getRowId={(row) => row.id_event}
                 initialState={{
                   pagination: {
                     paginationModel: {
