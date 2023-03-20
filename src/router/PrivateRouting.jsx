@@ -1,5 +1,4 @@
 import { Navigate, Outlet } from "react-router-dom";
-
 import { Auth } from "../utils/Auth";
 
 // const PrivateRoute = () => {

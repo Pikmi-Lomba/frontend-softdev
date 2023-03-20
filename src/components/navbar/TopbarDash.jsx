@@ -4,7 +4,10 @@ const TopBarDash = () => {
   return (
     <>
       <section className="topbarContainer">
-        <h1 className="titl">Dashboard</h1>
+        <div className="MenuAccount flex">
+          <div className="imageAccount">a</div>
+          <div className="nameAccount">PT. xxxxxxxxx</div>
+        </div>
       </section>
     </>
   );

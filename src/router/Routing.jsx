@@ -27,6 +27,7 @@ import PrivateRoute from "./PrivateRouting";
 import CreateMitra from "../pages/dashboard/manageAcount/actionsMitra/CreateMitra";
 import UpdateMitraDash from "../pages/dashboard/manageAcount/actionsMitra/UpdateMitra";
 import DetailMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DetailMitra";
+import NotFound from "../pages/notFound/NotFound";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -34,6 +35,7 @@ const Routing = () => {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/*" element={<NotFound />} />
           <Route path="/" element={<LandingPage />} />
           <Route path="/about-page" element={<AboutPage />} />
           <Route path="/contact-page" element={<ContactPage />} />
@@ -68,25 +70,25 @@ const Routing = () => {
 
           {/* Private Route */}
 
-          <Route element={<PrivateRoute />}>
-            <Route path="/dashboard-admin">
-              <Route index element={<Dashboard />} />
-            </Route>
-            {/* Manage Account Mitra */}
-            <Route path="/dashboard-admin/mitra">
-              <Route index element={<MitraPages />} />
-              <Route path="create" element={<CreateMitra />} />
-              <Route path="update/:id" element={<UpdateMitraDash />} />
-              {/* <Route path="delete/:id" element={<DeleteMitraDash />} /> */}
-              <Route path="detail/:id" element={<DetailMitraDash />} />
-            </Route>
-            {/* Manage Menu Event */}
-            <Route path="/dashboard-admin/event">
-              <Route index element={<ManageEvent />} />
-              <Route path="detail/:id" element={<DetailEventDash />} />
-              <Route path="create" element={<CreateManageEvent />} />
-            </Route>
+          {/* <Route element={<PrivateRoute />}> */}
+          <Route path="/dashboard-admin">
+            <Route index element={<Dashboard />} />
           </Route>
+          {/* Manage Account Mitra */}
+          <Route path="/dashboard-admin/mitra">
+            <Route index element={<MitraPages />} />
+            <Route path="create" element={<CreateMitra />} />
+            <Route path="update/:id" element={<UpdateMitraDash />} />
+            {/* <Route path="delete/:id" element={<DeleteMitraDash />} /> */}
+            <Route path="detail/:id" element={<DetailMitraDash />} />
+          </Route>
+          {/* Manage Menu Event */}
+          <Route path="/dashboard-admin/event">
+            <Route index element={<ManageEvent />} />
+            <Route path="detail/:id" element={<DetailEventDash />} />
+            <Route path="create" element={<CreateManageEvent />} />
+          </Route>
+          {/* </Route> */}
         </Routes>
       </BrowserRouter>
     </>
