@@ -28,6 +28,13 @@ import CreateMitra from "../pages/dashboard/manageAcount/actionsMitra/CreateMitr
 import UpdateMitraDash from "../pages/dashboard/manageAcount/actionsMitra/UpdateMitra";
 import DetailMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DetailMitra";
 import NotFound from "../pages/notFound/NotFound";
+import MitraDashbaord from "../pages/mitra/MitraDashboard";
+// import SettingsMitra from "../pages/mitra/settings/Settings";
+import MitraEvent from "../pages/mitra/menus/MitraEvent";
+import CreateMenuEventMitra from "../components/mitra/action/menuEvent/CreateMenuEventMitra";
+import PasswordMitra from "../components/mitra/settings/Password";
+import VerificationMitra from "../components/mitra/settings/Verification";
+import ProfileMitra from "../components/mitra/settings/MyProfile";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -67,6 +74,23 @@ const Routing = () => {
           {/* Login & Signup */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<SignupPage />} />
+
+          {/* Mitra Dashboard */}
+          <Route path="/dashboard-mitra">
+            <Route index element={<MitraDashbaord />} />
+          </Route>
+          <Route path="/dashboard-mitra/settings">
+            <Route index element={<ProfileMitra />} />
+            <Route path="password" element={<PasswordMitra />} />
+            <Route path="verification" element={<VerificationMitra />} />
+          </Route>
+
+          <Route path="/dashboard-mitra/events">
+            <Route index element={<MitraEvent />} />
+            <Route path="create" element={<CreateMenuEventMitra />} />
+          </Route>
+
+          {/* End Mitra Dashbaord */}
 
           {/* Private Route */}
 

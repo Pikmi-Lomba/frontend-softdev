@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import "./action.scss";
 import { useEffect, useState } from "react";
-import Sidebar from "../../../../components/sidebar/Sidebar";
+import Sidebar from "../../../../components/sidebar/AdminSidebar";
 import addImage from "../../../../assets/image/addimage.png";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";

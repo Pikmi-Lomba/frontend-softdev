@@ -1,4 +1,4 @@
-import Sidebar from "../../../components/sidebar/Sidebar";
+import Sidebar from "../../../components/sidebar/AdminSidebar";
 import "./manageMenu.scss";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";

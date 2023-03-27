@@ -9,7 +9,7 @@ import { Auth } from "../../utils/Auth";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
-const Sidebar = ({ children }) => {
+const AdminSidebar = ({ children }) => {
   const [navigate, setNavigate] = useState(false);
 
   const handleLogout = () => {
@@ -26,8 +26,12 @@ const Sidebar = ({ children }) => {
         <HiOutlineMenuAlt4 className="icon" />
       </div>
       <section className="sidebarMenu flex">
-        <div className="logo">Logo</div>
-        <hr className="garis" />
+        {/* TOP SIDEBAR => LOGO Company */}
+        <div className="topSidebar">
+          <div className="logo">Logo</div>
+          <hr className="garis" />
+        </div>
+        {/* Middle SIDEBAR => MENUS in DASHBOARD */}
         <div className="menuSidebar flex">
           <NavLink to={`/dashboard-admin/`} className="MenuSide flex">
             <BsGrid3X3GapFill className="icon " />
@@ -54,10 +58,13 @@ const Sidebar = ({ children }) => {
             <p className="nameMenuSide">Menu Event</p>
           </NavLink>
         </div>
-        <NavLink to={`/login`} className="logout flex" onClick={handleLogout}>
-          <MdLogout className="icon " />
-          <p className="nameMenuSide">Logout</p>
-        </NavLink>
+        {/* BOTTOM SIDEBAR =>  */}
+        <div className="bottomSidebar">
+          <div className="logout flex" onClick={handleLogout}>
+            <MdLogout className="icon " />
+            <p className="nameMenuSide">Logout</p>
+          </div>
+        </div>
       </section>
       <div className="RightDash">
         <TopBarDash />
@@ -67,4 +74,4 @@ const Sidebar = ({ children }) => {
   );
 };
 
-export default Sidebar;
+export default AdminSidebar;

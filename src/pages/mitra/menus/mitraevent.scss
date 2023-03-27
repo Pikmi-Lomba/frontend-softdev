@@ -1,0 +1,92 @@
+.topMitraEvent {
+  margin: 40px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  .titlePage {
+    font-weight: 600;
+    font-size: 32px;
+  }
+  .btn {
+    width: 150px;
+  }
+}
+
+.bottomMitraEvent {
+  margin: 40px;
+
+  .cardsMenu {
+    // display: grid;
+    // grid-template-columns: repeat(3, 1fr);
+    padding: 32px 0;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    .cardMenu:hover {
+      transform: scale(0.9);
+    }
+    .cardMenu {
+      cursor: pointer;
+      width: 380px;
+      height: 467px;
+      filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.25));
+      background: var(--white40);
+      border-radius: 20px 20px 20px 20px;
+      margin: 0 16px 40px 0;
+
+      .imageContent {
+        img {
+          width: 380px;
+          height: 340px;
+          border-radius: 20px 20px 0 0;
+        }
+      }
+      .Tampung {
+        padding-top: 4px;
+
+        height: 127px;
+        padding-left: 10px;
+        // gap: 8px;
+        color: var(--Black100);
+        background: var(--white40);
+        border-radius: 0 0 20px 20px;
+        .KatEvent {
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 15px;
+          border: 2px solid var(--zompColor50);
+          // width: 42px;
+          width: 20%;
+          padding: 4px;
+          text-align: center;
+          // margin-top: 20px;
+          margin-bottom: 5px;
+        }
+        .titleCardMenu {
+          font-size: 16px;
+          font-weight: bold;
+          line-height: 20px;
+          margin-bottom: 1px;
+        }
+        .subTitleCardMenu {
+          font-size: 8px;
+          font-weight: 400;
+          color: var(--Black80);
+          margin-bottom: 1px;
+        }
+        .descCardMenu {
+          font-size: 10px;
+          font-weight: 400;
+          color: var(--Black100);
+          margin-bottom: 5px;
+        }
+
+        .register {
+          font-size: 12px;
+          line-height: 14.52px;
+          color: var(--Black70);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Sidebar from "../../../../components/sidebar/Sidebar";
+import Sidebar from "../../../../components/sidebar/AdminSidebar";
 import addImage from "../../../../assets/image/addimage.png";
 import Cookies from "js-cookie";
 import { Navigate } from "react-router-dom";
@@ -132,7 +132,7 @@ const CreateMitra = () => {
       <Sidebar>
         <div className="actionManageMitra">
           <div className="top flex">
-            <h1>Tambah Data Mitra</h1>
+            <h1 className="title">Tambah Data Mitra</h1>
           </div>
           <div className="bottoms">
             <div className="bottom flex radius-5">

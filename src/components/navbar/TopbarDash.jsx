@@ -5,8 +5,11 @@ const TopBarDash = () => {
     <>
       <section className="topbarContainer">
         <div className="MenuAccount flex">
-          <div className="imageAccount">a</div>
-          <div className="nameAccount">PT. xxxxxxxxx</div>
+          <img
+            className="imageAccount"
+            src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+          ></img>
+          <div className="nameAccount">PT. Marka Kreasi Perdasa</div>
         </div>
       </section>
     </>

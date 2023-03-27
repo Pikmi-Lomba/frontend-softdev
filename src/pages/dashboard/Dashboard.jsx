@@ -1,12 +1,11 @@
-import Sidebar from "../../components/sidebar/Sidebar";
+import Sidebar from "../../components/sidebar/AdminSidebar";
 import "./dashboard.scss";
 
 const Dashboard = () => {
   return (
-    <Sidebar />
-    // <section className="dashboard flex">
-    //    <div className="homeBase">jajaj</div>
-    // </section>
+    <Sidebar>
+      <h1>INI DASHBAORD ADMIN</h1>
+    </Sidebar>
   );
 };
 

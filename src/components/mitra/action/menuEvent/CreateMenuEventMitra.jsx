@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "../../../../components/sidebar/AdminSidebar";
+import MitraSidebar from "../../../sidebar/MitraSidebar";
 import addImage from "../../../../assets/image/addimage.png";
-import "./action.scss";
 
-const CreateManageEvent = () => {
+const CreateMenuEventMitra = () => {
   const [image, setImage] = useState("");
 
   const imageUpload = (e) => {
@@ -18,7 +17,7 @@ const CreateManageEvent = () => {
   const navigate = useNavigate();
 
   const backPage = () => {
-    navigate(`/dashboard-admin/event`);
+    navigate(`/dashboard-mitra/events`);
   };
   // END RETURN TO MANAGE MENU EVENT
 
@@ -48,7 +47,7 @@ const CreateManageEvent = () => {
   console.log(formData);
 
   return (
-    <Sidebar>
+    <MitraSidebar>
       <section className="ActionContainer">
         <div className="top flex">
           <h1>Tambah Event</h1>
@@ -176,7 +175,7 @@ const CreateManageEvent = () => {
                 name="deskripsi_event"
                 className="radius-2"
                 type="text"
-                placeholder="apakah kamu ingin bermain dengan nana?"
+                placeholder="Tuliskan deskripsi tentang event?"
                 onChange={(e) => handleChange(e)}
               />
             </div>
@@ -189,8 +188,8 @@ const CreateManageEvent = () => {
           </div>
         </form>
       </section>
-    </Sidebar>
+    </MitraSidebar>
   );
 };
 
-export default CreateManageEvent;
+export default CreateMenuEventMitra;
