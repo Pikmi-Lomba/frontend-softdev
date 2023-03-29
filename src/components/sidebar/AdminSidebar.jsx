@@ -8,6 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Auth } from "../../utils/Auth";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import NotifToastify from "../modal/notifToastify";
 
 const AdminSidebar = ({ children }) => {
   const [navigate, setNavigate] = useState(false);
@@ -68,6 +69,7 @@ const AdminSidebar = ({ children }) => {
       </section>
       <div className="RightDash">
         <TopBarDash />
+        {/* <NotifToastify /> */}
         <div className="children">{children}</div>
       </div>
     </div>

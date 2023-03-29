@@ -1,0 +1,103 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+.DetailMitraAdmin {
+  margin: 20px 40px;
+  gap: 40px;
+  align-items: flex-start;
+  .topDetailMitraAdmin {
+    background-color: grey;
+    width: 60%;
+  }
+  .CardDetailInformation {
+    flex-direction: column;
+    background: white;
+    width: 550px;
+    padding: 20px;
+    gap: 20px;
+    align-items: flex-start;
+    .topDetailInformation {
+      width: 100%;
+      justify-content: flex-start;
+      .contentMitra {
+        margin-left: 40px;
+        flex-direction: column;
+        gap: 20px;
+        .title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+        .menu {
+          font-size: 18px;
+        }
+        .verify {
+          color: var(--VerdigrisColor50);
+          font-size: 16px;
+        }
+      }
+    }
+    .line {
+      width: 100%;
+      border: 1px solid var(--Black60);
+    }
+    .bottomDetailInformation {
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+      .menu {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .VerificationOption {
+    background: var(--white10);
+    padding: 20px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

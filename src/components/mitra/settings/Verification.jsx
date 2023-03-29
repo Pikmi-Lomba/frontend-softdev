@@ -61,7 +61,7 @@ const VerificationMitra = () => {
           <label>non Pemerintah</label>
         </div>
         {showPromo ? (
-          <form className="validasiForm flex" onSubmit={handleValidation}>
+          <form className="validasiForm flex">
             <div className="formInputContent flex">
               <label className="titleForm">NPWP</label>
               <input

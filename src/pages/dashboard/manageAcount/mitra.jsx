@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import Cookies from "js-cookie";
-import { AxiosLocal } from "../../../apis/Api";
+import { AxiosInstanceAdmin } from "../../../apis/Api";
 import { useEffect, useState } from "react";
 import { MitraColumns } from "./ManageMitraColumns";
 
@@ -14,7 +14,7 @@ const MitraPages = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    AxiosLocal.get("/mitra", {
+    AxiosInstanceAdmin.get("/get/mitra", {
       headers: {
         Authorization: "Bearer " + token,
       },

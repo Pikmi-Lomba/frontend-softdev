@@ -3,26 +3,26 @@ import "../manageMenu/manageMenu.scss";
 import { Tooltip } from "@mui/material";
 import { RiEdit2Line } from "react-icons/ri";
 import { MdDeleteOutline, MdInfoOutline } from "react-icons/md";
-import { AxiosLocal } from "../../../apis/Api";
+import { AxiosInstanceAdmin, AxiosLocal } from "../../../apis/Api";
 import Cookies from "js-cookie";
 
 const ActionManageMitra = ({ params }) => {
   const { id_mitra } = params.row;
   const token = Cookies.get("token");
 
-  const handleDelete = (id_mitra) => {
-    AxiosLocal.delete(`/mitra/${id_mitra}`, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
-      .then(() => {
-        console.log("Berhasil dihapus ");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const handleDelete = (id_mitra) => {
+  //   AxiosInstanceAdmin.delete(`/mitra/${id_mitra}`, {
+  //     headers: {
+  //       Authorization: "Bearer " + token,
+  //     },
+  //   })
+  //     .then(() => {
+  //       console.log("Berhasil dihapus ");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   return (
     <div className="Actions flex">
       <Tooltip title="View Event details">
@@ -49,11 +49,11 @@ const ActionManageMitra = ({ params }) => {
           <MdDeleteOutline className="icon" />
         </Link>
       </Tooltip> */}
-      <Tooltip title="Delete Menu Event">
+      {/* <Tooltip title="Delete Menu Event">
         <button onClick={() => handleDelete(id_mitra)} className="action">
           <MdDeleteOutline className="icon" />
         </button>
-      </Tooltip>
+      </Tooltip> */}
     </div>
   );
 };

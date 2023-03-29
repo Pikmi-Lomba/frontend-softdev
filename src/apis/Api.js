@@ -27,6 +27,14 @@ export const AxiosLocal = axios.create({
   baseURL: "http://localhost:5000/api",
 });
 
+export const AxiosIntanceMitra = axios.create({
+  baseURL: "http://localhost:5000/api/mitra",
+});
+
+export const AxiosInstanceAdmin = axios.create({
+  baseURL: "http://localhost:5000/api/admin",
+});
+
 // export const getDataMitra = async () => {
 //   const { token } = Cookies.get("token");
 

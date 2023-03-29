@@ -8,7 +8,7 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosLocal } from "../../apis/Api";
+import { AxiosInstanceAdmin, AxiosLocal } from "../../apis/Api";
 import { useRef } from "react";
 
 const LoginPage = () => {
@@ -25,7 +25,7 @@ const LoginPage = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    AxiosLocal.post("/users/login", {
+    AxiosInstanceAdmin.post("/login", {
       email: email,
       password: password,
     })
