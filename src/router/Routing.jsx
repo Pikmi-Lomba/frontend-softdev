@@ -35,8 +35,8 @@ import CreateMenuEventMitra from "../components/mitra/action/menuEvent/CreateMen
 import PasswordMitra from "../components/mitra/settings/Password";
 import VerificationMitra from "../components/mitra/settings/Verification";
 import ProfileMitra from "../components/mitra/settings/MyProfile";
-import LoginAdminPage from "../pages/login/LoginAdmin";
 import ProtectedRoute from "./ProtectedRouting";
+import LoginAdminPage from "../pages/login/LoginAdmin";
 import PrivateRouteAdmin from "./PrivateRoutingAdmin";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
