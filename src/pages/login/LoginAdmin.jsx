@@ -8,17 +8,14 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
+import { AxiosInstanceAdmin, AxiosLocal } from "../../apis/Api";
 import { useRef } from "react";
-import { AxiosIntanceMitra } from "../../apis/Api";
 
-const LoginPage = () => {
-  const [role, setRole] = useState("");
+const LoginAdminPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [navigate, setNavigate] = useState(false);
-
-  console.log("ini aladah role:", role);
 
   // Show Password
   const [showPassword, setShowPassword] = useState(false);
@@ -29,18 +26,18 @@ const LoginPage = () => {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await AxiosIntanceMitra.post("/login", {
+      const response = await AxiosInstanceAdmin.post("/login", {
         email: email,
         password: password,
       });
       const { role } = response.data.data;
 
-      Cookies.set("token", response.data.data.accessToken);
+      Cookies.set("tokenAdmin", response.data.data.accessToken);
       Cookies.set("role", role);
       if (role === "admin") {
         window.location.href = "/dashboard-admin";
       } else if (role === "mitra") {
-        window.location.href = "/dashboard-mitra";
+        window.location.href = "/dashboard-admin";
       } else {
         window.location.href = "/";
       }
@@ -50,7 +47,7 @@ const LoginPage = () => {
   };
 
   if (navigate) {
-    return <Navigate to="/dashboard-mitra" />;
+    return <Navigate to="/dashboard-admin" />;
   }
 
   return (
@@ -111,4 +108,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginAdminPage;

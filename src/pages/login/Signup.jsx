@@ -11,9 +11,9 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosLocal } from "../../apis/Api";
+import { AxiosIntanceMitra, AxiosLocal } from "../../apis/Api";
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,7 +29,7 @@ const LoginPage = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    AxiosLocal.post("/users/signup", {
+    AxiosIntanceMitra.post("/signup", {
       username: username,
       email: email,
       password: password,
@@ -121,4 +121,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;

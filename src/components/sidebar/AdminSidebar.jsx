@@ -5,7 +5,7 @@ import TopBarDash from "../navbar/TopbarDash";
 import { MdPerson, MdPeople, MdLogout, MdFestival } from "react-icons/md";
 import { BsGrid3X3GapFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
-import { Auth } from "../../utils/Auth";
+import { Auth, AuthAdmin } from "../../utils/Auth";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import NotifToastify from "../modal/notifToastify";
@@ -14,12 +14,12 @@ const AdminSidebar = ({ children }) => {
   const [navigate, setNavigate] = useState(false);
 
   const handleLogout = () => {
-    Auth.signOut();
+    AuthAdmin.signOut();
     setNavigate(true);
   };
 
   if (navigate) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login/admin" />;
   }
   return (
     <div className="flex">

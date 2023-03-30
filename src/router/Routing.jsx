@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AboutPage from "../pages/about/AboutPage";
 import ContactPage from "../pages/contact/ContactPage";
-import Dashboard from "../pages/dashboard/Dashboard";
+import DashboardAdmin from "../pages/dashboard/Dashboard";
 import LandingPage from "../pages/LandingPage";
 
 import {
@@ -35,6 +35,9 @@ import CreateMenuEventMitra from "../components/mitra/action/menuEvent/CreateMen
 import PasswordMitra from "../components/mitra/settings/Password";
 import VerificationMitra from "../components/mitra/settings/Verification";
 import ProfileMitra from "../components/mitra/settings/MyProfile";
+import LoginAdminPage from "../pages/login/LoginAdmin";
+import ProtectedRoute from "./ProtectedRouting";
+import PrivateRouteAdmin from "./PrivateRoutingAdmin";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -72,31 +75,35 @@ const Routing = () => {
           <Route path="/penerbangan-page" element={<FlightPage />} />
 
           {/* Login & Signup */}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<SignupPage />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<SignupPage />} />
+            <Route path="/login/admin" element={<LoginAdminPage />} />
+          </Route>
 
           {/* Mitra Dashboard */}
-          <Route path="/dashboard-mitra">
-            <Route index element={<MitraDashbaord />} />
-          </Route>
-          <Route path="/dashboard-mitra/settings">
-            <Route index element={<ProfileMitra />} />
-            <Route path="password" element={<PasswordMitra />} />
-            <Route path="verification" element={<VerificationMitra />} />
-          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/dashboard-mitra">
+              <Route index element={<MitraDashbaord />} />
+            </Route>
+            <Route path="/dashboard-mitra/settings">
+              <Route index element={<ProfileMitra />} />
+              <Route path="password" element={<PasswordMitra />} />
+              <Route path="verification" element={<VerificationMitra />} />
+            </Route>
 
-          <Route path="/dashboard-mitra/events">
-            <Route index element={<MitraEvent />} />
-            <Route path="create" element={<CreateMenuEventMitra />} />
+            <Route path="/dashboard-mitra/events">
+              <Route index element={<MitraEvent />} />
+              <Route path="create" element={<CreateMenuEventMitra />} />
+            </Route>
           </Route>
 
           {/* End Mitra Dashbaord */}
 
-          {/* Private Route */}
-
-          <Route element={<PrivateRoute />}>
+          {/* START PRIVATE DASHBOARD ADMIN */}
+          <Route element={<PrivateRouteAdmin />}>
             <Route path="/dashboard-admin">
-              <Route index element={<Dashboard />} />
+              <Route index element={<DashboardAdmin />} />
             </Route>
             {/* Manage Account Mitra */}
             <Route path="/dashboard-admin/mitra">
@@ -113,6 +120,7 @@ const Routing = () => {
               <Route path="create" element={<CreateManageEvent />} />
             </Route>
           </Route>
+          {/* END DASHBAORD ADMIN */}
         </Routes>
       </BrowserRouter>
     </>
