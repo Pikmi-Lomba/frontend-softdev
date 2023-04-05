@@ -45,7 +45,6 @@ const MitraSidebar = ({ children }) => {
           <NavLink
             to={`/dashboard-mitra/settings`}
             className="LogoutMitra flex"
-            onClick={handleLogout}
           >
             <MdLogout className="icon " />
             <p className="nameMenuSide">Settings</p>

@@ -6,7 +6,7 @@ const MitraEvent = () => {
   return (
     <MitraSidebar>
       <div className="topMitraEvent flex">
-        <h1 className="titlePage">Mitra Page</h1>
+        <h1 className="titlePage">Event Page</h1>
         <Link to={`/dashboard-mitra/events/create`} className="btn radius-2">
           Tambah Event
         </Link>

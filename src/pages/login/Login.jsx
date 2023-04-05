@@ -8,7 +8,7 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosInstanceAdmin, AxiosLocal } from "../../apis/Api";
+import { AxiosInstanceAdmin, AxiosIntanceMitra, AxiosLocal } from "../../apis/Api";
 import { useRef } from "react";
 
 const LoginPage = () => {
@@ -25,7 +25,7 @@ const LoginPage = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    AxiosInstanceAdmin.post("/login", {
+    AxiosIntanceMitra.post("/login", {
       email: email,
       password: password,
     })
@@ -49,7 +49,7 @@ const LoginPage = () => {
   };
 
   if (navigate) {
-    return <Navigate to="/dashboard-admin" />;
+    return <Navigate to="/dashboard-mitra" />;
   }
 
   return (

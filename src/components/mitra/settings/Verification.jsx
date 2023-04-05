@@ -2,25 +2,27 @@ import "./style.scss";
 import { useState } from "react";
 import TopbarSettings from "./TopbarSettings";
 import Validation from "./validations";
+import { AxiosIntanceMitra } from "../../../apis/Api";
+import { Auth } from "../../../utils/Auth";
+import Cookies from "js-cookie";
+
+const initialValue = {
+  npwp: "",
+  nama_usaha: "",
+  image_ktp: "",
+  output_value: "",
+};
 
 const VerificationMitra = () => {
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState({});
+  const [showPromo, setShowPromo] = useState(false);
+  const [formData, setFormData] = useState(initialValue);
 
   const imageUpload = (e) => {
     const data = e.target.files[0];
     setImage(data);
   };
-  const [showPromo, setShowPromo] = useState(false);
-
-  const initialValue = {
-    no_npwp: "",
-    nama_usaha: "",
-    image_ktp: "",
-    output_value: "",
-  };
-
-  const [formData, setFormData] = useState(initialValue);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,6 +34,23 @@ const VerificationMitra = () => {
 
   //   setErrors(Validation(formData));
   // };
+
+  const submitHandler = () => {
+    const form = new FormData();
+    if (showPromo) {
+      form.append("npwp", formData.npwp);
+      form.append("nama_usaha", formData.nama_usaha);
+      form.append("ktp", image);
+    } else {
+      form.append("ktp", image);
+    }
+
+    AxiosIntanceMitra.post("/verification", form, {
+      headers: {
+        Authorization: `Bearer ${Cookies.get('token')}`
+      }
+    }).then(res => console.log(res.data))
+  };
 
   console.log(errors);
 
@@ -87,7 +106,7 @@ const VerificationMitra = () => {
             <button>submit</button>
           </form>
         ) : null}
-        <div className="uploadKtp flex">
+        <div className="uploadKtp flex" onSubmit={submitHandler}>
           <div className="topUploadKtp">
             <h4 className="title">Unggah KTP Anda</h4>
             <p className="subTitle">
@@ -125,7 +144,7 @@ const VerificationMitra = () => {
           </button> */}
           </div>
         </div>
-        <button className="btn radius-2 verifikasiButton">
+        <button className="btn radius-2 verifikasiButton" onClick={submitHandler}>
           Verifikasi Akun
         </button>
       </div>
