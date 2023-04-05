@@ -15,18 +15,18 @@ const DetailMitraDash = () => {
   const [isLoading, setisLoading] = useState(true);
 
   const { id } = useParams();
-  const token = Cookies.get("token");
+  const tokenAdmin = Cookies.get("tokenAdmin");
 
   useEffect(() => {
     AxiosInstanceAdmin.get(`/${id}/mitra`, {
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + tokenAdmin,
       },
     }).then((res) => {
       setDetailDataMitra(res.data.data.mitra);
       setisLoading(false);
     });
-  }, [isLoading]);
+  }, [isLoading, tokenAdmin]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,7 +45,7 @@ const DetailMitraDash = () => {
     };
     await AxiosInstanceAdmin.put(`/${id}/mitra`, updateverify, {
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + tokenAdmin,
       },
     })
       .then(() => {

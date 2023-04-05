@@ -1,7 +1,7 @@
 import Sidebar from "../../components/sidebar/AdminSidebar";
 import "./dashboard.scss";
 
-const Dashboard = () => {
+const DashboardAdmin = () => {
   return (
     <Sidebar>
       <h1>INI DASHBAORD ADMIN</h1>
@@ -9,4 +9,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardAdmin;

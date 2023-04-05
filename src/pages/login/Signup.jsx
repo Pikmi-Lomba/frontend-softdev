@@ -13,7 +13,7 @@ import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
 import { AxiosIntanceMitra, AxiosLocal } from "../../apis/Api";
 
-const LoginPage = () => {
+const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -121,4 +121,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default SignUpPage;

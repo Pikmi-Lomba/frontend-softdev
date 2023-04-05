@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { MitraColumns } from "./ManageMitraColumns";
 
 const MitraPages = () => {
-  const token = Cookies.get("token");
+  const tokenAdmin = Cookies.get("tokenAdmin");
   const [isLoading, setIsLoading] = useState(true);
 
   const [data, setData] = useState([]);
@@ -16,7 +16,7 @@ const MitraPages = () => {
   useEffect(() => {
     AxiosInstanceAdmin.get("/get/mitra", {
       headers: {
-        Authorization: "Bearer " + token,
+        Authorization: "Bearer " + tokenAdmin,
       },
     })
       .then((res) => {
@@ -28,7 +28,7 @@ const MitraPages = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [isLoading, token]);
+  }, [isLoading, tokenAdmin]);
 
   return (
     <>
