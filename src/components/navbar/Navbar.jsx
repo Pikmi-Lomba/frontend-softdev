@@ -1,17 +1,10 @@
 import React, { useState } from "react";
-import { BiSearch } from "react-icons/bi";
-import { BsPerson } from "react-icons/bs";
+
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaPinterest,
-  FaTwitter,
-  FaYoutube,
-} from "react-icons/fa";
 
 import "./navbar.css";
+import "./navbar.scss";
 import { Link, NavLink } from "react-router-dom";
 
 function Navbar() {
@@ -32,7 +25,7 @@ function Navbar() {
         </NavLink>
       </ul>
       <div className={nav ? "logo dark" : "logo"}>
-        <h2>Logo</h2>
+        <h2>TravtinID</h2>
       </div>
       <div className="nav-icons">
         <Link to={`/login`} className="btn radius-3">

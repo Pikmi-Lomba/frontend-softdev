@@ -1,20 +1,19 @@
-import image from "../../assets/image/img-hero.jpg";
-
 export const MenuFeature = [
   {
-    image: <img src={image} alt="" />,
+    image: "assets/images/as67.svg",
     title: "Temukan Lokasi Terbaik",
     description:
       "Anda dapat Menemukan lokasi terbaik untuk berpergian ke semua daerah ",
   },
   {
-    image: <img src={image} alt="" />,
-    title: "Export Tempat anda ke google maps",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
+    image: "assets/images/as7.svg",
+    title: "Export Tempat di Sekitar",
+    description: "Dapatkan Kemudahan dalam melihat Dunia diSekitar Anda ",
   },
   {
-    image: <img src={image} alt="" />,
+    image: "assets/images/as5.svg",
     title: "Reviews Tempat oleh pengguna",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, ",
+    description:
+      "Dapatkan Reviews Mengenai Kunjungan ke berbagai destinasi liburan favorit Mu! ",
   },
 ];

@@ -1,6 +1,6 @@
 import "./foodComp.scss";
 import image from "../../../assets/image/img-hero.jpg";
-import { GiCommercialAirplane } from "react-icons/gi";
+import { BsHeart } from "react-icons/bs";
 import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -30,7 +30,7 @@ const FoodComp = () => {
   return (
     <>
       <section className="foodComp">
-        <h1 className="title">Pencarian Kuliner di Daerah, Depok</h1>
+        {/* <h1 className="title">Menu Kuliner</h1> */}
         <div className="contentMenu flex">
           <div className="infoMenu">
             <div className="subTitleMenu">Menu Kuliner</div>
@@ -39,7 +39,7 @@ const FoodComp = () => {
           {/* <div className="filterMenu">
             <button className="btn">Sort</button>
           </div> */}
-          <div className="filterMenu">
+          {/* <div className="filterMenu">
             <select className="btn2 radius-2">
               <option value="all" selected>
                 Sort
@@ -48,12 +48,18 @@ const FoodComp = () => {
               <option value="terpopuler">Terpopuler</option>
               <option value="jarak">Jarak</option>
             </select>
+          </div> */}
+          <div className="flex LocationCard radius-2">
+            <MdLocationPin className="icon" />
+            <input type="text" placeholder="Cari tempat tujuan" />
           </div>
         </div>
         <div className="cardsMenu flex">
           {berhitung.map((data) => (
             <div className="cardMenu" key={data}>
-              <GiCommercialAirplane className="icon" />
+              <div className="iconMenu">
+                <BsHeart className="icon" />
+              </div>
               <Link to={`detail/${data.id}`}>
                 <div className="imageContent">
                   <img className="radius-2" src={image} alt="" />

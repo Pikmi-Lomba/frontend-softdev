@@ -1,12 +1,18 @@
 .ManageMenuContainer {
   height: 100%;
   margin: 20px 40px;
+
+  color: var(--zompColor50);
   .topContent {
     margin-bottom: 32px;
   }
   .centerContent {
     justify-content: flex-end;
     margin-bottom: 32px;
+    .addData {
+      color: var(--whiteColor20);
+      font-size: 16px;
+    }
 
     .searchComponent {
       display: flex;

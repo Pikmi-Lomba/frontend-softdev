@@ -1,10 +1,57 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
 .aboutComp {
-  margin-top: 5rem;
+  margin: 5rem;
   .topbarInfo {
     text-align: center;
     margin-bottom: 60px;
     .title {
-      font-size: 48px;
+      font-size: 32px;
       font-weight: 700;
     }
     .subtitle {
@@ -14,51 +61,79 @@
     }
   }
 
-  .featureContent1 {
+  .ContentAboutUs {
+    gap: 60px;
+    // width: 1232px;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin-bottom: 120px;
-    .imageFeature {
-      width: 250px;
-      height: 200px;
-      img {
-        height: 200px;
-        border-radius: 20px;
+    .leftContentAboutUs {
+      width: 532px;
+      .imageContentAboutUs {
+        flex-wrap: wrap;
+        width: 532px;
+        gap: 32px;
+        .imageAbout {
+          width: 250px;
+          height: 260px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+      .imageAbout:nth-child(1) {
+        img {
+          border-radius: 0 0 20px 0;
+        }
+      }
+      .imageAbout:nth-child(2) {
+        img {
+          border-radius: 0 0 0 20px;
+        }
+      }
+      .imageAbout:nth-child(3) {
+        img {
+          border-radius: 0 20px 0 0;
+        }
+      }
+      .imageAbout:nth-child(4) {
+        img {
+          border-radius: 20px 0 0 0;
+        }
       }
     }
-
-    .contentFeature {
-      width: 480px;
-      flex-direction: column;
-      flex-wrap: wrap;
-
-      padding: 20px;
-      .titleFeature {
-        font-size: 36px;
-      }
-    }
-  }
-  .featureContent1:nth-child(odd) {
-    .imageFeature {
-      order: 2;
-    }
-    .contentFeature {
-      order: 1;
-    }
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .aboutComp {
-    .featureContent1 {
-      align-self: center;
-    }
-    .featureContent1:nth-child(odd) {
-      .imageFeature {
-        order: 2;
-      }
-      .contentFeature {
-        order: 1;
+    .rightContentAboutUs {
+      width: 498px;
+      .textContentAboutUs {
+        flex-direction: column;
+        gap: 60px;
+        width: 498px;
+        .fieldAboutUs {
+          font-weight: 600;
+          color: var(--Black100);
+          text-align: center;
+        }
+        .listExpe {
+          justify-content: space-between;
+          gap: 40px;
+          .cardExpe {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            span {
+              font-size: 28px;
+              font-weight: 600;
+              color: var(--zompColor50);
+            }
+            p {
+              font-size: 20px;
+              font-weight: 600;
+              color: var(--Black100);
+            }
+          }
+        }
       }
     }
   }
@@ -66,38 +141,104 @@
 
 @media screen and (max-width: 768px) {
   .aboutComp {
-    .featureContent1:nth-child(odd) {
-      .imageFeature {
-        order: 1;
-      }
-      .contentFeature {
-        order: 2;
+    margin: 4rem;
+    .topbarInfo {
+      margin-bottom: 40px;
+    }
+    .ContentAboutUs {
+      .leftContentAboutUs {
+        width: 100%;
+        justify-content: center;
+
+        .imageContentAboutUs {
+          justify-content: center;
+          align-items: center;
+          width: 80%;
+          justify-content: space-between;
+          // gap: 32px;
+          .imageAbout {
+            width: 210px;
+            height: 260px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
       }
     }
   }
 }
 
-@media screen and (max-width: 468px) {
+@media screen and (max-width: 700px) {
   .aboutComp {
-    .featureContent1 {
-      align-self: center;
-      .contentFeature {
+    margin: 4rem 40px 0 40px;
+
+    .ContentAboutUs {
+      .leftContentAboutUs {
         width: 100%;
-        .titleFeature {
-          font-size: 24px;
-          text-align: center;
-        }
-        .paraFeature {
-          text-align: center;
+        .imageContentAboutUs {
+          justify-content: center;
+
+          flex-wrap: wrap;
+          width: 100%;
+
+          .imageAbout {
+            width: 180px;
+            height: 220px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
     }
-    .featureContent1:nth-child(odd) {
-      .imageFeature {
-        order: 1;
+  }
+}
+@media screen and (max-width: 471px) {
+  .aboutComp {
+    margin: 4rem 0 4rem 0;
+    .ContentAboutUs {
+      .leftContentAboutUs {
+        width: 100%;
+        justify-content: center;
+        .imageContentAboutUs {
+          justify-content: center;
+
+          flex-wrap: wrap;
+          width: 100%;
+
+          .imageAbout {
+            width: 180px;
+            height: 220px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+        }
       }
-      .contentFeature {
-        order: 2;
+      .rightContentAboutUs {
+        width: 100%;
+        justify-content: center;
+        .textContentAboutUs {
+          flex-direction: column;
+
+          gap: 60px;
+          width: 90%;
+          .fieldAboutUs {
+            font-weight: 600;
+            color: var(--Black100);
+            text-align: center;
+          }
+          .listExpe {
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+            // background-color: #2c2d2f;
+          }
+        }
       }
     }
   }

@@ -66,7 +66,7 @@
 
     flex-direction: column;
     .MenuSide {
-      color: var(--Black100);
+      color: var(--white20);
       align-self: flex-start;
       height: 45px;
       padding-left: 20px;
@@ -77,6 +77,12 @@
         font-size: 16px;
         font-weight: 600;
       }
+    }
+    .activeSidebar {
+      color: var(--Black100);
+      background: var(--zompColor70);
+      border-left: 4px solid var(--Black100);
+      transform: scale(1);
     }
     .titleDash {
       width: 100%;
@@ -97,7 +103,7 @@
     bottom: 10%;
     cursor: pointer;
     .logout {
-      color: var(--Black100);
+      color: var(--white20);
       align-self: flex-start;
       padding-left: 20px;
       height: 45px;
@@ -109,7 +115,7 @@
       }
     }
     .LogoutMitra {
-      color: var(--Black100);
+      color: var(--white20);
       align-self: flex-start;
       padding-left: 20px;
       height: 45px;
@@ -118,6 +124,10 @@
         font-size: 16px;
         font-weight: 600;
       }
+    }
+    .activeSettings {
+      color: var(--Black100);
+      background-color: var(--white20);
     }
   }
 }

@@ -4,7 +4,6 @@ import { MdLocationPin } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getDataEvent } from "../../../apis/Api";
-import axios from "axios";
 import Loading from "../../../utils/loading";
 
 const EventComp = () => {
@@ -22,7 +21,7 @@ const EventComp = () => {
       .catch((err) => {
         console.log(err);
       });
-  }, [limitData]);
+  }, [isLoading, limitData]);
 
   const LoadMore = () => {
     setLimitData(limitData + 2);

@@ -1,9 +1,4 @@
 import axios from "axios";
-import Cookies from "js-cookie";
-
-// export const AxiosInstance = axios.create({
-//   baseURL: "https://63e7dba65f3e35d898e9c8a7.mockapi.io/event",
-// });
 
 export const AxiosInstance = axios.create({
   baseURL: "https://closing-troll-71.hasura.app/api/rest/event",
@@ -18,11 +13,6 @@ export const getDataEvent = async () => {
   return response;
 };
 
-// export const loginAdmin = async () => {
-//   const response = await AxiosInstance.post("/auth/login");
-//   return response.data;
-// };
-
 export const AxiosLocal = axios.create({
   baseURL: "http://localhost:5000/api",
 });
@@ -34,14 +24,3 @@ export const AxiosIntanceMitra = axios.create({
 export const AxiosInstanceAdmin = axios.create({
   baseURL: "http://localhost:5000/api/admin",
 });
-
-// export const getDataMitra = async () => {
-//   const { token } = Cookies.get("token");
-
-//   const response = await AxiosLocal.get("/mitra", {
-//     headers: {
-//       Authorization: "Bearer " + token,
-//     },
-//   });
-//   return response.data.data.mitra;
-// };

@@ -1,0 +1,12 @@
+.emptyList-wrap {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.emptyList-wrap img {
+  max-width: 250px;
+  max-height: 180px;
+}

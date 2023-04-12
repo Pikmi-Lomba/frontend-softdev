@@ -52,26 +52,47 @@
     flex-wrap: wrap;
     justify-content: space-around;
     .textAbout {
-      //  flex-grow: 8;
       flex-direction: column;
       padding: 2rem;
       width: 550px;
-      //  margin-right: 4rem;
+      gap: 20px;
       .title {
         align-self: flex-start;
+        font-weight: 600;
         font-size: 40px;
-        margin-bottom: 30px;
         color: var(--zompColor50);
       }
     }
     .imgAbout {
-      //  flex-grow: 4;
       width: 400px;
       img {
         border-radius: 100px 40px 0 40px;
       }
     }
   }
+
+  .FindDestination {
+    // margin: 40px auto;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    .topFindDestination {
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+      .subTitle {
+        color: var(--zompColor50);
+        font-weight: bold;
+      }
+      .title {
+        font-size: 32px;
+        color: var(--Black100);
+      }
+      .subTitle2 {
+        color: var(--Black90);
+      }
+    }
+  }
+
   .popularDestination {
     padding: 60px 0;
     .title {
@@ -111,9 +132,10 @@
     }
   }
   .featureWebsite {
+    margin-top: 60px;
+    color: var(--Black100);
     .title {
-      font-size: 48px;
-      // width: 600px;
+      font-size: 36px;
       text-align: center;
       margin-bottom: 60px;
     }
@@ -128,10 +150,10 @@
     .featureContent1 {
       justify-content: space-around;
       flex-wrap: wrap;
-      margin-bottom: 120px;
+      margin-bottom: 20px;
       .imageFeature {
-        width: 250px;
-        height: 200px;
+        width: 350px;
+        height: 300px;
         img {
           height: 200px;
           border-radius: 20px;
@@ -140,11 +162,23 @@
 
       .contentFeature {
         width: 480px;
+        gap: 16px;
         flex-direction: column;
         flex-wrap: wrap;
         padding: 20px;
+        .line {
+          border-bottom: 2px solid var(--zompColor50);
+          height: 2px;
+          width: 100%;
+        }
         .titleFeature {
-          font-size: 36px;
+          font-size: 32px;
+          font-weight: 500;
+        }
+        .subFeature {
+          font-size: 16px;
+          color: var(--Black70);
+          font-weight: 400;
         }
       }
     }

@@ -11,6 +11,8 @@ import { useState } from "react";
 import NotifToastify from "../modal/notifToastify";
 
 const AdminSidebar = ({ children }) => {
+  const activeLink = "activeSidebar MenuSide flex";
+  const normalLink = "MenuSide flex";
   const [navigate, setNavigate] = useState(false);
 
   const handleLogout = () => {
@@ -34,7 +36,10 @@ const AdminSidebar = ({ children }) => {
         </div>
         {/* Middle SIDEBAR => MENUS in DASHBOARD */}
         <div className="menuSidebar flex">
-          <NavLink to={`/dashboard-admin/`} className="MenuSide flex">
+          <NavLink
+            to={`/dashboard-admin/`}
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
             <BsGrid3X3GapFill className="icon " />
             <p className="nameMenuSide">Dashboard</p>
           </NavLink>
@@ -42,11 +47,17 @@ const AdminSidebar = ({ children }) => {
             <p className="titleMenuDash">Pengguna</p>
           </div>
           <hr className="garis" />
-          <NavLink to={`/dashboard-admin/user`} className="MenuSide flex">
+          <NavLink
+            to={`/dashboard-admin/user`}
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
             <MdPerson className="icon " />
             <p className="nameMenuSide">Pengguna</p>
           </NavLink>
-          <NavLink to={`/dashboard-admin/mitra`} className="MenuSide flex">
+          <NavLink
+            to={`/dashboard-admin/mitra`}
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
             <MdPeople className="icon " />
             <p className="nameMenuSide">Mitra</p>
           </NavLink>
@@ -54,7 +65,10 @@ const AdminSidebar = ({ children }) => {
             <p className="titleMenuDash">Menu Utama</p>
           </div>
           <hr className="garis" />
-          <NavLink to={`/dashboard-admin/event`} className="MenuSide flex ">
+          <NavLink
+            to={`/dashboard-admin/event`}
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
             <MdFestival className="icon " />
             <p className="nameMenuSide">Menu Event</p>
           </NavLink>

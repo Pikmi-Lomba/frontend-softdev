@@ -78,10 +78,10 @@ const DetailHeroEvent = () => {
                   <div className="line"></div>
                   <p className="content">{detailEvent.description_event}</p>
                 </div>
-                <div className="MapLocationEvent">
+                {/* <div className="MapLocationEvent">
                   <button className="linkLoc radius-3">full view</button>
                   <img src={image} alt="asd" />
-                </div>
+                </div> */}
               </div>
             </div>
           </section>

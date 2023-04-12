@@ -52,7 +52,8 @@
   .title {
     margin: 60px auto;
     text-align: center;
-    font-size: 40px;
+    font-size: 32px;
+    font-weight: bold;
   }
   .contentMenu {
     justify-content: space-between;
@@ -79,26 +80,58 @@
         }
       }
     }
+    .LocationCard {
+      background: white;
+      height: 46px;
+      width: 200px;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px 11px 20px;
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 13px;
+        font-weight: 500;
+      }
+      &::placeholder {
+        font-size: 13px;
+        opacity: 0.5;
+        font-weight: 400;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
   }
 
   .cardsMenu {
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
     .cardMenu {
       position: relative;
       cursor: pointer;
       width: 280px;
       height: 21rem;
       margin-bottom: 40px;
-      .icon {
+      .iconMenu {
+        width: 30px;
+        height: 30px;
         position: absolute;
         right: 15px;
         top: 15px;
-
-        width: 24px;
-        height: 24px;
         background: var(--CulturedColor50);
         border-radius: 9999px;
+        .icon {
+          position: absolute;
+          top: 8px;
+          left: 5px;
+
+          width: 20px;
+          height: 20px;
+        }
       }
 
       .imageContent {
@@ -172,35 +205,6 @@
         .numberPlaces {
           font-size: 16px;
           color: var(--Black70);
-        }
-      }
-    }
-
-    .cardsMenu {
-      flex-wrap: wrap;
-      justify-content: center;
-      .cardMenu {
-        width: 250px;
-        height: 368px;
-        // background: #000;
-
-        .imageContent {
-          position: relative;
-          //   overflow: hidden;
-          .icon {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-
-            width: 24px;
-            height: 24px;
-            background: var(--CulturedColor50);
-            border-radius: 9999px;
-          }
-          img {
-            width: 250px;
-            height: 250px;
-          }
         }
       }
     }

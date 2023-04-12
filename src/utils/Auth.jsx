@@ -11,7 +11,7 @@ export const Auth = {
     return { token: "", role: "" };
   },
   signOut() {
-    return Cookies.remove("token"), Cookies.remove("role");
+    return Cookies.remove("token") + Cookies.remove("role");
   },
 };
 
@@ -26,6 +26,6 @@ export const AuthAdmin = {
     return { tokenAdmin: "", role: "" };
   },
   signOut() {
-    return Cookies.remove("tokenAdmin"), Cookies.remove("role");
+    return Cookies.remove("tokenAdmin") + Cookies.remove("role");
   },
 };

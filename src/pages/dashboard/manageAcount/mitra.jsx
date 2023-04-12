@@ -55,6 +55,7 @@ const MitraPages = () => {
                 rows={data}
                 columns={MitraColumns}
                 getRowId={(row) => row.id_mitra}
+                isCellEditable={(params) => params.row.age % 2 === 0}
                 initialState={{
                   pagination: {
                     paginationModel: {

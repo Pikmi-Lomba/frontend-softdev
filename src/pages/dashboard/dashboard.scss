@@ -1,3 +1,22 @@
-.dashboard {
-  background: yellow;
+.DashboardAdmin {
+  margin: 40px;
+  color: var(--zompColor50);
+  .verify {
+    padding: 5px;
+    border-radius: 5px;
+    &.agree {
+      color: green;
+      background-color: rgba(0, 128, 0, 0.151);
+    }
+    &.disagree {
+      color: red;
+      background-color: rgba(128, 0, 0, 0.151);
+    }
+  }
+  .titleTable {
+    margin-bottom: 4px;
+  }
+  .colortable {
+    color: white;
+  }
 }
