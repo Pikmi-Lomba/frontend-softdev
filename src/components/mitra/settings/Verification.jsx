@@ -21,14 +21,14 @@ const VerificationMitra = () => {
   const [showPromo, setShowPromo] = useState(false);
   const [formData, setFormData] = useState(initialValue);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Modal
   const [isModalOpen, setisModalOpen] = useState(false);
   const [modalData, setModalData] = useState({
-    title: '',
-    desc: '',
-    okText: ''
+    title: "",
+    desc: "",
+    okText: "",
   });
 
   useEffect(() => {
@@ -39,17 +39,17 @@ const VerificationMitra = () => {
         },
       })
         .then(({ data }) => {
-          return data
+          return data;
         })
         .catch((err) => {
-          const {data, status} = err.response
-          setisModalOpen(true)
+          const { data, status } = err.response;
+          setisModalOpen(true);
           setModalData({
             title: data.status,
             desc: data.message,
-            okText: 'Oke',
-            resStatus: status
-          })
+            okText: "Oke",
+            resStatus: status,
+          });
         });
     };
 
@@ -195,8 +195,16 @@ const VerificationMitra = () => {
         title={modalData.title}
         desc={modalData.desc}
         okText={modalData.okText}
-        onOk={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
-        onCancel={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
+        onOk={() =>
+          modalData.resStatus === 401
+            ? navigate("/login")
+            : navigate("/dashboard-mitra/settings")
+        }
+        onCancel={() =>
+          modalData.resStatus === 401
+            ? navigate("/login")
+            : navigate("/dashboard-mitra/settings")
+        }
       />
     </>
   );
