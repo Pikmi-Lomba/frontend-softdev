@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MitraSidebar from "../../../sidebar/MitraSidebar";
 import addImage from "../../../../assets/image/addimage.png";
+import { ConfirmModal } from "../../../ConfirmModal/ConfirmModal";
+import { AxiosIntanceMitra } from "../../../../apis/Api";
+import Cookies from "js-cookie";
 
 const CreateMenuEventMitra = () => {
   const [image, setImage] = useState("");
@@ -43,6 +46,38 @@ const CreateMenuEventMitra = () => {
   };
 
   // end initial data form put data
+  // Modal
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({
+    title: '',
+    desc: '',
+    okText: ''
+  });
+
+  useEffect(() => {
+    const getDataMitra = async () => {
+      await AxiosIntanceMitra("/verification  ", {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      })
+        .then(({ data }) => {
+          return data
+        })
+        .catch((err) => {
+          const {data, status} = err.response
+          setisModalOpen(true)
+          setModalData({
+            title: data.status,
+            desc: data.message,
+            okText: 'Oke',
+            resStatus: status
+          })
+        });
+    };
+
+    getDataMitra();
+  }, []);
 
   console.log(formData);
 
@@ -188,6 +223,14 @@ const CreateMenuEventMitra = () => {
           </div>
         </form>
       </section>
+      <ConfirmModal
+        isOpen={isModalOpen}
+        title={modalData.title}
+        desc={modalData.desc}
+        okText={modalData.okText}
+        onOk={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
+        onCancel={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
+      />
     </MitraSidebar>
   );
 };

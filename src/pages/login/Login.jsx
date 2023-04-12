@@ -8,7 +8,6 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosInstanceAdmin, AxiosIntanceMitra, AxiosLocal } from "../../apis/Api";
 import { useRef } from "react";
 import { AxiosIntanceMitra } from "../../apis/Api";
 
@@ -29,26 +28,10 @@ const LoginPage = () => {
 
   const submit = async (e) => {
     e.preventDefault();
-    AxiosIntanceMitra.post("/login", {
-      email: email,
-      password: password,
-    })
-      .then((res) => {
-        Cookies.set("token", res.data.data.accessToken);
-        setNavigate(true);
-        setEmail("");
-        setPassword("");
-      })
-      .catch((err) => {
-        if (!err?.response) {
-          setErrMsg("No Server Response");
-        } else if (err.response?.status === 400) {
-          setErrMsg(err.response?.data?.message);
-        } else if (err.response?.status === 401) {
-          setErrMsg(err.response?.data?.message);
-        } else {
-          setErrMsg("Login Failed");
-        }
+    try {
+      const response = await AxiosIntanceMitra.post("/login", {
+        email: email,
+        password: password,
       });
       const { role } = response.data.data;
 

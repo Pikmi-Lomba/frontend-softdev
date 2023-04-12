@@ -1,10 +1,12 @@
 import "./style.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TopbarSettings from "./TopbarSettings";
 import Validation from "./validations";
 import { AxiosIntanceMitra } from "../../../apis/Api";
 import { Auth } from "../../../utils/Auth";
 import Cookies from "js-cookie";
+import { ConfirmModal } from "../../ConfirmModal/ConfirmModal";
+import { useNavigate } from "react-router-dom";
 
 const initialValue = {
   npwp: "",
@@ -18,6 +20,41 @@ const VerificationMitra = () => {
   const [errors, setErrors] = useState({});
   const [showPromo, setShowPromo] = useState(false);
   const [formData, setFormData] = useState(initialValue);
+
+  const navigate = useNavigate()
+
+  // Modal
+  const [isModalOpen, setisModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({
+    title: '',
+    desc: '',
+    okText: ''
+  });
+
+  useEffect(() => {
+    const getDataMitra = async () => {
+      await AxiosIntanceMitra("/profile", {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      })
+        .then(({ data }) => {
+          return data
+        })
+        .catch((err) => {
+          const {data, status} = err.response
+          setisModalOpen(true)
+          setModalData({
+            title: data.status,
+            desc: data.message,
+            okText: 'Oke',
+            resStatus: status
+          })
+        });
+    };
+
+    getDataMitra();
+  }, []);
 
   const imageUpload = (e) => {
     const data = e.target.files[0];
@@ -47,9 +84,9 @@ const VerificationMitra = () => {
 
     AxiosIntanceMitra.post("/verification", form, {
       headers: {
-        Authorization: `Bearer ${Cookies.get('token')}`
-      }
-    }).then(res => console.log(res.data))
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    }).then((res) => console.log(res.data));
   };
 
   console.log(errors);
@@ -57,98 +94,111 @@ const VerificationMitra = () => {
   console.table(formData);
 
   return (
-    <TopbarSettings>
-      <div className="VerificationComponents">
-        <div className="flex VerificationOption">
-          <input
-            className=""
-            name="output_value"
-            // onChange={(e) => handleChange(e)}
-            type="radio"
-            value="pemerintah"
-            onClick={() => setShowPromo(true)}
-          />
-          <label className="pr-10">Pemerintah</label>
-          <input
-            className=""
-            name="output_value"
-            // onChange={(e) => handleChange(e)}
-            type="radio"
-            value="nonpemerintah"
-            onClick={() => setShowPromo(false)}
-          />
-          <label>non Pemerintah</label>
-        </div>
-        {showPromo ? (
-          <form className="validasiForm flex">
-            <div className="formInputContent flex">
-              <label className="titleForm">NPWP</label>
-              <input
-                name="npwp"
-                className="radius-2"
-                type="number"
-                placeholder="Masukan nomor npwp..."
-                onChange={(e) => handleChange(e)}
-              />
-              {errors.npwp && <p>{errors.npwp}</p>}
-            </div>
-            <div className="formInputContent flex">
-              <label className="titleForm">Nama Usaha</label>
-              <p className="sub">*nama usaha yang terdaftar dalam npwp</p>
-              <input
-                name="nama_usaha"
-                className="radius-2"
-                type="text"
-                placeholder="Masukan nama usaha..."
-                onChange={(e) => handleChange(e)}
-              />
-            </div>
-            <button>submit</button>
-          </form>
-        ) : null}
-        <div className="uploadKtp flex" onSubmit={submitHandler}>
-          <div className="topUploadKtp">
-            <h4 className="title">Unggah KTP Anda</h4>
-            <p className="subTitle">
-              Pastikan KTP Anda masih berlaku dan jelas, tanpa keruskan fisik
-            </p>
-          </div>
-          <div className="imageKtpUpload flex">
-            <img
-              src={
-                image
-                  ? URL.createObjectURL(image)
-                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-              }
-              style={{ width: "90%", height: "200px", borderRadius: "8px" }}
-              className="viewImage"
-              alt=""
+    <>
+      <TopbarSettings>
+        <div className="VerificationComponents">
+          <div className="flex VerificationOption">
+            <input
+              className=""
+              name="output_value"
+              // onChange={(e) => handleChange(e)}
+              type="radio"
+              value="pemerintah"
+              onClick={() => setShowPromo(true)}
             />
-
-            <div className="flex contentUploadKTP">
-              <p>Upload Foto KTP Anda untuk verifikasi Akun</p>
-              <label htmlFor="file" className="toolAddImage btn radius-2">
-                Unggah
-              </label>
-              <input
-                type="file"
-                id="file"
-                onChange={imageUpload}
-                accept="image/*"
-                style={{ display: "none" }}
-              />
+            <label className="pr-10">Pemerintah</label>
+            <input
+              className=""
+              name="output_value"
+              // onChange={(e) => handleChange(e)}
+              type="radio"
+              value="nonpemerintah"
+              onClick={() => setShowPromo(false)}
+            />
+            <label>non Pemerintah</label>
+          </div>
+          {showPromo ? (
+            <form className="validasiForm flex">
+              <div className="formInputContent flex">
+                <label className="titleForm">NPWP</label>
+                <input
+                  name="npwp"
+                  className="radius-2"
+                  type="number"
+                  placeholder="Masukan nomor npwp..."
+                  onChange={(e) => handleChange(e)}
+                />
+                {errors.npwp && <p>{errors.npwp}</p>}
+              </div>
+              <div className="formInputContent flex">
+                <label className="titleForm">Nama Usaha</label>
+                <p className="sub">*nama usaha yang terdaftar dalam npwp</p>
+                <input
+                  name="nama_usaha"
+                  className="radius-2"
+                  type="text"
+                  placeholder="Masukan nama usaha..."
+                  onChange={(e) => handleChange(e)}
+                />
+              </div>
+              <button>submit</button>
+            </form>
+          ) : null}
+          <div className="uploadKtp flex" onSubmit={submitHandler}>
+            <div className="topUploadKtp">
+              <h4 className="title">Unggah KTP Anda</h4>
+              <p className="subTitle">
+                Pastikan KTP Anda masih berlaku dan jelas, tanpa keruskan fisik
+              </p>
             </div>
+            <div className="imageKtpUpload flex">
+              <img
+                src={
+                  image
+                    ? URL.createObjectURL(image)
+                    : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                }
+                style={{ width: "90%", height: "200px", borderRadius: "8px" }}
+                className="viewImage"
+                alt=""
+              />
 
-            {/* <button htmlFor="file" className="btn ">
+              <div className="flex contentUploadKTP">
+                <p>Upload Foto KTP Anda untuk verifikasi Akun</p>
+                <label htmlFor="file" className="toolAddImage btn radius-2">
+                  Unggah
+                </label>
+                <input
+                  type="file"
+                  id="file"
+                  onChange={imageUpload}
+                  accept="image/*"
+                  style={{ display: "none" }}
+                />
+              </div>
+
+              {/* <button htmlFor="file" className="btn ">
             Upload KTP{" "}
           </button> */}
+            </div>
           </div>
+          <button
+            className="btn radius-2 verifikasiButton"
+            onClick={submitHandler}
+          >
+            Verifikasi Akun
+          </button>
         </div>
-        <button className="btn radius-2 verifikasiButton" onClick={submitHandler}>
-          Verifikasi Akun
-        </button>
-      </div>
-    </TopbarSettings>
+      </TopbarSettings>
+      <ConfirmModal
+        isOpen={isModalOpen}
+        title={modalData.title}
+        desc={modalData.desc}
+        okText={modalData.okText}
+        onOk={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
+        onCancel={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
+      />
+    </>
   );
 };
 

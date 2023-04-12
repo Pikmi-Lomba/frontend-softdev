@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+import { AxiosIntanceMitra } from "../../../apis/Api";
 import TopbarSettings from "./TopbarSettings";
 import "./style.scss";
 import { useState } from "react";
@@ -5,16 +7,17 @@ import { useState } from "react";
 const ProfileMitra = () => {
   const initialValue = {
     nama_mitra: "",
-    email_mitra: "",
-    no_telp_mitra: "",
-    alamat_mitra: "",
+    email: "",
+    telepon: "",
+    alamat: "",
     // Personal Data
     nama_personal: "",
-    email_Personal: "",
-    no_telp_personal: "",
+    email_personal: "",
+    telepon_personal: "",
     alamat_personal: "",
   };
   const [formData, setFormData] = useState(initialValue);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -25,10 +28,22 @@ const ProfileMitra = () => {
   //   setFormData({ ...formData, [name]: value });
   // };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    await AxiosIntanceMitra.post("/profile/add", formData, {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    });
+
+    console.log(formData);
+  };
+
   console.table(formData);
   return (
     <TopbarSettings>
-      <section className="myPersonal flex">
+      <form onSubmit={submitHandler} className="myPersonal flex">
         <div className="mitraForm flex">
           <div className="titleuntukMitra">Mitra</div>
           <div className="formInputContent flex">
@@ -44,7 +59,7 @@ const ProfileMitra = () => {
           <div className="formInputContent flex">
             <label className="titleForm">Email Mitra</label>
             <input
-              name="email_mitra"
+              name="email"
               className="radius-2"
               type="email"
               placeholder="Email Mitra..."
@@ -54,7 +69,7 @@ const ProfileMitra = () => {
           <div className="formInputContent flex">
             <label className="titleForm">No. Telepon</label>
             <input
-              name="no_telp_mitra"
+              name="telepon"
               className="radius-2"
               type="number"
               placeholder="No. Telepon..."
@@ -64,7 +79,7 @@ const ProfileMitra = () => {
           <div className="formInputContent flex">
             <label className="titleForm">Alamat Mitra</label>
             <input
-              name="alamat_mitra"
+              name="alamat"
               className="radius-2"
               type="text"
               placeholder="Alamat Mitra..."
@@ -97,7 +112,7 @@ const ProfileMitra = () => {
           <div className="formInputContent flex">
             <label className="titleForm">No. Telepon</label>
             <input
-              name="no_telp_personal"
+              name="telepon_personal"
               className="radius-2"
               type="number"
               placeholder="isi no. telp anda..."
@@ -115,8 +130,10 @@ const ProfileMitra = () => {
             />
           </div>
         </div>
-        <button className="btn radius-2">Simpan Perubahan</button>
-      </section>
+        <button type="submit" className="btn radius-2">
+          Simpan Perubahan
+        </button>
+      </form>
     </TopbarSettings>
   );
 };
