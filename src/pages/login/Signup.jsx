@@ -66,9 +66,9 @@ const SignUpPage = () => {
               {/* <img src={image} alt="aaa.png" /> */}
             </div>
             <div className="contents flex">
-              <h2 className="title">Masuk</h2>
+              <h2 className="title">Daftar</h2>
 
-              <p className="subtitle">Silahkan masuk untuk melanjutkan</p>
+              <p className="subtitle">Silahkan daftar untuk melanjutkan</p>
             </div>
             <form className="getUser" onSubmit={submit}>
               <div className="email flex ">
@@ -97,7 +97,7 @@ const SignUpPage = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     required
-                    placeholder="Passoword"
+                    placeholder="Password"
                     className="inputPass "
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -106,7 +106,7 @@ const SignUpPage = () => {
                   </div>
                 </div>
               </div>
-              <button className="btn radius-2">Masuk Sekarang</button>
+              <button className="btn radius-2">Beralih Login</button>
               <div className="link">
                 Sudah Punya akun? <Link to={`/login`}>Masuk</Link>
               </div>

@@ -12,13 +12,11 @@ import { useRef } from "react";
 import { AxiosIntanceMitra } from "../../apis/Api";
 
 const LoginPage = () => {
-  const [role, setRole] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [navigate, setNavigate] = useState(false);
-
-  console.log("ini aladah role:", role);
+  const errRef = useRef();
 
   // Show Password
   const [showPassword, setShowPassword] = useState(false);
@@ -44,8 +42,17 @@ const LoginPage = () => {
       } else {
         window.location.href = "/";
       }
-    } catch (error) {
-      alert("Invalid credentials");
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Email atau Password salah");
+      } else if (err.response?.status === 401) {
+        setErrMsg("Email atau Password salah");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      errRef.current.focus();
     }
   };
 
@@ -84,7 +91,7 @@ const LoginPage = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     required
-                    placeholder="Passoword"
+                    placeholder="Password"
                     className="inputPass "
                     onChange={(event) => {
                       setPassword(event.target.value);
@@ -95,7 +102,19 @@ const LoginPage = () => {
                   </div>
                 </div>
               </div>
-              {errMsg && <div>{errMsg}</div>}
+              {errMsg && (
+                <div
+                  className="radius-3"
+                  style={{
+                    color: "red",
+                    backgroundColor: "rgba(128, 0, 0, 0.151)",
+                    padding: "12px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {errMsg}
+                </div>
+              )}
               <button className="btn radius-2">Masuk Sekarang</button>
               <div className="link">
                 Belum Punya akun? <Link to={`/register`}>Daftar</Link>
@@ -104,7 +123,7 @@ const LoginPage = () => {
           </div>
         </div>
         <div className="imageLog flex">
-          <img src={image} alt="aa.pg" />
+          <img src={image} alt="login image" />
         </div>
       </div>
     </>

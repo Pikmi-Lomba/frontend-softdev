@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { AxiosInstanceAdmin } from "../../../../apis/Api";
 import AdminSidebar from "../../../../components/sidebar/AdminSidebar";
 import "./detail.scss";
+import Swal from "sweetalert2";
 
 const DetailMitraDash = () => {
   const [detailDataMitra, setDetailDataMitra] = useState([]);
@@ -33,9 +34,6 @@ const DetailMitraDash = () => {
     setDataVerification({ ...dataVerification, [name]: value });
   };
 
-  console.log(dataVerification);
-  console.log(detailDataMitra);
-
   const handleVerification = async (e) => {
     e.preventDefault();
     const namaMitra = detailDataMitra.nama_mitra;
@@ -50,10 +48,28 @@ const DetailMitraDash = () => {
     })
       .then(() => {
         setisLoading(false);
-        alert(`Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`);
+        Swal.fire({
+          text: `Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`,
+          icon: "success",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
       })
       .catch(() => {
-        alert(`Verifikasi Data akun Mitra ${namaMitra} gagal diubah`);
+        Swal.fire({
+          text: `Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`,
+          icon: "error",
+          showClass: {
+            popup: "animate__animated animate__fadeInDown",
+          },
+          hideClass: {
+            popup: "animate__animated animate__fadeOutUp",
+          },
+        });
       });
   };
 
@@ -63,6 +79,9 @@ const DetailMitraDash = () => {
         {detailDataMitra && (
           <div className="CardDetailInformation radius-4 flex">
             <div className="topDetailInformation flex">
+              <div className={`menu verify ${detailDataMitra.verify}`}>
+                {detailDataMitra.verify}
+              </div>
               <div className="imageMitra">
                 <img
                   src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
@@ -76,7 +95,6 @@ const DetailMitraDash = () => {
               </div>
               <div className="contentMitra flex">
                 <div className="title">{detailDataMitra.nama_mitra}</div>
-                <div className="menu verify">{detailDataMitra.verify}</div>
                 <div className="menu">{detailDataMitra.alamat}</div>
               </div>
             </div>
@@ -105,21 +123,17 @@ const DetailMitraDash = () => {
           <input
             className=""
             name="verify"
-            // onChange={(e) => handleChange(e)}
             onChange={(e) => handleChange(e)}
             type="radio"
             value="agree"
-            // onClick={() => setShowPromo(true)}
           />
           <label className="pr-10">Setuju</label>
           <input
             className=""
             name="verify"
-            // onChange={(e) => handleChange(e)}
             onChange={(e) => handleChange(e)}
             type="radio"
             value="disagree"
-            // onClick={() => setShowPromo(false)}
           />
           <label>Tidak setuju</label>
           <button onClick={handleVerification}>submit verification</button>

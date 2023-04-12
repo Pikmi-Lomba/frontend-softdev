@@ -9,8 +9,8 @@ import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import { MenuList } from "./MenuList";
 
-import Aos from "aos";
-import "aos/dist/aos.css";
+// import Aos from "aos";
+// import "aos/dist/aos.css";
 
 const HeroComp = () => {
   const activeLink = "activeHeroMenu cardItem";
@@ -23,9 +23,9 @@ const HeroComp = () => {
   //   <BsArrowRightCircle {...props} className="icon55" />
   // );
 
-  useEffect(() => {
-    Aos.init({ duration: 2000 });
-  }, []);
+  // useEffect(() => {
+  //   Aos.init({ duration: 2000 });
+  // }, []);
   var settings = {
     infinite: false,
     speed: 500,
