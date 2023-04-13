@@ -8,6 +8,14 @@ export const AxiosInstance = axios.create({
   },
 });
 
+export const AxiosInstanceUser = axios.create({
+  baseURL: "https://travtinid.hasura.app/api/rest",
+  headers: {
+    "x-hasura-admin-secret":
+      "q7ydPVM2fvmU3SHhO86bQ86JgMjo6R8pmM7I5r6yip4ymhl17HN6dW31suMYPsbd",
+  },
+});
+
 export const getDataEvent = async () => {
   const response = await AxiosInstance.get("/");
   return response;

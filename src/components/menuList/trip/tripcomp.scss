@@ -48,11 +48,6 @@
 .tripComp {
   margin: 5em;
   color: var(--Black100);
-  .titlePage {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 40px;
-  }
   .contentMenu {
     justify-content: space-between;
     padding-bottom: 32px;
@@ -174,28 +169,11 @@
       }
     }
   }
-  .loadMore {
-    text-align: center;
-    .btn {
-      padding: 12px;
-      gap: 10px;
-      width: 100px;
-      height: 41px;
-      text-align: center;
-    }
-  }
 }
 
 // handphone
 @media screen and (max-width: 768px) {
   .tripComp {
-    margin: 2em;
-    color: var(--Black100);
-    .titlePage {
-      margin: 60px auto;
-      text-align: center;
-      font-size: 32px;
-    }
     .contentMenu {
       justify-content: space-between;
       padding-bottom: 32px;
@@ -222,18 +200,5 @@
         }
       }
     }
-  }
-}
-
-// mobile
-@media screen and (max-width: 468px) {
-  .tripComp {
-    margin: 10px;
-    color: var(--Black100);
-  }
-  .titlePage {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 24px;
   }
 }

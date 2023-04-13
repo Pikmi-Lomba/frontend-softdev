@@ -49,16 +49,11 @@
   margin: 5em;
   color: var(--Black100);
 
-  .title {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 32px;
-    font-weight: bold;
-  }
   .contentMenu {
     justify-content: space-between;
     padding-bottom: 32px;
-    align-items: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
     .infoMenu {
       gap: 8px;
       .subTitleMenu {
@@ -80,118 +75,17 @@
         }
       }
     }
-    .LocationCard {
-      background: white;
-      height: 46px;
-      width: 200px;
-      justify-content: center;
-      gap: 8px;
-      padding: 11px 20px 11px 20px;
-      input {
-        width: 100%;
-        border: none;
-        outline: none;
-        padding: 10px;
-        font-size: 13px;
-        font-weight: 500;
-      }
-      &::placeholder {
-        font-size: 13px;
-        opacity: 0.5;
-        font-weight: 400;
-      }
-      &:focus {
-        outline: none;
-      }
-    }
   }
 
   .cardsMenu {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    .cardMenu {
-      position: relative;
-      cursor: pointer;
-      width: 280px;
-      height: 21rem;
-      margin-bottom: 40px;
-      .iconMenu {
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        right: 15px;
-        top: 15px;
-        background: var(--CulturedColor50);
-        border-radius: 9999px;
-        .icon {
-          position: absolute;
-          top: 8px;
-          left: 5px;
-
-          width: 20px;
-          height: 20px;
-        }
-      }
-
-      .imageContent {
-        // position: relative;
-        //   overflow: hidden;
-
-        img {
-          width: 280px;
-          height: 280px;
-        }
-      }
-      .titleCardMenu {
-        font-size: 16px;
-        font-weight: bold;
-        color: var(--Black100);
-      }
-      .LocationCardMenu {
-        color: var(--Black100);
-
-        .contentLocation {
-          justify-content: space-between;
-          .pusing {
-            .icon2 {
-              width: 20px;
-              height: 20px;
-            }
-            .place {
-              color: var(--Black70);
-              font-size: 12px;
-            }
-          }
-          .range {
-            font-size: 12px;
-            line-height: 14.52px;
-            color: var(--Black70);
-          }
-        }
-      }
-    }
-  }
-
-  .loadMore {
-    text-align: center;
-    .btn {
-      padding: 12px;
-      gap: 10px;
-      width: 100px;
-      height: 41px;
-      text-align: center;
-    }
   }
 }
 
 @media screen and (max-width: 600px) {
   .foodComp {
-    .title {
-      margin: 40px auto;
-      text-align: center;
-      font-size: 24px;
-    }
     .contentMenu {
       justify-content: space-between;
       padding-bottom: 32px;

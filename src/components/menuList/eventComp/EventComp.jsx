@@ -37,28 +37,19 @@ const EventComp = () => {
         Loading
       ) : (
         <section className="EventComp">
-          <h1 className="title">Pencarian Event di Daerah, Depok</h1>
           <div className="contentMenu flex">
             <div className="infoMenu">
-              <div className="subTitleMenu">Event</div>
-              <p className="numberPlaces">24 Tempat</p>
+              <div className="subTitleMenu">Menu Event</div>
             </div>
-            {/* <div className="filterMenu">
-            <button className="btn">Sort</button>
-          </div> */}
-
-            <div className="filterMenu">
-              <select className="btn2 radius-2">
-                <option value="all" selected>
-                  Sort
-                </option>
-                <option value="nama">Nama</option>
-                <option value="terpopuler">Terpopuler</option>
-                <option value="jarak">Jarak</option>
-              </select>
+            <div className="flex LocationCard radius-2">
+              <MdLocationPin className="icon" />
+              <input
+                // onChange={(e) => handleSearch(e)}
+                type="text"
+                placeholder="Cari tempat tujuan"
+              />
             </div>
           </div>
-
           <div className="cardsMenu flex">
             {dataEvent.map((data) => (
               <Link key={data.id} to={`detail/${data.id}`}>

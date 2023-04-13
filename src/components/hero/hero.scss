@@ -84,7 +84,7 @@
 
     .homeCardContainer {
       flex-wrap: wrap;
-      width: 80%;
+      width: 60%;
       border-radius: 1rem;
       // padding: 2rem;
       padding: 0.5rem 2rem 0 2rem;
@@ -92,12 +92,12 @@
       position: absolute;
       gap: 1rem;
       justify-content: space-between;
-      bottom: 0%;
+      bottom: -7%;
       transform: translate(-50%);
       left: 50%;
       box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.45);
       .homeCard {
-        width: 70%;
+        width: 100%;
         padding-left: 2em;
         padding-right: 2em;
         margin-left: auto;

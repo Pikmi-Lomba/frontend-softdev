@@ -48,12 +48,6 @@
 .EventComp {
   margin: 5em;
   color: var(--Black100);
-
-  .title {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 40px;
-  }
   .contentMenu {
     justify-content: space-between;
     align-items: flex-end;
@@ -67,15 +61,6 @@
       .numberPlaces {
         font-size: 16px;
         color: var(--Black70);
-      }
-    }
-    .filterMenu {
-      .btn2 {
-        padding: 6px 15px;
-        border: none;
-        &::after {
-          border: none;
-        }
       }
     }
   }
@@ -276,32 +261,12 @@
         }
       }
     }
-
-    .loadMore {
-      margin-top: 40px;
-      text-align: center;
-      .btn {
-        padding: 12px;
-        gap: 10px;
-        width: 100px;
-        height: 41px;
-        text-align: center;
-      }
-    }
   }
 }
 
 // handphone
 @media screen and (max-width: 476px) {
   .EventComp {
-    margin: 0;
-    color: var(--Black100);
-
-    .title {
-      margin: 32px auto;
-      text-align: center;
-      font-size: 24px;
-    }
     .contentMenu {
       justify-content: space-between;
       align-items: flex-end;

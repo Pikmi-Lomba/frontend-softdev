@@ -48,11 +48,6 @@
 .hotelComp {
   margin: 5em;
   color: var(--Black100);
-  .titlePage {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 40px;
-  }
   .contentMenu {
     justify-content: space-between;
     padding-bottom: 32px;
@@ -69,38 +64,12 @@
         color: var(--Black70);
       }
     }
-    .filterMenu {
-      .btn2 {
-        padding: 6px 15px;
-        border: none;
-        &::after {
-          border: none;
-        }
-      }
-    }
-  }
-
-  .loadMore {
-    text-align: center;
-    .btn {
-      padding: 12px;
-      gap: 10px;
-      width: 100px;
-      height: 41px;
-      text-align: center;
-    }
   }
 }
 
 // table
 @media screen and (max-width: 768px) {
   .hotelComp {
-    margin: 2em;
-    .titlePage {
-      margin: 60px auto;
-      text-align: center;
-      font-size: 32px;
-    }
     .contentMenu {
       justify-content: space-between;
       padding-bottom: 32px;
@@ -117,28 +86,6 @@
           color: var(--Black70);
         }
       }
-      .filterMenu {
-        .btn2 {
-          padding: 6px 15px;
-          border: none;
-          &::after {
-            border: none;
-          }
-        }
-      }
-    }
-  }
-}
-
-// mobile
-@media screen and (max-width: 468px) {
-  .hotelComp {
-    margin: 0em;
-    color: var(--Black100);
-    .titlePage {
-      margin: 32px auto;
-      text-align: center;
-      font-size: 24px;
     }
   }
 }
