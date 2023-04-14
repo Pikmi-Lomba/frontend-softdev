@@ -65,7 +65,9 @@ const FoodComp = () => {
               </div>
             </div>
             {dataKuliner.length === 0 ? (
-              <NotFoundMenu />
+              <div className="gkdulu">
+                <NotFoundMenu />
+              </div>
             ) : (
               <div className="cardsMenu flex">
                 {dataKuliner.map((data, i) => (
