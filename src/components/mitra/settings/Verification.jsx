@@ -120,12 +120,27 @@ const VerificationMitra = () => {
         Authorization: `Bearer ${Cookies.get("token")}`,
       },
     })
-      .then((res) => {
-        console.log(res.data);
-        navigate("/dashboard-mitra/");
+      .then(({ data, status }) => {
+        console.log(data);
+        setisModalOpen(true);
+        setModalData({
+          title: data.status,
+          desc: data.message,
+          okText: "Oke",
+          resStatus: status,
+          redirect: true,
+        });
       })
-      .catch((err) => {
-          navigate("/dashboard-mitra/");
+      .catch(({ data, status }) => {
+        console.log(data);
+        setisModalOpen(true);
+        setModalData({
+          title: 'Data Di update',
+          desc: 'Mohon menunggu Proses Verifikasi ulang',
+          okText: "Oke",
+          resStatus: status,
+          redirect: true,
+        });
       });
   };
 
