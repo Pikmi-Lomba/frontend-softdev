@@ -26,16 +26,17 @@ const CreateMenuEventMitra = () => {
 
   // initial data form put data
   const initialValues = {
-    nama_mitra: "",
     nama_event: "",
-    lokasi_event: "",
-    kategori_event: "",
-    alamat_event: "",
-    link_event: "",
-    tanggal_pendaftaran_event: "",
-    mulai_event: "",
-    akhir_event: "",
-    deskripsi_event: "",
+    kategori: "",
+    link_pendaftaran: "",
+    deskripsi: "",
+    lokasi_kota: "",
+    alamat: "",
+    tanggal_mulai: "",
+    tanggal_akhir: "",
+
+    // nama_mitra: "",
+    // tanggal_pendaftaran_event: "",
   };
 
   const [formData, setFormData] = useState(initialValues);
@@ -49,9 +50,9 @@ const CreateMenuEventMitra = () => {
   // Modal
   const [isModalOpen, setisModalOpen] = useState(false);
   const [modalData, setModalData] = useState({
-    title: '',
-    desc: '',
-    okText: ''
+    title: "",
+    desc: "",
+    okText: "",
   });
 
   useEffect(() => {
@@ -62,24 +63,99 @@ const CreateMenuEventMitra = () => {
         },
       })
         .then(({ data }) => {
-          return data
+          return data;
         })
         .catch((err) => {
-          const {data, status} = err.response
-          setisModalOpen(true)
+          const { data, status } = err.response;
+          setisModalOpen(true);
           setModalData({
             title: data.status,
             desc: data.message,
-            okText: 'Oke',
-            resStatus: status
-          })
+            okText: "Oke",
+            resStatus: status,
+          });
         });
     };
 
     getDataMitra();
   }, []);
 
-  console.log(formData);
+  console.log(Object.keys(formData));
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const form = new FormData();
+
+    // nama_event: "",
+    // kategori: "",
+    // link_pendaftaran: "",
+    // deskripsi: "",
+    // lokasi_kota: "",
+    // alamat: "",
+    // tanggal_mulai: "",
+    // tanggal_akhir: "",
+
+    for (let formInputData of Object.keys(formData)) {
+      if (!formData[formInputData]) {
+        setisModalOpen(true);
+        setModalData({
+          title: "Data Kurang",
+          desc: "Tolong Masukkan data dengan lengkap",
+          okText: "Oke",
+          resStatus: 400,
+          redirect: false,
+        });
+      } else if (!image) {
+        setisModalOpen(true);
+        setModalData({
+          title: "Gambar kosong",
+          desc: "Tolong Masukkan Gambar Event",
+          okText: "Oke",
+          resStatus: 400,
+          redirect: false,
+        });
+      }
+    }
+
+    form.append("nama_event", formData.nama_event);
+    form.append("kategori", formData.kategori);
+    form.append("link_pendaftaran", formData.link_pendaftaran);
+    form.append("deskripsi", formData.deskripsi);
+    form.append("lokasi_kota", formData.lokasi_kota);
+    form.append("alamat", formData.alamat);
+    form.append("tanggal_mulai", formData.tanggal_mulai);
+    form.append("tanggal_akhir", formData.tanggal_akhir);
+    form.append("image_event", image);
+
+    await AxiosIntanceMitra.post("/add/events", form, {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        setisModalOpen(true);
+        setModalData({
+          title: res.data.status,
+          desc: res.data.message,
+          okText: "Oke",
+          resStatus: res.status,
+          redirect: false,
+        });
+        navigate("/dashboard-mitra/events");
+      })
+      .catch(({ data, status }) => {
+        setisModalOpen(true);
+        setModalData({
+          title: data.status,
+          desc: data.message,
+          okText: "Oke",
+          resStatus: status,
+          redirect: false,
+        });
+      });
+  };
 
   return (
     <MitraSidebar>
@@ -87,7 +163,7 @@ const CreateMenuEventMitra = () => {
         <div className="top flex">
           <h1>Tambah Event</h1>
         </div>
-        <form className="bottom flex radius-5">
+        <form onSubmit={onSubmit} className="bottom flex radius-5">
           <div className="left flex">
             <div className="imageUpload flex">
               <img
@@ -112,7 +188,7 @@ const CreateMenuEventMitra = () => {
                 style={{ display: "none" }}
               />
             </div>
-            <div className="formInputContent flex">
+            {/* <div className="formInputContent flex">
               <label className="title">Nama Mitra</label>
               <input
                 name="nama_mitra"
@@ -121,7 +197,7 @@ const CreateMenuEventMitra = () => {
                 placeholder="Nama Mitra..."
                 onChange={(e) => handleChange(e)}
               />
-            </div>
+            </div> */}
           </div>
           <div className="right flex">
             <div className="formInputContent flex">
@@ -130,51 +206,51 @@ const CreateMenuEventMitra = () => {
                 name="nama_event"
                 className="radius-2"
                 type="text"
-                placeholder="Nama Mitra..."
+                placeholder="Nama Event..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className="formInputContent flex">
               <label className="title">Lokasi Kota</label>
               <input
-                name="lokasi_event"
+                name="lokasi_kota"
                 className="radius-2"
                 type="text"
-                placeholder="Nama Mitra..."
+                placeholder="Nama Lokasi..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className="formInputContent flex">
               <label className="title">Kategori Event</label>
               <input
-                name="kategori_event"
+                name="kategori"
                 className="radius-2"
                 type="text"
-                placeholder="Nama Mitra..."
+                placeholder="Nama Kategori..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className="formInputContent flex">
               <label className="title">Alamat Event</label>
               <input
-                name="alamat_event"
+                name="alamat"
                 className="radius-2"
                 type="text"
-                placeholder="Nama Mitra..."
+                placeholder="Alamat..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className="formInputContent flex">
               <label className="title">Link pendaftaran</label>
               <input
-                name="link_event"
+                name="link_pendaftaran"
                 className="radius-2"
                 type="text"
-                placeholder="Nama Mitra..."
+                placeholder="Link Daftar..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div className="formInputContent flex">
+            {/* <div className="formInputContent flex">
               <label className="title">Tanggal pendaftaran</label>
               <input
                 name="tanggal_pendaftaran_event"
@@ -183,31 +259,31 @@ const CreateMenuEventMitra = () => {
                 placeholder="Nama Mitra..."
                 onChange={(e) => handleChange(e)}
               />
-            </div>
+            </div> */}
             <div className="formInputContent flex">
               <label className="title">Mulai Event</label>
               <input
-                name="mulai_event"
+                name="tanggal_mulai"
                 className="radius-2"
-                type="text"
-                placeholder="Nama Mitra..."
+                type="date"
+                placeholder="Mulai Event..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className="formInputContent flex">
               <label className="title">Akhir Event</label>
               <input
-                name="akhir_event"
+                name="tanggal_akhir"
                 className="radius-2"
-                type="text"
-                placeholder="Nama Mitra..."
+                type="date"
+                placeholder="Akhit Event..."
                 onChange={(e) => handleChange(e)}
               />
             </div>
             <div className="formInputTextarea flex">
               <label className="title">Deskripsi Event: </label>
               <textarea
-                name="deskripsi_event"
+                name="deskripsi"
                 className="radius-2"
                 type="text"
                 placeholder="Tuliskan deskripsi tentang event?"
@@ -219,7 +295,9 @@ const CreateMenuEventMitra = () => {
             <button className=" btn radius-2" onClick={backPage}>
               Kembali
             </button>
-            <button className=" btn radius-2">Tambah Event</button>
+            <button type="submit" className=" btn radius-2">
+              Tambah Event
+            </button>
           </div>
         </form>
       </section>
@@ -228,8 +306,20 @@ const CreateMenuEventMitra = () => {
         title={modalData.title}
         desc={modalData.desc}
         okText={modalData.okText}
-        onOk={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
-        onCancel={() => modalData.resStatus === 401 ? navigate('/login') : navigate('/dashboard-mitra/settings')}
+        onOk={() =>
+          modalData.resStatus === 401
+            ? navigate("/login")
+            : modalData.redirect
+            ? navigate("/dashboard-mitra/settings/")
+            : setisModalOpen(false)
+        }
+        onCancel={() =>
+          modalData.resStatus === 401
+            ? navigate("/login")
+            : modalData.redirect
+            ? navigate("/dashboard-mitra/settings/")
+            : setisModalOpen(false)
+        }
       />
     </MitraSidebar>
   );
