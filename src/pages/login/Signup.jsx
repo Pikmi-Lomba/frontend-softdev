@@ -11,7 +11,7 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosIntanceMitra, AxiosLocal } from "../../apis/Api";
+import { AxiosIntanceMitra } from "../../apis/Api";
 
 const SignUpPage = () => {
   const [username, setUsername] = useState("");
@@ -50,8 +50,6 @@ const SignUpPage = () => {
         }
       });
   };
-
-  console.log(username, password, email);
 
   if (navigate) {
     return <Navigate to="/login" />;
@@ -106,6 +104,19 @@ const SignUpPage = () => {
                   </div>
                 </div>
               </div>
+              {errMsg && (
+                <div
+                  className="radius-3"
+                  style={{
+                    color: "red",
+                    backgroundColor: "rgba(128, 0, 0, 0.151)",
+                    padding: "12px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {errMsg}
+                </div>
+              )}
               <button className="btn radius-2">Beralih Login</button>
               <div className="link">
                 Sudah Punya akun? <Link to={`/login`}>Masuk</Link>

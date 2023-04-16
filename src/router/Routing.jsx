@@ -39,6 +39,11 @@ import ProtectedRoute from "./ProtectedRouting";
 import LoginAdminPage from "../pages/login/LoginAdmin";
 import PrivateRouteAdmin from "./PrivateRoutingAdmin";
 import SidebarAdminNotFound from "../pages/notFound/SidebarAdminNotFound";
+import ManageKuliner from "../pages/dashboard/manageMenu/ManageKuliner";
+import CreateKuliner from "../pages/dashboard/manageMenu/actionsKuliner/CreateKuliner";
+import ManageHotel from "../pages/dashboard/manageMenu/ManageHotel";
+import ManageTrip from "../pages/dashboard/manageMenu/ManageTrip";
+import CreateHotel from "../pages/dashboard/manageMenu/actionsHotel/CreateHotel";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -123,6 +128,24 @@ const Routing = () => {
               <Route index element={<ManageEvent />} />
               <Route path="detail/:id" element={<DetailEventDash />} />
               <Route path="create" element={<CreateManageEvent />} />
+            </Route>
+            {/* Manage Menu Kuliner  */}
+            <Route path="/dashboard-admin/kuliner">
+              <Route index element={<ManageKuliner />} />
+              {/* <Route path="detail/:id" element={<DetailEventDash />} /> */}
+              <Route path="create" element={<CreateKuliner />} />
+            </Route>
+            {/* Manage Menu Hotel */}
+            <Route path="/dashboard-admin/hotel">
+              <Route index element={<ManageHotel />} />
+              {/* <Route path="detail/:id" element={<DetailEventDash />} /> */}
+              <Route path="create" element={<CreateHotel />} />
+            </Route>
+            {/* Manage Menu Trip / Wisata */}
+            <Route path="/dashboard-admin/wisata">
+              <Route index element={<ManageTrip />} />
+              <Route path="detail/:id" element={<DetailEventDash />} />
+              <Route path="create" element={<CreateKuliner />} />
             </Route>
           </Route>
           {/* END DASHBAORD ADMIN */}

@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { AxiosInstanceAdmin } from "../../../apis/Api";
 import { useEffect, useState } from "react";
 import { MitraColumns } from "./ManageMitraColumns";
+import { BreadcrumbMitra } from "../../../components/breadCrumbs/BreadCrumbs";
 
 const MitraPages = () => {
   const tokenAdmin = Cookies.get("tokenAdmin");
@@ -36,7 +37,9 @@ const MitraPages = () => {
         <section className="ManageMenuContainer">
           <div className="topContent">
             <h2 className="title">Menu Mitra</h2>
-            <h5 className="subTitle">{`Dashboard > Menu Mitra`}</h5>
+            <h5 className="subTitle">
+              <BreadcrumbMitra />
+            </h5>
           </div>
           <div className="centerContent flex">
             <div className="addData">

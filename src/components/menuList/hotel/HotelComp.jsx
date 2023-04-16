@@ -1,123 +1,102 @@
 import "./hotelcomp.scss";
-
 import { MdLocationPin } from "react-icons/md";
-import { BsHeart } from "react-icons/bs";
-import { GiCommercialAirplane } from "react-icons/gi";
-import { useState } from "react";
-import { RxArrowLeft, RxArrowRight, RxDotFilled } from "react-icons/rx";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import CardMenuList from "../../card/CardMenuList";
+import NotFoundMenu from "../../../pages/notFound/NotFoundMenu";
+import { AxiosInstanceUser } from "../../../apis/Api";
+import { Link } from "react-router-dom";
+import Loading from "../../../utils/loading";
 
 const HotelComp = () => {
-  const berhitung1 = [
-    { nama: "Marcell", id: 1 },
-    { nama: "sakura", id: 2 },
-    { nama: "sasuke", id: 3 },
-    { nama: "kakashi", id: 4 },
-    { nama: "itachi", id: 5 },
-    { nama: "hinata", id: 6 },
-    { nama: "itachi", id: 5 },
-    { nama: "hinata", id: 6 },
-    { nama: "kakashi", id: 4 },
-    { nama: "itachi", id: 5 },
-    { nama: "hinata", id: 6 },
-    { nama: "itachi", id: 5 },
-    { nama: "hinata", id: 6 },
-    { nama: "hinata", id: 6 },
-  ];
-  const slides = [
-    {
-      img: "https://tse4.mm.bing.net/th?id=OIP.NDDcBnBo_xdqeyqcLmsrUAHaD4&pid=Api&P=0",
-    },
-    {
-      img: "https://tse4.mm.bing.net/th?id=OIP.k_GULNSxm4fGy0SfX3djEgHaEK&pid=Api&P=0",
-    },
-  ];
+  const [dataHotel, setDataHotel] = useState([]);
+  const [dataHotel2, setDataHotel2] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState();
+  const [limitData, setLimitData] = useState(8);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    AxiosInstanceUser.get(`/hotel`)
+      .then((res) => {
+        setDataHotel(res.data.menu_hotel.slice(0, limitData));
+        setDataHotel2(res.data.menu_hotel);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isLoading, limitData]);
 
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  const handleSearch = (e) => {
+    const getSearch = e.target.value;
+    setQuery(getSearch);
+    if (getSearch !== "") {
+      const searchData = dataHotel2.filter((item) =>
+        item.city_hotel.toLowerCase().includes(getSearch)
+      );
+      setDataHotel(searchData);
+    } else if (getSearch === "") {
+      setDataHotel(dataHotel2.slice(0, limitData));
+    }
+    setIsLoading(false);
   };
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+  const LoadMore = () => {
+    setLimitData(limitData + 4);
   };
-
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
-
   return (
     <>
       <section className="hotelComp">
-        <div className="contentMenu flex">
-          <div className="infoMenu">
-            <div className="subTitleMenu">Hotel</div>
-          </div>
-          <div className="flex LocationCard radius-2">
-            <MdLocationPin className="icon" />
-            <input
-              // onChange={(e) => handleSearch(e)}
-              type="text"
-              placeholder="Cari tempat tujuan"
-            />
-          </div>
-        </div>
-        <div className="cardSliderMenu">
-          {berhitung1.map((data, i) => (
-            <div className="cardMenu" key={i}>
-              <div className="imageContent">
-                <NavLink to={`detail/${data.nama}`}>
-                  <div
-                    style={{
-                      backgroundImage: `url(${slides[currentIndex].img})`,
-                    }}
-                    className="imgMenu radius-2"
-                  ></div>
-                </NavLink>
-
-                <BsHeart className="icon" />
-
-                <RxArrowLeft onClick={prevSlide} className="leftIcon" />
-                <RxArrowRight onClick={nextSlide} className="rightIcon" />
-                <div className="dots">
-                  {slides.map((slide, slideIndex) => (
-                    <div
-                      key={slideIndex}
-                      onClick={() => goToSlide(slideIndex)}
-                      className="dot"
-                    >
-                      <RxDotFilled />
-                    </div>
-                  ))}
-                </div>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="contentMenu flex">
+              <div className="infoMenu">
+                <div className="subTitleMenu">Menu Hotel</div>
               </div>
-              <NavLink to={`detail/${data.nama}`}>
-                <div className="LocationCardMenu">
-                  <div className="titleCardMenu">
-                    Taman Sakura Kebun Raya Cibodas
-                  </div>
-                  <div className="contentLocation flex">
-                    <div className="pusing flex">
-                      <MdLocationPin className="icon" />
-
-                      <div className="place"> Jl. Taman Cibodas, ...</div>
-                    </div>
-
-                    <div className="range"> Berjarak 500 meter </div>
-                  </div>
-                </div>
-              </NavLink>
+              <div className="flex LocationCard radius-2">
+                <MdLocationPin className="icon" />
+                <input
+                  value={query}
+                  onChange={(e) => handleSearch(e)}
+                  type="text"
+                  placeholder="Cari tempat tujuan"
+                />
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="loadMore">
-          <button className="btn radius">Load More</button>
-        </div>
+            {dataHotel.length === 0 ? (
+              <div className="gkdulu">
+                <NotFoundMenu />
+              </div>
+            ) : (
+              <div className="cardsMenu flex">
+                {dataHotel.map((data, i) => (
+                  <Link to={`detail/${data.id_hotel}`} key={i}>
+                    <CardMenuList
+                      nama={data.name_hotel}
+                      id={data.id_hotel}
+                      lokasi={data.location_hotel}
+                      gambar={data.image_hotel}
+                    />
+                  </Link>
+                ))}
+              </div>
+            )}
+            {dataHotel.length === 0 ? (
+              <p style={{ display: "none" }}>hidden</p>
+            ) : (
+              <div className="loadMore">
+                {limitData <= dataHotel.length ? (
+                  <button className="btn radius" onClick={LoadMore}>
+                    Memuat lagi
+                  </button>
+                ) : (
+                  <button style={{ display: "none" }}>halo</button>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </section>
     </>
   );

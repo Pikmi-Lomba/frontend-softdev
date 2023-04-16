@@ -108,10 +108,16 @@
     }
   }
 
-  .VerificationOption {
+  .verificationCard {
     background: var(--white10);
     padding: 20px;
     flex-direction: column;
     gap: 10px;
+    .optionVefication {
+      gap: 12px;
+    }
+    .btn {
+      width: 100px;
+    }
   }
 }

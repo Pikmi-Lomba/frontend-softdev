@@ -34,43 +34,54 @@ const DetailMitraDash = () => {
     setDataVerification({ ...dataVerification, [name]: value });
   };
 
-  const handleVerification = async (e) => {
+  const handleVerification = (e) => {
     e.preventDefault();
     const namaMitra = detailDataMitra.nama_mitra;
 
     const updateverify = {
       verify: dataVerification.verify,
     };
-    await AxiosInstanceAdmin.put(`/${id}/mitra`, updateverify, {
-      headers: {
-        Authorization: "Bearer " + tokenAdmin,
+
+    Swal.fire({
+      title: "Apakah Anda ingin mengubah status dari Mitra",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+      customClass: {
+        title: "titleSwal",
+        popup: "popupSwal",
+        actions: "popupSwal",
       },
-    })
-      .then(() => {
-        setisLoading(false);
+    }).then((result) => {
+      if (result.isConfirmed) {
+        AxiosInstanceAdmin.put(`/${id}/mitra`, updateverify, {
+          headers: {
+            Authorization: "Bearer " + tokenAdmin,
+          },
+        });
+        setisLoading(true);
         Swal.fire({
-          text: `Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`,
+          title: `Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`,
           icon: "success",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
+          customClass: {
+            title: "titleSwal",
+            popup: "popupSwal",
+            icon: "iconSwal",
           },
         });
-      })
-      .catch(() => {
+      } else if (result.isDenied) {
         Swal.fire({
-          text: `Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`,
+          title: `Verifikasi Data akun Mitra ${namaMitra} gagal diubah`,
           icon: "error",
-          showClass: {
-            popup: "animate__animated animate__fadeInDown",
-          },
-          hideClass: {
-            popup: "animate__animated animate__fadeOutUp",
+          customClass: {
+            title: "titleSwal",
+            popup: "popupSwal",
+            icon: "iconSwal",
           },
         });
-      });
+      }
+    });
   };
 
   return (
@@ -119,24 +130,34 @@ const DetailMitraDash = () => {
             </div>
           </div>
         )}
-        <div className="flex VerificationOption radius-2 ">
-          <input
-            className=""
-            name="verify"
-            onChange={(e) => handleChange(e)}
-            type="radio"
-            value="agree"
-          />
-          <label className="pr-10">Setuju</label>
-          <input
-            className=""
-            name="verify"
-            onChange={(e) => handleChange(e)}
-            type="radio"
-            value="disagree"
-          />
-          <label>Tidak setuju</label>
-          <button onClick={handleVerification}>submit verification</button>
+        {/* <div className="verrificationCard">
+          <div className="title">
+            Verifikasi Akun Dari Mitra {detailDataMitra.nama_mitra}
+          </div>
+        </div> */}
+        <div className="flex verificationCard radius-2 ">
+          <p className="title">Verifikasi Akun Mitra: </p>
+          <div className="optionVefication flex">
+            <input
+              className=""
+              name="verify"
+              onChange={(e) => handleChange(e)}
+              type="radio"
+              value="agree"
+            />
+            <label className="pr-10">Setuju</label>
+            <input
+              className=""
+              name="verify"
+              onChange={(e) => handleChange(e)}
+              type="radio"
+              value="disagree"
+            />
+            <label>Tidak setuju</label>
+          </div>
+          <button className="btn radius-2" onClick={handleVerification}>
+            verifikasi
+          </button>
         </div>
       </div>
     </AdminSidebar>

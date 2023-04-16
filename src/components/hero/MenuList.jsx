@@ -4,8 +4,8 @@ import {
   MdHotel,
   MdFestival,
   MdFlight,
-  MdLocalGasStation,
-  MdSchool,
+  // MdLocalGasStation,
+  // MdSchool,
 } from "react-icons/md";
 
 export const MenuList = [
@@ -34,14 +34,14 @@ export const MenuList = [
     logo: <MdFestival className="icon" />,
     name_menu: "Event",
   },
-  {
-    path: "/school-page",
-    logo: <MdSchool className="icon" />,
-    name_menu: "Sekolah",
-  },
-  {
-    path: "/spbu-page",
-    logo: <MdLocalGasStation className="icon" />,
-    name_menu: "SPBU",
-  },
+  // {
+  //   path: "/school-page",
+  //   logo: <MdSchool className="icon" />,
+  //   name_menu: "Sekolah",
+  // },
+  // {
+  //   path: "/spbu-page",
+  //   logo: <MdLocalGasStation className="icon" />,
+  //   name_menu: "SPBU",
+  // },
 ];

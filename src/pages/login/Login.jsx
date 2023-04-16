@@ -16,7 +16,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState("");
   const [navigate, setNavigate] = useState(false);
-  const errRef = useRef();
 
   // Show Password
   const [showPassword, setShowPassword] = useState(false);
@@ -46,13 +45,12 @@ const LoginPage = () => {
       if (!err?.response) {
         setErrMsg("No Server Response");
       } else if (err.response?.status === 400) {
-        setErrMsg("Email atau Password salah");
+        setErrMsg(err.response?.data?.message);
       } else if (err.response?.status === 401) {
-        setErrMsg("Email atau Password salah");
+        setErrMsg(err.response?.data?.message);
       } else {
         setErrMsg("Login Failed");
       }
-      errRef.current.focus();
     }
   };
 

@@ -1,135 +1,104 @@
 import "./tripcomp.scss";
-
 import { MdLocationPin } from "react-icons/md";
-import { BsHeart } from "react-icons/bs";
-import { useState } from "react";
-import { RxArrowLeft, RxArrowRight, RxDotFilled } from "react-icons/rx";
-import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { AxiosInstanceUser } from "../../../apis/Api";
+import CardMenuList from "../../card/CardMenuList";
+import NotFoundMenu from "../../../pages/notFound/NotFoundMenu";
+import { Link } from "react-router-dom";
+import Loading from "../../../utils/loading";
 
 const TripComp = () => {
-  const berhitung = [
-    { nama: "Marcell", id: 1 },
-    { nama: "sakura", id: 2 },
-    { nama: "sasuke", id: 3 },
-    { nama: "kakashi", id: 4 },
-    { nama: "itachi", id: 5 },
-    { nama: "hinata", id: 6 },
-  ];
-  const slides = [
-    {
-      img: "https://tse4.mm.bing.net/th?id=OIP.NDDcBnBo_xdqeyqcLmsrUAHaD4&pid=Api&P=0",
-    },
-    {
-      img: "https://tse4.mm.bing.net/th?id=OIP.k_GULNSxm4fGy0SfX3djEgHaEK&pid=Api&P=0",
-    },
-  ];
+  const [dataTrip, setDatatrip] = useState([]);
+  const [dataTrip2, setDatatrip2] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState();
+  const [limitData, setLimitData] = useState(8);
 
-  const [currentIndex, setCurrentIndex] = useState(0);
+  useEffect(() => {
+    AxiosInstanceUser.get(`/trip`)
+      .then((res) => {
+        console.log(res.data.menu_wisata);
+        setDatatrip(res.data.menu_wisata.slice(0, limitData));
+        setDatatrip2(res.data.menu_wisata);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isLoading, limitData]);
 
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  const handleSearch = (e) => {
+    const getSearch = e.target.value;
+    setQuery(getSearch);
+    if (getSearch !== "") {
+      const searchData = dataTrip2.filter((item) =>
+        item.city_trip.toLowerCase().includes(getSearch)
+      );
+      setDatatrip(searchData);
+    } else if (getSearch === "") {
+      setDatatrip(dataTrip2.slice(0, limitData));
+    }
+    setIsLoading(false);
   };
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+  const LoadMore = () => {
+    setLimitData(limitData + 4);
   };
-
-  const goToSlide = (slideIndex) => {
-    setCurrentIndex(slideIndex);
-  };
-
-  // const NextCard = (props) => {
-  //   const [className, style, onClick] = props
-  //   className= {className}
-  //   style ={{"display": "block"}}
-
-  // }
 
   return (
     <>
-      <section className="tripComp">
-        <div className="contentMenu flex">
-          <div className="infoMenu">
-            <div className="subTitleMenu">Wisata</div>
-            {/* <p className="numberPlaces">24 Tempat</p> */}
-          </div>
-          {/* <div className="filterMenu">
-            <button className="btn">Sort</button>
-          </div> */}
-          {/* <div className="filterMenu">
-            <select className="btn2 radius-2">
-              <option value="all" selected>
-                Sort
-              </option>
-              <option value="nama">Nama</option>
-              <option value="terpopuler">Terpopuler</option>
-              <option value="jarak">Jarak</option>
-            </select>
-          </div> */}
-          <div className="flex LocationCard radius-2">
-            <MdLocationPin className="icon" />
-            <input
-              // onChange={(e) => handleSearch(e)}
-              type="text"
-              placeholder="Cari tempat tujuan"
-            />
-          </div>
-        </div>
-        <div className="cardSliderMenu">
-          {berhitung.map((data, i) => (
-            <div className="cardMenu" key={i}>
-              <div className="imageContent">
-                <NavLink to={`detail/${data.nama}`}>
-                  <div
-                    style={{
-                      backgroundImage: `url(${slides[currentIndex].img})`,
-                    }}
-                    className="imgMenu radius-2"
-                  ></div>
-                </NavLink>
-
-                <BsHeart className="icon" />
-
-                <RxArrowLeft onClick={prevSlide} className="leftIcon" />
-                <RxArrowRight onClick={nextSlide} className="rightIcon" />
-                <div className="dots">
-                  {slides.map((slide, slideIndex) => (
-                    <div
-                      key={slideIndex}
-                      onClick={() => goToSlide(slideIndex)}
-                      className="dot"
-                    >
-                      <RxDotFilled />
-                    </div>
-                  ))}
-                </div>
+      <section className="tripComp2">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="contentMenu flex">
+              <div className="infoMenu">
+                <div className="subTitleMenu">Menu Wisata</div>
               </div>
-              <NavLink to={`detail/${data.nama}`}>
-                <div className="LocationCardMenu">
-                  <div className="titleCardMenu">
-                    Taman Sakura Kebun Raya Cibodas
-                  </div>
-                  <div className="contentLocation flex">
-                    <div className="pusing flex">
-                      <MdLocationPin className="icon" />
-
-                      <div className="place"> Jl. Tama</div>
-                    </div>
-
-                    <div className="range"> Berjarak 500 meter </div>
-                  </div>
-                </div>
-              </NavLink>
+              <div className="flex LocationCard radius-2">
+                <MdLocationPin className="icon" />
+                <input
+                  value={query}
+                  onChange={(e) => handleSearch(e)}
+                  type="text"
+                  placeholder="Cari tempat tujuan"
+                />
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="loadMore">
-          <button className="btn radius">Load More</button>
-        </div>
+            {dataTrip.length === 0 ? (
+              <div className="gkdulu">
+                <NotFoundMenu />
+              </div>
+            ) : (
+              <div className="cardsMenu flex">
+                {dataTrip.map((data, i) => (
+                  <Link to={`detail/${data.id_trip}`} key={i}>
+                    <CardMenuList
+                      nama={data.name_trip}
+                      id={data.id_trip}
+                      lokasi={data.location_trip}
+                      gambar={data.image_trip}
+                    />
+                  </Link>
+                ))}
+              </div>
+            )}
+            {dataTrip.length === 0 ? (
+              <p style={{ display: "none" }}>hidden</p>
+            ) : (
+              <div className="loadMore">
+                {limitData <= dataTrip.length ? (
+                  <button className="btn radius" onClick={LoadMore}>
+                    Memuat lagi
+                  </button>
+                ) : (
+                  <button style={{ display: "none" }}>halo</button>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </section>
     </>
   );

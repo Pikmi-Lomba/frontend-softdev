@@ -5,6 +5,8 @@ import { useState } from "react";
 import { AxiosInstanceUser } from "../../../apis/Api";
 import CardMenuList from "../../card/CardMenuList";
 import NotFoundMenu from "../../../pages/notFound/NotFoundMenu";
+import { Link } from "react-router-dom";
+import Loading from "../../../utils/loading";
 
 const FoodComp = () => {
   const [dataKuliner, setDataKuliner] = useState([]);
@@ -48,7 +50,7 @@ const FoodComp = () => {
     <>
       <section className="foodComp">
         {isLoading ? (
-          <div>Halaman ini Sedang memuat...</div>
+          <Loading />
         ) : (
           <>
             <div className="contentMenu flex">
@@ -58,6 +60,7 @@ const FoodComp = () => {
               <div className="flex LocationCard radius-2">
                 <MdLocationPin className="icon" />
                 <input
+                  value={query}
                   onChange={(e) => handleSearch(e)}
                   type="text"
                   placeholder="Cari tempat tujuan"
@@ -71,7 +74,14 @@ const FoodComp = () => {
             ) : (
               <div className="cardsMenu flex">
                 {dataKuliner.map((data, i) => (
-                  <CardMenuList data={data} key={i} />
+                  <Link to={`detail/${data.id_resto}`} key={i}>
+                    <CardMenuList
+                      nama={data.name_resto}
+                      id={data.id_resto}
+                      lokasi={data.location_resto}
+                      gambar={data.image_resto}
+                    />
+                  </Link>
                 ))}
               </div>
             )}

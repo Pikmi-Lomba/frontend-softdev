@@ -150,3 +150,16 @@ input {
 .radius-full {
   border-radius: 9999px;
 }
+
+.titleSwal {
+  font-size: 20px !important;
+  color: white !important;
+}
+
+.popupSwal {
+  background: var(--zompColor50) !important;
+}
+
+.iconSwal {
+  font-size: 10px !important;
+}
