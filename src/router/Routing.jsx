@@ -38,6 +38,7 @@ import ProfileMitra from "../components/mitra/settings/MyProfile";
 import ProtectedRoute from "./ProtectedRouting";
 import LoginAdminPage from "../pages/login/LoginAdmin";
 import PrivateRouteAdmin from "./PrivateRoutingAdmin";
+import EditMenuEventMitra from "../components/mitra/action/menuEvent/EditMenuEventMitra";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -95,6 +96,7 @@ const Routing = () => {
             <Route path="/dashboard-mitra/events">
               <Route index element={<MitraEvent />} />
               <Route path="create" element={<CreateMenuEventMitra />} />
+              <Route path="detail/:idEvent" element={<EditMenuEventMitra />} />
             </Route>
           </Route>
 
