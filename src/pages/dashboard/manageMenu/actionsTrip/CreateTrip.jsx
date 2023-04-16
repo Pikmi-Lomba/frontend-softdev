@@ -12,14 +12,13 @@ const CreateTrip = () => {
 
   // initial data form put data
   const initialValues = {
-    name_hotel: "",
-    telp_hotel: "",
-    image_hotel: "",
-    desc_hotel: "",
-    website_hotel: "",
-    city_hotel: "",
-    location_hotel: "",
-    price_hotel: "",
+    name_trip: "",
+    location_trip: "",
+    city_trip: "",
+    telp_trip: "",
+    price_trip: "",
+    desc_trip: "",
+    image_trip: "",
   };
 
   const [formData, setFormData] = useState(initialValues);
@@ -34,7 +33,7 @@ const CreateTrip = () => {
   const handleAddUser = async (e) => {
     e.preventDefault();
 
-    await AxiosInstanceUser.post("/food", formData)
+    await AxiosInstanceUser.post("/trip", formData)
       .then(() => {
         navigate(-1);
         Swal.fire({
@@ -49,7 +48,6 @@ const CreateTrip = () => {
           },
         });
       })
-
       .catch(() => {
         Swal.fire({
           title: `Data Wisata Gagal Di Tambahkan`,
@@ -98,7 +96,7 @@ const CreateTrip = () => {
             <div className="formInputContent flex">
               <label className="title">Alamat Wisata</label>
               <input
-                name="location_resto"
+                name="location_trip"
                 className="radius-2"
                 type="text"
                 placeholder="Alamat Wisata..."
@@ -108,7 +106,7 @@ const CreateTrip = () => {
             <div className="formInputContent flex">
               <label className="title">Kota Wisata</label>
               <input
-                name="city_resto"
+                name="city_trip"
                 className="radius-2"
                 type="text"
                 placeholder="Kota Wisata..."
@@ -116,11 +114,11 @@ const CreateTrip = () => {
               />
             </div>
             <div className="formInputContent flex">
-              <label className="title">Link Website Wisata</label>
+              <label className="title">Kirasan Harga Tiket Masuk</label>
               <input
-                name="link_resto"
+                name="price_trip"
                 className="radius-2"
-                type="text"
+                type="number"
                 placeholder="Link Website..."
                 onChange={(e) => handleChange(e)}
               />
@@ -128,10 +126,20 @@ const CreateTrip = () => {
             <div className="formInputContent flex">
               <label className="title">Image Copy Address</label>
               <input
-                name="image_resto"
+                name="image_trip"
                 className="radius-2"
                 type="text"
                 placeholder="Image Copy Address..."
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+            <div className="formInputTextarea flex">
+              <label className="title">Deskripsi / Tentang Wisata </label>
+              <textarea
+                name="desc_trip"
+                className="radius-2"
+                type="text"
+                placeholder="Tuliskan Deskripsi Tentang Wisata"
                 onChange={(e) => handleChange(e)}
               />
             </div>

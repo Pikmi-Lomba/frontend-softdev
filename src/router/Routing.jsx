@@ -44,6 +44,7 @@ import CreateKuliner from "../pages/dashboard/manageMenu/actionsKuliner/CreateKu
 import ManageHotel from "../pages/dashboard/manageMenu/ManageHotel";
 import ManageTrip from "../pages/dashboard/manageMenu/ManageTrip";
 import CreateHotel from "../pages/dashboard/manageMenu/actionsHotel/CreateHotel";
+import CreateTrip from "../pages/dashboard/manageMenu/actionsTrip/CreateTrip";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -145,7 +146,7 @@ const Routing = () => {
             <Route path="/dashboard-admin/wisata">
               <Route index element={<ManageTrip />} />
               <Route path="detail/:id" element={<DetailEventDash />} />
-              <Route path="create" element={<CreateKuliner />} />
+              <Route path="create" element={<CreateTrip />} />
             </Route>
           </Route>
           {/* END DASHBAORD ADMIN */}
