@@ -45,6 +45,8 @@ import ManageHotel from "../pages/dashboard/manageMenu/ManageHotel";
 import ManageTrip from "../pages/dashboard/manageMenu/ManageTrip";
 import CreateHotel from "../pages/dashboard/manageMenu/actionsHotel/CreateHotel";
 import CreateTrip from "../pages/dashboard/manageMenu/actionsTrip/CreateTrip";
+import DetailKulinerDash from "../pages/dashboard/manageMenu/actionsKuliner/DetailKuliner";
+import CreateMakanan from "../pages/dashboard/manageMenu/actionsKuliner/CreateMakanan";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -133,7 +135,8 @@ const Routing = () => {
             {/* Manage Menu Kuliner  */}
             <Route path="/dashboard-admin/kuliner">
               <Route index element={<ManageKuliner />} />
-              {/* <Route path="detail/:id" element={<DetailEventDash />} /> */}
+              <Route path="detail/:id" element={<DetailKulinerDash />} />
+              <Route path="detail/:id/create" element={<CreateMakanan />} />
               <Route path="create" element={<CreateKuliner />} />
             </Route>
             {/* Manage Menu Hotel */}

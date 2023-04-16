@@ -158,8 +158,14 @@ const ManageKuliner = () => {
                       <TableCell align="center">{row.telp_resto}</TableCell>
                       <TableCell align="center">{row.location_resto}</TableCell>
                       <TableCell align="center">{row.city_resto}</TableCell>
-                      <TableCell align="center">
-                        <button style={{ marginRight: "4px" }}>Edit</button>
+                      <TableCell align="center" className="flex">
+                        <Link
+                          className="detailMenuList"
+                          to={`detail/${row.id_resto}`}
+                          style={{ marginRight: "4px" }}
+                        >
+                          Detail
+                        </Link>
                         <button onClick={() => handleDelete(row.id_resto)}>
                           Hapus
                         </button>
