@@ -53,6 +53,38 @@ const VerificationMitra = () => {
         });
     };
 
+    const getDataVerif = async () => {
+      await AxiosIntanceMitra("/verification", {
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+        },
+      }).then((res) => {
+        const { data, status } = res;
+
+        console.log(data);
+        if (data.message === "data anda di tolak") {
+          setisModalOpen(true);
+          setModalData({
+            title: data.status,
+            desc: data.message,
+            okText: "Oke",
+            resStatus: status,
+            redirect: false,
+          });
+        } else if (data.message !== "Belum ada verifikasi") {
+          setisModalOpen(true);
+          setModalData({
+            title: data.status,
+            desc: data.message,
+            okText: "Oke",
+            resStatus: status,
+            redirect: true,
+          });
+        }
+      });
+    };
+
+    getDataVerif();
     getDataMitra();
   }, []);
 
@@ -86,7 +118,29 @@ const VerificationMitra = () => {
       headers: {
         Authorization: `Bearer ${Cookies.get("token")}`,
       },
-    }).then((res) => console.log(res.data));
+    })
+      .then(({ data, status }) => {
+        console.log(data);
+        setisModalOpen(true);
+        setModalData({
+          title: data.status,
+          desc: data.message,
+          okText: "Oke",
+          resStatus: status,
+          redirect: true,
+        });
+      })
+      .catch(({ data, status }) => {
+        console.log(data);
+        setisModalOpen(true);
+        setModalData({
+          title: "Data Di update",
+          desc: "Mohon menunggu Proses Verifikasi ulang",
+          okText: "Oke",
+          resStatus: status,
+          redirect: true,
+        });
+      });
   };
 
   console.log(errors);
