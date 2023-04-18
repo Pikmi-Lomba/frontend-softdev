@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export const AxiosInstance = axios.create({
   baseURL: "https://closing-troll-71.hasura.app/api/rest/event",
@@ -31,4 +32,11 @@ export const AxiosIntanceMitra = axios.create({
 
 export const AxiosInstanceAdmin = axios.create({
   baseURL: "http://localhost:5000/api/admin",
+});
+
+export const AxiosIntanceLikeEvent = axios.create({
+  baseURL: "http://localhost:5000/api/events",
+  headers: {
+    Authorization: `Bearer ${Cookies.get("token")}`,
+  },
 });

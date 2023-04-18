@@ -1,24 +1,46 @@
 import "./card.scss";
-
-import image from "../../assets/image/img-hero.jpg";
 import { MdLocationPin } from "react-icons/md";
+import { AxiosInstanceUser } from "../../apis/Api";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const CardDestination = () => {
-  const berhitung = [1, 1, 1, 1, 1, 1, 1, 1];
+  const [dataPopular, setDataPopular] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const sortedData = dataPopular.sort(
+    (a, b) => b.rating_popular - a.rating_popular
+  );
+  const filteredData = sortedData.filter((item) => item.rating_popular === 100);
+
+  useEffect(() => {
+    AxiosInstanceUser.get(`/popular_trip`)
+      .then((res) => {
+        setDataPopular(res.data.popular_place);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isLoading]);
+
   return (
     <div className="cardDestination flex">
-      {berhitung.map((data) => (
-        <div className="card" key={data}>
-          <img src={image} alt="favorit_destinasi.png" />
+      {dataPopular.map((data, i) => (
+        <div className="card" key={i}>
+          <img src={data.image_popular} alt="favorit_destinasi.png" />
           <div className="contentDestination flex">
             <div className="subContentDestination">
-              <div className="titleDestination">Komodo Island</div>
+              <div className="titleDestination">
+                {data.name_popular.slice(0, 20)}
+              </div>
               <div className="locationDestination flex">
                 <MdLocationPin className="icon" />
-                <p className="nameLocationDestination">Indonesia</p>
+                <p className="nameLocationDestination">
+                  {data.location_popular}
+                </p>
               </div>
             </div>
-            <div className="rating">4.7</div>
+            <div className="rating">{data.rating_popular}</div>
           </div>
         </div>
       ))}

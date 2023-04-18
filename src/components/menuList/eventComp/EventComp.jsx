@@ -1,21 +1,28 @@
-import "./eventComp.scss";
-import image from "../../../assets/image/img-hero.jpg";
+// import "./foodComp.scss";
 import { MdLocationPin } from "react-icons/md";
+import { useEffect } from "react";
+import { useState } from "react";
+import CardMenuList from "../../card/CardMenuList";
+import NotFoundMenu from "../../../pages/notFound/NotFoundMenu";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getDataEvent } from "../../../apis/Api";
 import Loading from "../../../utils/loading";
+
+import axios from "axios";
 
 const EventComp = () => {
   const [dataEvent, setDataEvent] = useState([]);
+  const [dataEvent2, setDataEvent2] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [limitData, setLimitData] = useState(2);
+  const [limitData, setLimitData] = useState(8);
+  const [query, setQuery] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    getDataEvent() // axios.get(url fetch api)
+    axios
+      .get(`http://localhost:5000/api/events`)
       .then((res) => {
-        console.log(res.data.event);
-        setDataEvent(res.data.event.slice(0, limitData));
+        setDataEvent(res.data.data.event.slice(0, limitData));
+        setDataEvent2(res.data.data.event.slice(0, limitData));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -23,71 +30,96 @@ const EventComp = () => {
       });
   }, [isLoading, limitData]);
 
-  const LoadMore = () => {
-    setLimitData(limitData + 2);
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   };
 
-  const MaksLoadMore = () => {};
+  useEffect(() => {
+    const searchAPI = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/search/events?kota=${query}`
+        );
+        setDataEvent(response.data.data.event.slice(0, limitData));
+        setErrorMessage("");
+      } catch (error) {
+        if (error.response && error.response.status === 404) {
+          setDataEvent([]);
+          setErrorMessage("Pencarian Tidak ditemukan");
+        } else {
+          setErrorMessage("ada masalah, coba beberapa saat lagi");
+        }
+      }
+    };
 
-  console.log("mama", dataEvent);
+    if (query) {
+      searchAPI();
+    } else {
+      setDataEvent(dataEvent2);
+      setErrorMessage("");
+    }
+  }, [query, dataEvent2, limitData]);
+
+  const LoadMore = () => {
+    setLimitData(limitData + 4);
+  };
 
   return (
     <>
-      {isLoading ? (
-        Loading
-      ) : (
-        <section className="EventComp">
-          <div className="contentMenu flex">
-            <div className="infoMenu">
-              <div className="subTitleMenu">Menu Event</div>
+      <section className="foodComp">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="contentMenu flex">
+              <div className="infoMenu">
+                <div className="subTitleMenu">Menu Event</div>
+              </div>
+              <div className="flex LocationCard radius-2">
+                <MdLocationPin className="icon" />
+                <input
+                  value={query}
+                  onChange={handleChange}
+                  type="text"
+                  placeholder="Cari tempat tujuan"
+                />
+              </div>
             </div>
-            <div className="flex LocationCard radius-2">
-              <MdLocationPin className="icon" />
-              <input
-                // onChange={(e) => handleSearch(e)}
-                type="text"
-                placeholder="Cari tempat tujuan"
-              />
-            </div>
-          </div>
-          <div className="cardsMenu flex">
-            {dataEvent.map((data) => (
-              <Link key={data.id} to={`detail/${data.id}`}>
-                <div className="cardMenu">
-                  <div className="imageContent">
-                    <img src={data.image} alt="" />
-                  </div>
-                  <div className="Tampung">
-                    <div className="KatEvent radius">{data.kategory_event}</div>
-                    <h1 className="titleCardMenu">
-                      {data.name_event.substring(0, 40)}
-                    </h1>
-                    <p className="subTitleCardMenu">
-                      {data.nama_mitra.substring(0, 40)}
-                    </p>
-                    <p className="descCardMenu">
-                      {data.description_event.substring(0, 200)}
-                    </p>
-
-                    <div className="register">{data.registration_limit}</div>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="loadMore ">
-            {dataEvent.length < limitData ? (
-              <button className="btn radius hidden" onClick={LoadMore}>
-                Load More
-              </button>
-            ) : (
-              <button className="btn radius " onClick={LoadMore}>
-                Load More
-              </button>
+            {errorMessage && (
+              <div className="gkdulu">
+                <NotFoundMenu />
+              </div>
             )}
-          </div>
-        </section>
-      )}
+
+            <div className="cardsMenu flex">
+              {dataEvent.map((data, i) => (
+                <Link to={`detail/${data.id_event}`} key={i}>
+                  <CardMenuList
+                    nama={data.nama_event}
+                    id={data.id_event}
+                    lokasi={data.alamat}
+                    gambar={data.image_events}
+                  />
+                </Link>
+              ))}
+            </div>
+
+            {dataEvent.length === 0 ? (
+              <p style={{ display: "none" }}>hidden</p>
+            ) : (
+              <div className="loadMore">
+                {limitData <= dataEvent.length ? (
+                  <button className="btn radius" onClick={LoadMore}>
+                    Memuat lagi
+                  </button>
+                ) : (
+                  <button style={{ display: "none" }}>halo</button>
+                )}
+              </div>
+            )}
+          </>
+        )}
+      </section>
     </>
   );
 };
