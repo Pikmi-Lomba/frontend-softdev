@@ -63,8 +63,6 @@ const CreateKuliner = () => {
       });
   };
 
-  console.log("data", formData);
-
   return (
     <Sidebar>
       <section className="ActionContainer">
