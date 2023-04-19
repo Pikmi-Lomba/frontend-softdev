@@ -33,12 +33,6 @@ export const MitraColumns = [
     editable: true,
   },
   {
-    field: "status",
-    headerName: "status",
-    width: 150,
-    editable: true,
-  },
-  {
     field: "actions",
     headerName: "Actions",
     type: "actions",

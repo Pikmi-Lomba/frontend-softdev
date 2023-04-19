@@ -1,82 +1,105 @@
 import "./foodComp.scss";
-import image from "../../../assets/image/img-hero.jpg";
-import { GiCommercialAirplane } from "react-icons/gi";
 import { MdLocationPin } from "react-icons/md";
+import { useEffect } from "react";
+import { useState } from "react";
+import { AxiosInstanceUser } from "../../../apis/Api";
+import CardMenuList from "../../card/CardMenuList";
+import NotFoundMenu from "../../../pages/notFound/NotFoundMenu";
 import { Link } from "react-router-dom";
+import Loading from "../../../utils/loading";
 
 const FoodComp = () => {
-  const berhitung = [
-    {
-      nama: "marcell",
-      id: 1,
-    },
-    {
-      nama: "marcell",
-      id: 2,
-    },
-    {
-      nama: "marcell",
-      id: 3,
-    },
-    {
-      nama: "marcell",
-      id: 4,
-    },
-    {
-      nama: "marcell",
-      id: 5,
-    },
-  ];
+  const [dataKuliner, setDataKuliner] = useState([]);
+  const [dataKuliner2, setDataKuliner2] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [query, setQuery] = useState();
+  const [limitData, setLimitData] = useState(8);
+
+  useEffect(() => {
+    AxiosInstanceUser.get(`/food`)
+      .then((res) => {
+        console.log("ini data", res.data.list_resto);
+        setDataKuliner(res.data.list_resto.slice(0, limitData));
+        setDataKuliner2(res.data.list_resto);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [isLoading, limitData]);
+
+  const handleSearch = (e) => {
+    const getSearch = e.target.value;
+    setQuery(getSearch);
+    if (getSearch !== "") {
+      const searchData = dataKuliner2.filter((item) =>
+        item.city_resto.toLowerCase().includes(getSearch)
+      );
+      setDataKuliner(searchData);
+    } else if (getSearch === "") {
+      setDataKuliner(dataKuliner2.slice(0, limitData));
+    }
+    setIsLoading(false);
+  };
+
+  const LoadMore = () => {
+    setLimitData(limitData + 4);
+  };
+
   return (
     <>
       <section className="foodComp">
-        <h1 className="title">Pencarian Kuliner di Daerah, Depok</h1>
-        <div className="contentMenu flex">
-          <div className="infoMenu">
-            <div className="subTitleMenu">Menu Kuliner</div>
-            <p className="numberPlaces">24 Tempat</p>
-          </div>
-          {/* <div className="filterMenu">
-            <button className="btn">Sort</button>
-          </div> */}
-          <div className="filterMenu">
-            <select className="btn2 radius-2">
-              <option value="all" selected>
-                Sort
-              </option>
-              <option value="nama">Nama</option>
-              <option value="terpopuler">Terpopuler</option>
-              <option value="jarak">Jarak</option>
-            </select>
-          </div>
-        </div>
-        <div className="cardsMenu flex">
-          {berhitung.map((data) => (
-            <div className="cardMenu" key={data}>
-              <GiCommercialAirplane className="icon" />
-              <Link to={`detail/${data.id}`}>
-                <div className="imageContent">
-                  <img className="radius-2" src={image} alt="" />
-                </div>
-                <div className="titleCardMenu">The Harvest Cakes Depok</div>
-                <div className="LocationCardMenu">
-                  <div className="contentLocation flex">
-                    <div className="pusing flex">
-                      <MdLocationPin className="icon2" />
-
-                      <div className="place">Jl. Margonda Raya No. 295</div>
-                    </div>
-
-                    <div className="range">500 m</div>
-                  </div>
-                </div>
-              </Link>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="contentMenu flex">
+              <div className="infoMenu">
+                <div className="subTitleMenu">Menu Kuliner</div>
+              </div>
+              <div className="flex LocationCard radius-2">
+                <MdLocationPin className="icon" />
+                <input
+                  value={query}
+                  onChange={(e) => handleSearch(e)}
+                  type="text"
+                  placeholder="Cari tempat tujuan"
+                />
+              </div>
             </div>
-          ))}
-        </div>
-        <div className="loadMore">
-          <button className="btn radius">Load More</button>
-        </div>
+            {dataKuliner.length === 0 ? (
+              <div className="gkdulu">
+                <NotFoundMenu />
+              </div>
+            ) : (
+              <div className="cardsMenu flex">
+                {dataKuliner.map((data, i) => (
+                  <Link to={`detail/${data.id_resto}`} key={i}>
+                    <CardMenuList
+                      nama={data.name_resto}
+                      id={data.id_resto}
+                      lokasi={data.location_resto}
+                      gambar={data.image_resto}
+                    />
+                  </Link>
+                ))}
+              </div>
+            )}
+            {dataKuliner.length === 0 ? (
+              <p style={{ display: "none" }}>hidden</p>
+            ) : (
+              <div className="loadMore">
+                {limitData <= dataKuliner.length ? (
+                  <button className="btn radius" onClick={LoadMore}>
+                    Memuat lagi
+                  </button>
+                ) : (
+                  <button style={{ display: "none" }}>halo</button>
+                )}
+              </div>
+            )}
+          </>
+        )}
       </section>
     </>
   );

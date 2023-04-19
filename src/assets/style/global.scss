@@ -1,0 +1,57 @@
+.LocationCard {
+  background: white;
+  height: 46px;
+  width: 200px;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 20px 11px 20px;
+  input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  &::placeholder {
+    font-size: 13px;
+    opacity: 0.5;
+    font-weight: 400;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.loadMore {
+  text-align: center;
+  .btn {
+    padding: 12px;
+    gap: 10px;
+    width: 150px;
+    height: 41px;
+    text-align: center;
+  }
+}
+
+.loadingPage {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .menuLoading {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+.gkdulu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Component Commentar disqus
+.disqusComment {
+  margin: 60px 15rem;
+}

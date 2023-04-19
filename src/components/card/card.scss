@@ -1,0 +1,207 @@
+:root {
+  /* Zomp */
+  --zompColor70: #37787c;
+  --zompColor60: #3e878c;
+  --zompColor50: #45969b;
+  --zompColor40: #58a1a5;
+  --zompColor30: #6aabaf;
+  --zompColor20: #7db6b9;
+
+  /* Cultured */
+  --CulturedColor70: #c6c6c6;
+  --CulturedColor60: #dfdfdf;
+  --CulturedColor50: #f8f8f8;
+  --CulturedColor40: #f9f9f9;
+  --CulturedColor30: #f9f9f9;
+  --CulturedColor20: #fafafa;
+
+  /* pumkin */
+  --PumpkinColor70: #c75711;
+  --PumpkinColor60: #e06213;
+  --PumpkinColor50: #f96d15;
+  --PumpkinColor40: #fa7c2c;
+  --PumpkinColor30: #fa8a44;
+  --PumpkinColor20: #fb995b;
+
+  /* Verdigris */
+  --VerdigrisColor70: #409296;
+  --VerdigrisColor60: #48a4a8;
+  --VerdigrisColor50: #50b6bb;
+  --VerdigrisColor40: #62bdc2;
+  --VerdigrisColor30: #73c5c9;
+  --VerdigrisColor20: #85cccf;
+
+  /* GrayScale */
+
+  --Black100: #151618;
+  --Black90: #2c2d2f;
+  --Black80: #444546;
+  --Black70: #5b5c5d;
+  --Black60: #737374;
+  --white50: #b1b4ba;
+  --white40: #c8cbd2;
+  --white30: #d9dce3;
+  --white20: #e8e8e8;
+  --white10: #ffffff;
+}
+
+.cardDestination {
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+
+  .card {
+    position: relative;
+    // background: yellow;
+    width: 240px;
+    height: 280px;
+    border-radius: 16px;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+    }
+    .contentDestination {
+      position: relative;
+      color: var(--white20);
+      left: 10px;
+      right: 10px;
+      width: 90%;
+      top: 80%;
+      justify-content: space-between;
+      .subContentDestination {
+        .locationDestination {
+          width: 100%;
+          gap: 0 8px;
+          .icon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+      .rating {
+        padding: 4px;
+        border-radius: 50%;
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        background-color: rgba(17, 25, 40, 0.75);
+        border: 1px solid rgba(255, 255, 255, 0.125);
+      }
+    }
+  }
+  .card:hover {
+    transform: scale(0.9);
+  }
+}
+
+.cardDashboardAdmin {
+  margin: 10px 0;
+  .cards {
+    width: 100%;
+    gap: 20px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      color: var(--zompColor50);
+      background: var(--white10);
+      width: 230px;
+      height: 120px;
+      padding: 10px 20px;
+      .radiusIcon {
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--CulturedColor60);
+        .icon {
+          color: var(--PumpkinColor60);
+        }
+      }
+      .radiusIcon2 {
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--CulturedColor60);
+        .icon {
+          color: var(--PumpkinColor60);
+        }
+      }
+      .titleCard {
+        color: var(--Black100);
+        font-size: 16px;
+      }
+      .valueCard {
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.cardMenuList {
+  position: relative;
+  cursor: pointer;
+  width: 280px;
+  height: 21rem;
+  margin-bottom: 40px;
+  background-color: white;
+  padding-bottom: 10px;
+  .iconMenu {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    background: var(--CulturedColor50);
+    border-radius: 9999px;
+    .icon {
+      position: absolute;
+      top: 8px;
+      left: 5px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .imageContent {
+    width: 280px;
+    height: 280px;
+    img {
+      width: 280px;
+      height: 280px;
+    }
+  }
+  .titleCardMenu {
+    padding-left: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--Black100);
+  }
+  .LocationCardMenu {
+    color: var(--Black100);
+    padding-left: 10px;
+    .contentLocation {
+      justify-content: space-between;
+      .pusing {
+        .icon2 {
+          width: 20px;
+          height: 20px;
+        }
+        .place {
+          color: var(--Black70);
+          font-size: 12px;
+        }
+      }
+      .range {
+        font-size: 12px;
+        line-height: 14.52px;
+        color: var(--Black70);
+      }
+    }
+  }
+}

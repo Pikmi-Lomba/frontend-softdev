@@ -107,6 +107,10 @@ const Routing = () => {
             <Route path="/dashboard-admin">
               <Route index element={<DashboardAdmin />} />
             </Route>
+            <Route
+              path="/dashboard-admin/*"
+              element={<SidebarAdminNotFound />}
+            />
             {/* Manage Account Mitra */}
             <Route path="/dashboard-admin/mitra">
               <Route index element={<MitraPages />} />
@@ -120,6 +124,25 @@ const Routing = () => {
               <Route index element={<ManageEvent />} />
               <Route path="detail/:id" element={<DetailEventDash />} />
               <Route path="create" element={<CreateManageEvent />} />
+            </Route>
+            {/* Manage Menu Kuliner  */}
+            <Route path="/dashboard-admin/kuliner">
+              <Route index element={<ManageKuliner />} />
+              <Route path="detail/:id" element={<DetailKulinerDash />} />
+              <Route path="detail/:id/create" element={<CreateMakanan />} />
+              <Route path="create" element={<CreateKuliner />} />
+            </Route>
+            {/* Manage Menu Hotel */}
+            <Route path="/dashboard-admin/hotel">
+              <Route index element={<ManageHotel />} />
+              {/* <Route path="detail/:id" element={<DetailEventDash />} /> */}
+              <Route path="create" element={<CreateHotel />} />
+            </Route>
+            {/* Manage Menu Trip / Wisata */}
+            <Route path="/dashboard-admin/wisata">
+              <Route index element={<ManageTrip />} />
+              <Route path="detail/:id" element={<DetailEventDash />} />
+              <Route path="create" element={<CreateTrip />} />
             </Route>
           </Route>
           {/* END DASHBAORD ADMIN */}

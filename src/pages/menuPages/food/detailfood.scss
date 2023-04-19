@@ -48,40 +48,54 @@
 .detailFood {
   padding-top: 5em;
   margin: 0 5em 5em 5em;
-  // background-color: aliceblue;
   color: var(--Black100);
-  // background-color: #37787c;
-  // .topbar {
-  //   padding-top: 60px;
-  //   flex-wrap: wrap;
-  //   justify-content: space-between;
-  //   //  align-items: flex-end;
-  //   //  background: #232323;
-  //   .leftTopbar {
-  //     .title {
-  //       font-size: 24px;
-  //       font-weight: bold;
-  //     }
-  //     .location {
-  //       gap: 2px;
-  //       padding-bottom: 4px;
-  //       .subtitle {
-  //         font-size: 16px;
-  //         font-weight: 500;
-  //       }
-  //     }
-  //   }
-  //   .rightTopbar {
-  //     align-self: flex-end;
-  //     justify-self: flex-end;
-  //     .location {
-  //       margin-right: 12px;
-  //       border: 2px solid var(--zompColor50);
-  //       padding: 6px;
-  //       cursor: pointer;
-  //     }
-  //   }
-  // }
+  .topContentMenu4 {
+    padding: 4px 20px;
+    border-radius: 12px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: white;
+    gap: 20px;
+    .leftTopbar {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 8px;
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .location,
+      .telepon {
+        gap: 4px;
+        .menuIcon {
+          width: 20px;
+          height: 20px;
+          .icon {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        .subtitle,
+        .telpContent {
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+    .rightTopbar {
+      align-self: flex-end;
+      justify-self: flex-end;
+      .location {
+        margin-right: 12px;
+        border: 2px solid var(--zompColor50);
+        padding: 6px;
+        cursor: pointer;
+      }
+    }
+  }
   .Menu {
     .topBar {
       margin: 0 auto;
@@ -98,13 +112,16 @@
         font-size: 14px;
       }
     }
+    .notFoundFoodList {
+      height: 500px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .cardsMenu {
       flex-wrap: wrap;
       justify-content: center;
       .cardMenu {
-        // background: var(--PumpkinColor40);
-        // width: 280px;
-        // height: 320px;
         border-radius: 12px 12px 0 0;
         margin-bottom: 36px;
         margin-right: 16px;
@@ -126,29 +143,17 @@
 // Responsive Grid Phone
 @media screen and (max-width: 768px) {
   .detailFood {
-    margin: 0 10px;
-
-    .Menu {
-      .cardsMenu {
-        flex-wrap: wrap;
-        justify-content: center;
-        .cardMenu {
-          // background: var(--PumpkinColor40);
-          // width: 280px;
-          // height: 320px;
-          border-radius: 12px 12px 0 0;
-          margin-bottom: 36px;
-          .image {
-            background-size: cover;
-            height: 260px;
-            width: 280px;
-          }
-          .nameCard {
-            font-size: 16px;
-            line-height: 20px;
-            font-weight: 700;
-          }
-        }
+    padding-top: 5em;
+    margin: 0 2em 2em 2em;
+    color: var(--Black100);
+    .topContentMenu4 {
+      padding: 10px 20px;
+      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      .leftTopbar {
+        gap: 4px;
       }
     }
   }

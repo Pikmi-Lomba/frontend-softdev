@@ -61,14 +61,14 @@ const ManageEvent = () => {
                 }}
               />
             </div> */}
-            <div className="addData">
+            {/* <div className="addData">
               <Link
                 to={`/dashboard-admin/event/create`}
                 className="btn radius-2"
               >
                 Tambah Event
               </Link>
-            </div>
+            </div> */}
           </div>
           <div className="FormData">
             <Box sx={{ height: 371, width: "100%" }}>

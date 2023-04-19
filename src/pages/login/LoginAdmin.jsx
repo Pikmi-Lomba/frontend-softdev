@@ -10,6 +10,7 @@ import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
 import { AxiosInstanceAdmin, AxiosLocal } from "../../apis/Api";
 import { useRef } from "react";
+import Swal from "sweetalert2";
 
 const LoginAdminPage = () => {
   const [email, setEmail] = useState("");
@@ -41,8 +42,17 @@ const LoginAdminPage = () => {
       } else {
         window.location.href = "/";
       }
-    } catch (error) {
-      alert("Invalid credentials");
+    } catch (err) {
+      console.log(err.response.data);
+      Swal.fire({
+        title: `${err.response.data.message}`,
+        icon: "error",
+        customClass: {
+          title: "titleSwal",
+          popup: "popupSwal",
+          icon: "iconSwal",
+        },
+      });
     }
   };
 
@@ -94,9 +104,9 @@ const LoginAdminPage = () => {
               </div>
               {errMsg && <div>{errMsg}</div>}
               <button className="btn radius-2">Masuk Sekarang</button>
-              <div className="link">
+              {/* <div className="link">
                 Belum Punya akun? <Link to={`/register`}>Daftar</Link>
-              </div>
+              </div> */}
             </form>
           </div>
         </div>

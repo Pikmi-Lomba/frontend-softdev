@@ -67,17 +67,23 @@
 
     flex-direction: column;
     .MenuSide {
-      color: var(--Black100);
+      color: var(--white20);
       align-self: flex-start;
       height: 45px;
       padding-left: 20px;
-      margin: 10px 0;
+      margin: 4px 0;
       width: 100%;
       .nameMenuSide {
         margin-left: 8px;
         font-size: 16px;
         font-weight: 600;
       }
+    }
+    .activeSidebar {
+      color: var(--Black100);
+      background: var(--zompColor70);
+      border-left: 4px solid var(--Black100);
+      transform: scale(1);
     }
     .titleDash {
       width: 100%;
@@ -94,11 +100,11 @@
 
   .bottomSidebar {
     width: 240px;
-    position: absolute;
-    bottom: 10%;
+    bottom: 0px;
     cursor: pointer;
+    position: absolute;
     .logout {
-      color: var(--Black100);
+      color: var(--white20);
       align-self: flex-start;
       padding-left: 20px;
       height: 45px;
@@ -110,7 +116,7 @@
       }
     }
     .LogoutMitra {
-      color: var(--Black100);
+      color: var(--white20);
       align-self: flex-start;
       padding-left: 20px;
       height: 45px;
@@ -119,6 +125,10 @@
         font-size: 16px;
         font-weight: 600;
       }
+    }
+    .activeSettings {
+      color: var(--Black100);
+      background-color: var(--white20);
     }
   }
 }
@@ -139,6 +149,20 @@
 @media screen and (max-width: 800px) {
   .sidebarMenu {
     width: 60px;
+    .topSidebar {
+      width: 60px;
+      height: 60px;
+      .logo {
+        top: 10px;
+        font-size: 12px;
+        color: white;
+        font-weight: bold;
+        padding: 20px 0;
+        height: 60px;
+
+        text-align: center;
+      }
+    }
 
     .menuSidebar {
       width: 60px;

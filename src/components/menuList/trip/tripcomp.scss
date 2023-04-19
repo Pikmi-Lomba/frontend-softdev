@@ -45,14 +45,9 @@
   --white10: #ffffff;
 }
 
-.tripComp {
+.tripComp2 {
   margin: 5em;
   color: var(--Black100);
-  .titlePage {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 40px;
-  }
   .contentMenu {
     justify-content: space-between;
     padding-bottom: 32px;
@@ -69,133 +64,17 @@
         color: var(--Black70);
       }
     }
-    .filterMenu {
-      .btn2 {
-        padding: 6px 15px;
-        border: none;
-        &::after {
-          border: none;
-        }
-      }
-    }
   }
   .cardsMenu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    .cardMenu {
-      height: 325px;
-      width: 280px;
-      // margin: 0 20px;
-      margin-bottom: 40px;
-      position: relative;
-      color: var(--Black100);
-
-      .imageContent {
-        .imgMenu {
-          width: 280px;
-          height: 280px;
-          background-position: center;
-          background-size: cover;
-          transition-duration: 500ms;
-          position: relative;
-        }
-        .leftIcon {
-          position: absolute;
-          top: 40%;
-          background: var(--CulturedColor70);
-
-          left: 3%;
-          border-radius: 50%;
-          font-size: 24px;
-        }
-
-        .rightIcon {
-          position: absolute;
-          top: 40%;
-          right: 3%;
-          background: var(--CulturedColor70);
-          border-radius: 50%;
-          font-size: 24px;
-        }
-
-        .dots {
-          display: flex;
-          position: absolute;
-          top: 80%;
-          left: 45%;
-          .dot {
-            color: black;
-            font-size: 24px;
-          }
-        }
-        .icon {
-          position: absolute;
-          right: 15px;
-          top: 15px;
-
-          width: 24px;
-          height: 24px;
-          background: var(--CulturedColor50);
-          border-radius: 9999px;
-        }
-        img {
-          width: 280px;
-          height: 280px;
-        }
-      }
-
-      .LocationCardMenu {
-        color: var(--Black100);
-        .titleCardMenu {
-          font-size: 16px;
-          font-weight: bold;
-        }
-        .contentLocation {
-          // flex-direction: row;
-          justify-content: space-between;
-          .pusing {
-            .icon {
-              width: 20px;
-              height: 20px;
-            }
-            .place {
-              color: var(--Black70);
-              font-size: 12px;
-            }
-          }
-          .range {
-            font-size: 12px;
-            line-height: 14.52px;
-            color: var(--Black70);
-          }
-        }
-      }
-    }
-  }
-  .loadMore {
-    text-align: center;
-    .btn {
-      padding: 12px;
-      gap: 10px;
-      width: 100px;
-      height: 41px;
-      text-align: center;
-    }
+    justify-content: center;
+    gap: 20px;
   }
 }
 
 // handphone
 @media screen and (max-width: 768px) {
   .tripComp {
-    margin: 2em;
-    color: var(--Black100);
-    .titlePage {
-      margin: 60px auto;
-      text-align: center;
-      font-size: 32px;
-    }
     .contentMenu {
       justify-content: space-between;
       padding-bottom: 32px;
@@ -212,28 +91,6 @@
           color: var(--Black70);
         }
       }
-      .filterMenu {
-        .btn2 {
-          padding: 6px 15px;
-          border: none;
-          &::after {
-            border: none;
-          }
-        }
-      }
     }
-  }
-}
-
-// mobile
-@media screen and (max-width: 468px) {
-  .tripComp {
-    margin: 10px;
-    color: var(--Black100);
-  }
-  .titlePage {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 24px;
   }
 }

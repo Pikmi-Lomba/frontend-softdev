@@ -8,7 +8,7 @@
   --zompColor20: #7db6b9;
 
   /* Cultured */
-  --CulturedColor70: #c6c6c6;
+  --CulturedColor70: #180101;
   --CulturedColor60: #dfdfdf;
   --CulturedColor50: #f8f8f8;
   --CulturedColor40: #f9f9f9;
@@ -54,10 +54,11 @@
     margin: 60px 0;
   }
   .contentsDetail {
-    justify-content: space-between;
-    align-items: flex-start;
+    margin: auto 10rem;
+    justify-content: center;
+    align-items: center;
     .leftContent {
-      width: 60%;
+      flex-direction: column;
       .title {
         font-size: 20px;
         font-weight: bold;
@@ -68,6 +69,11 @@
         padding-bottom: 60px;
         align-items: flex-start;
         justify-content: flex-start;
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 40px;
+        border-radius: 8px;
+
         .jamOperasi {
           margin-right: 20px;
         }

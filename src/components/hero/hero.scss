@@ -61,6 +61,7 @@
   .setContainer {
     .homeText {
       text-align: center;
+      color: var(--white20);
 
       .title {
         color: var(--whiteColor);
@@ -83,7 +84,7 @@
 
     .homeCardContainer {
       flex-wrap: wrap;
-      width: 80%;
+      width: 60%;
       border-radius: 1rem;
       // padding: 2rem;
       padding: 0.5rem 2rem 0 2rem;
@@ -91,59 +92,46 @@
       position: absolute;
       gap: 1rem;
       justify-content: space-between;
-      bottom: 0%;
+      bottom: -7%;
       transform: translate(-50%);
       left: 50%;
       box-shadow: 0 2px 8px 4px rgba(178, 178, 178, 0.45);
       .homeCard {
-        width: 70%;
+        width: 100%;
         padding-left: 2em;
         padding-right: 2em;
         margin-left: auto;
         margin-right: auto;
 
         .cardItem {
-          color: var(--Black100);
+          color: var(--white20);
           display: flex;
           align-items: center;
           flex-direction: column;
           justify-content: center;
-          // width: 50px;
-          // height: 100px;
-          // background-color: yellow;
           gap: 4px;
-          padding: 10px 0;
+          padding: 4px 0;
           border-radius: 12px 12px 0 0;
-          // margin-right: 32px;
           .icon {
             width: 40px;
             height: 40px;
-            // color: black;
           }
-
           .nameCardItem {
-            // color: black;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             line-height: 22px;
           }
         }
-        .activeMenu {
-          background-color: #333;
-        }
       }
       .LocationCard {
         background: white;
-        // flex-grow: 2;
         height: 46px;
         width: 200px;
-        //   order: 1;
         justify-content: center;
         gap: 8px;
         padding: 11px 20px 11px 20px;
         input {
           width: 100%;
-          // background: var(--inputColor);
           border: none;
           list-style: none;
           padding: 10px;
@@ -151,6 +139,8 @@
           font-weight: 500;
         }
         &::placeholder {
+          list-style: none;
+          border: none;
           font-size: 13px;
           opacity: 0.5;
           font-weight: 400;
@@ -227,32 +217,6 @@
           padding-right: 2em;
           margin-left: auto;
           margin-right: auto;
-
-          .cardItem {
-            color: var(--Black100);
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-            gap: 4px;
-            padding: 4px 4px 0 0;
-            border-radius: 12px 12px 0 0;
-            .icon {
-              width: 30px;
-              height: 30px;
-              // color: black;
-            }
-
-            .nameCardItem {
-              // color: black;
-              font-size: 18px;
-              font-weight: 700;
-              line-height: 22px;
-            }
-          }
-          .activeMenu {
-            background-color: #333;
-          }
         }
         .LocationCard {
           background: white;
@@ -299,10 +263,6 @@
   }
 }
 
-// .marcell {
-//   position: relative;
-// }
-
 .icon44 {
   position: absolute;
   top: 40%;
@@ -318,6 +278,11 @@
   z-index: 999px;
 }
 
-.ac {
-  background-color: red;
+.activeHeroMenu {
+  color: white;
+  background: var(--zompColor70);
+}
+
+.listMenu {
+  color: black;
 }

@@ -49,15 +49,11 @@
   margin: 5em;
   color: var(--Black100);
 
-  .title {
-    margin: 60px auto;
-    text-align: center;
-    font-size: 40px;
-  }
   .contentMenu {
     justify-content: space-between;
     padding-bottom: 32px;
-    align-items: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
     .infoMenu {
       gap: 8px;
       .subTitleMenu {
@@ -83,82 +79,13 @@
 
   .cardsMenu {
     flex-wrap: wrap;
-    justify-content: space-between;
-    .cardMenu {
-      position: relative;
-      cursor: pointer;
-      width: 280px;
-      height: 21rem;
-      margin-bottom: 40px;
-      .icon {
-        position: absolute;
-        right: 15px;
-        top: 15px;
-
-        width: 24px;
-        height: 24px;
-        background: var(--CulturedColor50);
-        border-radius: 9999px;
-      }
-
-      .imageContent {
-        // position: relative;
-        //   overflow: hidden;
-
-        img {
-          width: 280px;
-          height: 280px;
-        }
-      }
-      .titleCardMenu {
-        font-size: 16px;
-        font-weight: bold;
-        color: var(--Black100);
-      }
-      .LocationCardMenu {
-        color: var(--Black100);
-
-        .contentLocation {
-          justify-content: space-between;
-          .pusing {
-            .icon2 {
-              width: 20px;
-              height: 20px;
-            }
-            .place {
-              color: var(--Black70);
-              font-size: 12px;
-            }
-          }
-          .range {
-            font-size: 12px;
-            line-height: 14.52px;
-            color: var(--Black70);
-          }
-        }
-      }
-    }
-  }
-
-  .loadMore {
-    text-align: center;
-    .btn {
-      padding: 12px;
-      gap: 10px;
-      width: 100px;
-      height: 41px;
-      text-align: center;
-    }
+    justify-content: center;
+    gap: 20px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .foodComp {
-    .title {
-      margin: 40px auto;
-      text-align: center;
-      font-size: 24px;
-    }
     .contentMenu {
       justify-content: space-between;
       padding-bottom: 32px;
@@ -172,35 +99,6 @@
         .numberPlaces {
           font-size: 16px;
           color: var(--Black70);
-        }
-      }
-    }
-
-    .cardsMenu {
-      flex-wrap: wrap;
-      justify-content: center;
-      .cardMenu {
-        width: 250px;
-        height: 368px;
-        // background: #000;
-
-        .imageContent {
-          position: relative;
-          //   overflow: hidden;
-          .icon {
-            position: absolute;
-            right: 15px;
-            top: 15px;
-
-            width: 24px;
-            height: 24px;
-            background: var(--CulturedColor50);
-            border-radius: 9999px;
-          }
-          img {
-            width: 250px;
-            height: 250px;
-          }
         }
       }
     }

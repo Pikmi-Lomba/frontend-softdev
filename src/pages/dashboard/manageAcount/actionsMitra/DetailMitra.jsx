@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { AxiosInstanceAdmin } from "../../../../apis/Api";
 import AdminSidebar from "../../../../components/sidebar/AdminSidebar";
 import "./detail.scss";
+import Swal from "sweetalert2";
 
 const DetailMitraDash = () => {
   const [detailDataMitra, setDetailDataMitra] = useState([]);
@@ -33,28 +34,54 @@ const DetailMitraDash = () => {
     setDataVerification({ ...dataVerification, [name]: value });
   };
 
-  console.log(dataVerification);
-  console.log(detailDataMitra);
-
-  const handleVerification = async (e) => {
+  const handleVerification = (e) => {
     e.preventDefault();
     const namaMitra = detailDataMitra.nama_mitra;
 
     const updateverify = {
       verify: dataVerification.verify,
     };
-    await AxiosInstanceAdmin.put(`/${id}/mitra`, updateverify, {
-      headers: {
-        Authorization: "Bearer " + tokenAdmin,
+
+    Swal.fire({
+      title: "Apakah Anda ingin mengubah status dari Mitra",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+      customClass: {
+        title: "titleSwal",
+        popup: "popupSwal",
+        actions: "popupSwal",
       },
-    })
-      .then(() => {
-        setisLoading(false);
-        alert(`Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`);
-      })
-      .catch(() => {
-        alert(`Verifikasi Data akun Mitra ${namaMitra} gagal diubah`);
-      });
+    }).then((result) => {
+      if (result.isConfirmed) {
+        AxiosInstanceAdmin.put(`/${id}/mitra`, updateverify, {
+          headers: {
+            Authorization: "Bearer " + tokenAdmin,
+          },
+        });
+        setisLoading(true);
+        Swal.fire({
+          title: `Verifikasi Data akun Mitra ${namaMitra} berhasil diubah`,
+          icon: "success",
+          customClass: {
+            title: "titleSwal",
+            popup: "popupSwal",
+            icon: "iconSwal",
+          },
+        });
+      } else if (result.isDenied) {
+        Swal.fire({
+          title: `Verifikasi Data akun Mitra ${namaMitra} gagal diubah`,
+          icon: "error",
+          customClass: {
+            title: "titleSwal",
+            popup: "popupSwal",
+            icon: "iconSwal",
+          },
+        });
+      }
+    });
   };
 
   return (
@@ -63,6 +90,9 @@ const DetailMitraDash = () => {
         {detailDataMitra && (
           <div className="CardDetailInformation radius-4 flex">
             <div className="topDetailInformation flex">
+              <div className={`menu verify ${detailDataMitra.verify}`}>
+                {detailDataMitra.verify}
+              </div>
               <div className="imageMitra">
                 <img
                   src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
@@ -76,7 +106,6 @@ const DetailMitraDash = () => {
               </div>
               <div className="contentMitra flex">
                 <div className="title">{detailDataMitra.nama_mitra}</div>
-                <div className="menu verify">{detailDataMitra.verify}</div>
                 <div className="menu">{detailDataMitra.alamat}</div>
               </div>
             </div>
@@ -101,28 +130,34 @@ const DetailMitraDash = () => {
             </div>
           </div>
         )}
-        <div className="flex VerificationOption radius-2 ">
-          <input
-            className=""
-            name="verify"
-            // onChange={(e) => handleChange(e)}
-            onChange={(e) => handleChange(e)}
-            type="radio"
-            value="agree"
-            // onClick={() => setShowPromo(true)}
-          />
-          <label className="pr-10">Setuju</label>
-          <input
-            className=""
-            name="verify"
-            // onChange={(e) => handleChange(e)}
-            onChange={(e) => handleChange(e)}
-            type="radio"
-            value="disagree"
-            // onClick={() => setShowPromo(false)}
-          />
-          <label>Tidak setuju</label>
-          <button onClick={handleVerification}>submit verification</button>
+        {/* <div className="verrificationCard">
+          <div className="title">
+            Verifikasi Akun Dari Mitra {detailDataMitra.nama_mitra}
+          </div>
+        </div> */}
+        <div className="flex verificationCard radius-2 ">
+          <p className="title">Verifikasi Akun Mitra: </p>
+          <div className="optionVefication flex">
+            <input
+              className=""
+              name="verify"
+              onChange={(e) => handleChange(e)}
+              type="radio"
+              value="agree"
+            />
+            <label className="pr-10">Setuju</label>
+            <input
+              className=""
+              name="verify"
+              onChange={(e) => handleChange(e)}
+              type="radio"
+              value="disagree"
+            />
+            <label>Tidak setuju</label>
+          </div>
+          <button className="btn radius-2" onClick={handleVerification}>
+            verifikasi
+          </button>
         </div>
       </div>
     </AdminSidebar>

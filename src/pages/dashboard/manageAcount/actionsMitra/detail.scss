@@ -54,6 +54,7 @@
   }
   .CardDetailInformation {
     flex-direction: column;
+    position: relative;
     background: white;
     width: 550px;
     padding: 20px;
@@ -62,20 +63,33 @@
     .topDetailInformation {
       width: 100%;
       justify-content: flex-start;
+      .verify {
+        // color: var(--VerdigrisColor50);
+        font-size: 16px;
+        position: absolute;
+        padding: 20px;
+        top: 0px;
+        right: 0px;
+        border-radius: 0 16px 0 0;
+        &.agree {
+          color: green;
+          background-color: rgba(0, 128, 0, 0.151);
+        }
+        &.disagree {
+          color: red;
+          background-color: rgba(128, 0, 0, 0.151);
+        }
+      }
       .contentMitra {
         margin-left: 40px;
         flex-direction: column;
-        gap: 20px;
+        gap: 8px;
         .title {
           font-size: 24px;
           font-weight: bold;
         }
         .menu {
           font-size: 18px;
-        }
-        .verify {
-          color: var(--VerdigrisColor50);
-          font-size: 16px;
         }
       }
     }
@@ -94,10 +108,16 @@
     }
   }
 
-  .VerificationOption {
+  .verificationCard {
     background: var(--white10);
     padding: 20px;
     flex-direction: column;
     gap: 10px;
+    .optionVefication {
+      gap: 12px;
+    }
+    .btn {
+      width: 100px;
+    }
   }
 }

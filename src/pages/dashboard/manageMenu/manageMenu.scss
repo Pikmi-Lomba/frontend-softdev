@@ -1,12 +1,18 @@
 .ManageMenuContainer {
   height: 100%;
   margin: 20px 40px;
+
+  color: var(--zompColor50);
   .topContent {
     margin-bottom: 32px;
   }
   .centerContent {
     justify-content: flex-end;
     margin-bottom: 32px;
+    .addData {
+      color: var(--whiteColor20);
+      font-size: 16px;
+    }
 
     .searchComponent {
       display: flex;
@@ -44,4 +50,28 @@
 
 .FormData {
   background: white;
+}
+
+.colortable {
+  color: white !important;
+  background: var(--zompColor50) !important;
+}
+
+.actionMenuList {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  // gap: 10px !important;
+}
+
+.detailActionList {
+  color: grey;
+}
+
+.deleteActionList {
+  color: #e61010;
+}
+
+.editActionList {
+  color: #0d40c6;
 }

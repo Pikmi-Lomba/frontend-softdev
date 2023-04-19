@@ -1,15 +1,18 @@
 import "./sidebar.scss";
-import { AiOutlineClose } from "react-icons/ai";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import TopBarDash from "../navbar/TopbarDash";
-import { MdPerson, MdPeople, MdLogout, MdFestival } from "react-icons/md";
+import { MdLogout, MdFestival, MdSettings } from "react-icons/md";
 import { BsGrid3X3GapFill } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Auth } from "../../utils/Auth";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 const MitraSidebar = ({ children }) => {
+  const activeLink = "activeSidebar MenuSide flex";
+  const normalLink = "MenuSide flex";
+  const activeSettings = "activeSettings LogoutMitra flex";
+  const normalSettings = "LogoutMitra flex";
   const [navigate, setNavigate] = useState(false);
 
   const handleLogout = () => {
@@ -31,12 +34,18 @@ const MitraSidebar = ({ children }) => {
           <hr className="garis" />
         </div>
         <div className="menuSidebar flex">
-          <NavLink to={`/dashboard-mitra/`} className="MenuSide flex">
+          <NavLink
+            to={`/dashboard-mitra/`}
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
             <BsGrid3X3GapFill className="icon " />
             <p className="nameMenuSide">Home</p>
           </NavLink>
           <hr className="garis" />
-          <NavLink to={`/dashboard-mitra/events`} className="MenuSide flex">
+          <NavLink
+            to={`/dashboard-mitra/events`}
+            className={({ isActive }) => (isActive ? activeLink : normalLink)}
+          >
             <MdFestival className="icon " />
             <p className="nameMenuSide">Events</p>
           </NavLink>
@@ -46,7 +55,7 @@ const MitraSidebar = ({ children }) => {
             to={`/dashboard-mitra/settings`}
             className="LogoutMitra flex"
           >
-            <MdLogout className="icon " />
+            <MdSettings className="icon " />
             <p className="nameMenuSide">Settings</p>
           </NavLink>
           <div className="LogoutMitra flex" onClick={handleLogout}>

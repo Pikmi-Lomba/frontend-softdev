@@ -118,7 +118,7 @@ input {
 .active {
   border-bottom: 2px solid var(--zompColor50);
   background: var(--white20);
-  /* color: var(--white20); */
+  color: var(--Black100);
   border-radius: 12px 12px 0 0;
   padding: -20px;
   /* color: var(--white20); */
@@ -153,4 +153,17 @@ input {
 }
 .radius-full {
   border-radius: 9999px;
+}
+
+.titleSwal {
+  font-size: 20px !important;
+  color: white !important;
+}
+
+.popupSwal {
+  background: var(--zompColor50) !important;
+}
+
+.iconSwal {
+  font-size: 10px !important;
 }

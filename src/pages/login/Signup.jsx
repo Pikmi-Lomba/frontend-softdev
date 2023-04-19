@@ -11,7 +11,7 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosIntanceMitra, AxiosLocal } from "../../apis/Api";
+import { AxiosIntanceMitra } from "../../apis/Api";
 
 const SignUpPage = () => {
   const [username, setUsername] = useState("");
@@ -51,8 +51,6 @@ const SignUpPage = () => {
       });
   };
 
-  console.log(username, password, email);
-
   if (navigate) {
     return <Navigate to="/login" />;
   }
@@ -66,9 +64,9 @@ const SignUpPage = () => {
               {/* <img src={image} alt="aaa.png" /> */}
             </div>
             <div className="contents flex">
-              <h2 className="title">Masuk</h2>
+              <h2 className="title">Daftar</h2>
 
-              <p className="subtitle">Silahkan masuk untuk melanjutkan</p>
+              <p className="subtitle">Silahkan daftar untuk melanjutkan</p>
             </div>
             <form className="getUser" onSubmit={submit}>
               <div className="email flex ">
@@ -97,7 +95,7 @@ const SignUpPage = () => {
                   <input
                     type={showPassword ? "text" : "password"}
                     required
-                    placeholder="Passoword"
+                    placeholder="Password"
                     className="inputPass "
                     onChange={(e) => setPassword(e.target.value)}
                   />
@@ -106,7 +104,20 @@ const SignUpPage = () => {
                   </div>
                 </div>
               </div>
-              <button className="btn radius-2">Masuk Sekarang</button>
+              {errMsg && (
+                <div
+                  className="radius-3"
+                  style={{
+                    color: "red",
+                    backgroundColor: "rgba(128, 0, 0, 0.151)",
+                    padding: "12px",
+                    marginBottom: "12px",
+                  }}
+                >
+                  {errMsg}
+                </div>
+              )}
+              <button className="btn radius-2">Beralih Login</button>
               <div className="link">
                 Sudah Punya akun? <Link to={`/login`}>Masuk</Link>
               </div>

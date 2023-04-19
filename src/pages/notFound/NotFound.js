@@ -1,5 +1,11 @@
+import "./style.scss";
+
 const NotFound = () => {
-  return <>Halaman Belum tersedia</>;
+  return (
+    <div className="emptyList-wrap">
+      <img src="/assets/images/13525-empty.gif" alt="empty" />
+    </div>
+  );
 };
 
 export default NotFound;
