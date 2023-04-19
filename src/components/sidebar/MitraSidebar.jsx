@@ -30,7 +30,7 @@ const MitraSidebar = ({ children }) => {
       </div>
       <section className="sidebarMenu flex">
         <div className="topSidebar">
-          <div className="logo">Logo</div>
+          <div className="logo">TrivtinID</div>
           <hr className="garis" />
         </div>
         <div className="menuSidebar flex">
@@ -53,7 +53,10 @@ const MitraSidebar = ({ children }) => {
         <div className="bottomSidebar ">
           <NavLink
             to={`/dashboard-mitra/settings`}
-            className="LogoutMitra flex"
+            // className="LogoutMitra flex"
+            className={({ isActive }) =>
+              isActive ? activeSettings : normalSettings
+            }
           >
             <MdSettings className="icon " />
             <p className="nameMenuSide">Settings</p>
