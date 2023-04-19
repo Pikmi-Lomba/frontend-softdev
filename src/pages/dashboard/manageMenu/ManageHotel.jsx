@@ -13,6 +13,9 @@ import { AxiosInstanceUser } from "../../../apis/Api";
 import Swal from "sweetalert2";
 import { BreadcrumbHotel } from "../../../components/breadCrumbs/BreadCrumbs";
 import Loading from "../../../utils/loading";
+import { MdDelete } from "react-icons/md";
+import { Tooltip } from "@mui/material";
+import { RiEdit2Line } from "react-icons/ri";
 
 const ManageHotel = () => {
   const [dataHotel, setDataHotel] = useState([]);
@@ -187,11 +190,20 @@ const ManageHotel = () => {
                       <TableCell align="center">{row.telp_hotel}</TableCell>
                       <TableCell align="center">{row.location_hotel}</TableCell>
                       <TableCell align="center">{row.city_hotel}</TableCell>
-                      <TableCell align="center">
-                        <button style={{ marginRight: "4px" }}>Edit</button>
-                        <button onClick={() => handleDelete(row.id_hotel)}>
-                          Hapus
-                        </button>
+                      <TableCell className="actionMenuList">
+                        <Tooltip title="Edit Hotel">
+                          <Link to={`#`}>
+                            <RiEdit2Line className="icon editActionList" />
+                          </Link>
+                        </Tooltip>
+                        <Tooltip title="Delete Hotel">
+                          <div
+                            className="detailMenuList"
+                            onClick={() => handleDelete(row.id_hotel)}
+                          >
+                            <MdDelete className="icon deleteActionList" />
+                          </div>
+                        </Tooltip>
                       </TableCell>
                     </TableRow>
                   ))}

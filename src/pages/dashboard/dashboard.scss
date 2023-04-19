@@ -16,6 +16,10 @@
       color: blue;
       background-color: rgba(0, 0, 128, 0.151);
     }
+    &.notsubmit {
+      color: orangered;
+      background-color: rgba(241, 182, 55, 0.151);
+    }
   }
   .titleTable {
     margin-top: 20px;

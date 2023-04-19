@@ -13,6 +13,9 @@ import { AxiosInstanceUser } from "../../../apis/Api";
 import Swal from "sweetalert2";
 import { BreadcrumbTrip } from "../../../components/breadCrumbs/BreadCrumbs";
 import Loading from "../../../utils/loading";
+import { MdDelete } from "react-icons/md";
+import { RiEdit2Line } from "react-icons/ri";
+import { Tooltip } from "@mui/material";
 
 const ManageTrip = () => {
   const [dataWisata, setDataWisata] = useState([]);
@@ -157,11 +160,20 @@ const ManageTrip = () => {
                       <TableCell align="center">{row.telp_trip}</TableCell>
                       <TableCell align="center">{row.location_trip}</TableCell>
                       <TableCell align="center">{row.city_trip}</TableCell>
-                      <TableCell align="center">
-                        <button style={{ marginRight: "4px" }}>Edit</button>
-                        <button onClick={() => handleDelete(row.id_trip)}>
-                          Hapus
-                        </button>
+                      <TableCell className="actionMenuList">
+                        <Tooltip title="Edit Wisata">
+                          <Link to={`#`}>
+                            <RiEdit2Line className="icon editActionList" />
+                          </Link>
+                        </Tooltip>
+                        <Tooltip title="Delete Wisata">
+                          <div
+                            className="detailMenuList"
+                            onClick={() => handleDelete(row.id_trip)}
+                          >
+                            <MdDelete className="icon deleteActionList" />
+                          </div>
+                        </Tooltip>
                       </TableCell>
                     </TableRow>
                   ))}

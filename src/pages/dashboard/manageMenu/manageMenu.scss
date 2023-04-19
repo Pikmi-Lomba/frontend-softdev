@@ -57,7 +57,21 @@
   background: var(--zompColor50) !important;
 }
 
-.detailMenuList {
-  height: 20px;
-  width: 10px;
+.actionMenuList {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  // gap: 10px !important;
+}
+
+.detailActionList {
+  color: grey;
+}
+
+.deleteActionList {
+  color: #e61010;
+}
+
+.editActionList {
+  color: #0d40c6;
 }

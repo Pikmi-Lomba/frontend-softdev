@@ -11,42 +11,40 @@ const DetailHeroEvent = () => {
   const [detailEvent, setDetailEvent] = useState();
   const [isLoading, setisLoading] = useState(true);
   const [liked, setLiked] = useState();
-  const [setset, setSetset] = useState({
-    decision: liked,
-  });
 
   const { id } = useParams();
-  console.log(setset);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/events/${id}`).then((res) => {
       setDetailEvent(res.data.data.event);
       setisLoading(false);
+      if (res.data.data.event.like_decision === "true") {
+        setLiked(true);
+      } else if (res.data.data.event.like_decision === "false") {
+        setLiked(false);
+      }
     });
   }, [isLoading, id]);
 
   const openNewPage = () => {
-    window.open("https://www.youtube.com/", "_blank");
+    const link = detailEvent.link_pendaftaran;
+    window.open(`${link}`, "_blank");
   };
 
   const handleLike = async () => {
     await AxiosIntanceLikeEvent.post(`/${id}/like`)
       .then((res) => {
-        if (res.data.data.decision === "like") {
-          setSetset({
-            decision: res.data.data.decision,
-          });
-          setLiked(true);
-        } else if (res.data.data.decision === "unlike") {
-          setLiked(false);
-        }
-        // setLiked(!liked);
-        console.log(res.data.data.decision);
+        setisLoading(true);
+        // if (res.data.data.decision === "like") {
+        //   setLiked(true);
+        // } else if (res.data.data.decision === "unlike") {
+        //   setLiked(false);
+        // }
       })
-      .catch((err) => console.log(err));
+      .catch((err) =>
+        alert("Anda diharuskan login sebelum like postingan ini")
+      );
   };
-
-  console.log("api", liked);
 
   return (
     <>
@@ -77,7 +75,9 @@ const DetailHeroEvent = () => {
                     <div className="iconMenus" onClick={handleLike}>
                       <FaHeart
                         className="icon likeButton"
-                        style={{ color: liked ? "red" : "black" }}
+                        style={{
+                          color: liked ? "red" : "black",
+                        }}
                       />
                       {/* {liked ? "like" : "unlike"} */}
                     </div>
@@ -111,10 +111,10 @@ const DetailHeroEvent = () => {
                 <div className="title">acara mulai dari</div>
                 <div className="contentDate flex">
                   <div className="name">
-                    {`Tanggal Mulai: ${detailEvent.alamat}, ${detailEvent.lokasi_kota}`}
+                    {`Tanggal Mulai: ${detailEvent.tanggal_mulai}`}
                   </div>
                   <div className="name">
-                    {`Tanggal Akhir: ${detailEvent.alamat}, ${detailEvent.lokasi_kota}`}
+                    {`Tanggal Akhir: ${detailEvent.tanggal_akhir}`}
                   </div>
                 </div>
               </div>

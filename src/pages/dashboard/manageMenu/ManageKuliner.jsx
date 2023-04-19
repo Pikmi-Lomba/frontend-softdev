@@ -13,6 +13,8 @@ import { AxiosInstanceUser } from "../../../apis/Api";
 import Swal from "sweetalert2";
 import { BreadcrumbKuliner } from "../../../components/breadCrumbs/BreadCrumbs";
 import Loading from "../../../utils/loading";
+import { MdDelete, MdInfo, MdInfoOutline } from "react-icons/md";
+import { Tooltip } from "@mui/material";
 
 const ManageKuliner = () => {
   const [dataKuliner, setDataKuliner] = useState([]);
@@ -158,17 +160,26 @@ const ManageKuliner = () => {
                       <TableCell align="center">{row.telp_resto}</TableCell>
                       <TableCell align="center">{row.location_resto}</TableCell>
                       <TableCell align="center">{row.city_resto}</TableCell>
-                      <TableCell align="center" className="flex">
-                        <Link
-                          className="detailMenuList"
-                          to={`detail/${row.id_resto}`}
-                          style={{ marginRight: "4px" }}
-                        >
-                          Detail
-                        </Link>
-                        <button onClick={() => handleDelete(row.id_resto)}>
-                          Hapus
-                        </button>
+                      <TableCell
+                        // width={180}
+                        className=" actionMenuList"
+                      >
+                        <Tooltip title="View Detail">
+                          <Link
+                            className="detailMenuList"
+                            to={`detail/${row.id_resto}`}
+                          >
+                            <MdInfoOutline className="icon detailActionList" />
+                          </Link>
+                        </Tooltip>
+                        <Tooltip title="Delete Kuliner">
+                          <div
+                            className="detailMenuList"
+                            onClick={() => handleDelete(row.id_resto)}
+                          >
+                            <MdDelete className="icon deleteActionList" />
+                          </div>
+                        </Tooltip>
                       </TableCell>
                     </TableRow>
                   ))}
