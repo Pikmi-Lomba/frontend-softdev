@@ -13,8 +13,9 @@ import { AxiosInstanceUser } from "../../../apis/Api";
 import Swal from "sweetalert2";
 import { BreadcrumbKuliner } from "../../../components/breadCrumbs/BreadCrumbs";
 import Loading from "../../../utils/loading";
-import { MdDelete, MdInfo, MdInfoOutline } from "react-icons/md";
+import { MdDelete, MdEdit, MdInfo, MdInfoOutline } from "react-icons/md";
 import { Tooltip } from "@mui/material";
+import { ModeEditOutline } from "@mui/icons-material";
 
 const ManageKuliner = () => {
   const [dataKuliner, setDataKuliner] = useState([]);
@@ -149,6 +150,14 @@ const ManageKuliner = () => {
                             to={`detail/${row.id_resto}`}
                           >
                             <MdInfoOutline className="icon detailActionList" />
+                          </Link>
+                        </Tooltip>
+                        <Tooltip title="View Edit">
+                          <Link
+                            className="detailMenuList"
+                            to={`update/${row.id_resto}`}
+                          >
+                            <ModeEditOutline className="icon detailActionList" />
                           </Link>
                         </Tooltip>
                         <Tooltip title="Delete Kuliner">
