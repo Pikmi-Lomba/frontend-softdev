@@ -2,12 +2,12 @@ import ActionManageEvents from "./ActionManageEvent";
 
 export const MenuColumns = [
   { field: "id_event", headerName: "ID", width: 90 },
-  {
-    field: "event_organizer",
-    headerName: "Nama Mitra",
-    width: 220,
-    editable: true,
-  },
+  // {
+  //   field: "event_organizer",
+  //   headerName: "Nama Mitra",
+  //   width: 220,
+  //   editable: true,
+  // },
   {
     field: "nama_event",
     headerName: "Nama Event",
@@ -15,16 +15,22 @@ export const MenuColumns = [
     editable: true,
   },
   {
+    field: "alamat",
+    headerName: "alamat",
+    width: 180,
+  },
+  {
     field: "kategori",
     headerName: "Kategori",
     width: 150,
     editable: true,
   },
-  // {
-  //   field: "phone",
-  //   headerName: "No Handphone",
-  //   width: 180,
-  // },
+  {
+    field: "telepon_personal",
+    headerName: "No Handphone",
+    width: 180,
+  },
+
   // {
   //   field: "actions",
   //   headerName: "Actions",

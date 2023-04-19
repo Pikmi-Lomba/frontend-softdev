@@ -40,7 +40,15 @@ import LoginAdminPage from "../pages/login/LoginAdmin";
 import PrivateRouteAdmin from "./PrivateRoutingAdmin";
 import EditMenuEventMitra from "../components/mitra/action/menuEvent/EditMenuEventMitra";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
-
+import SidebarAdminNotFound from "../pages/notFound/SidebarAdminNotFound";
+import ManageKuliner from "../pages/dashboard/manageMenu/ManageKuliner";
+import CreateKuliner from "../pages/dashboard/manageMenu/actionsKuliner/CreateKuliner";
+import ManageHotel from "../pages/dashboard/manageMenu/ManageHotel";
+import ManageTrip from "../pages/dashboard/manageMenu/ManageTrip";
+import CreateHotel from "../pages/dashboard/manageMenu/actionsHotel/CreateHotel";
+import CreateTrip from "../pages/dashboard/manageMenu/actionsTrip/CreateTrip";
+import DetailKulinerDash from "../pages/dashboard/manageMenu/actionsKuliner/DetailKuliner";
+import CreateMakanan from "../pages/dashboard/manageMenu/actionsKuliner/CreateMakanan";
 const Routing = () => {
   return (
     <>
