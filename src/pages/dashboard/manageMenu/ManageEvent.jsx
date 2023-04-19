@@ -25,6 +25,7 @@ const ManageEvent = () => {
   useEffect(() => {
     AxiosLocal.get("/events")
       .then((res) => {
+        console.log(res.data.data.event);
         setDataEvent(res.data.data.event);
         setisLoading(false);
       })
@@ -77,13 +78,19 @@ const ManageEvent = () => {
                       Telepon Event
                     </TableCell>
                     <TableCell sx={{ color: "white" }} align="center">
-                      Alamat Hotel
+                      Alamat Event
                     </TableCell>
                     <TableCell sx={{ color: "white" }} align="center">
-                      Kota Hotel
+                      Kota Event
                     </TableCell>
                     <TableCell sx={{ color: "white" }} align="center">
                       Kategori
+                    </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Tanggal Mulai
+                    </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Tanggal Akhir
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -103,6 +110,8 @@ const ManageEvent = () => {
                       <TableCell align="center">{row.alamat}</TableCell>
                       <TableCell align="center">{row.lokasi_kota}</TableCell>
                       <TableCell align="center">{row.kategori}</TableCell>
+                      <TableCell align="center">{row.tanggal_mulai}</TableCell>
+                      <TableCell align="center">{row.tanggal_akhir}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

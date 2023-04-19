@@ -1,0 +1,75 @@
+.MitraComp {
+  margin: 5rem 20rem;
+  //   width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .topbarInfo {
+    text-align: center;
+    margin-bottom: 60px;
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+    }
+    .subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--Black70);
+    }
+  }
+
+  .bottom {
+    flex-direction: column;
+    gap: 18px;
+    .topInfo {
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .desc {
+        font-size: 16px;
+      }
+    }
+    .daftarMitra {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      li {
+        list-style: lower-alpha;
+      }
+    }
+    .dokumenPra {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .title {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .subtitle {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      li {
+        list-style: lower-alpha;
+        font-size: 16px;
+      }
+    }
+    .bottomInfo {
+      font-size: 12px;
+    }
+    .redirectMitra {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+  }
+}

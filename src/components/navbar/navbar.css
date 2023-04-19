@@ -17,6 +17,7 @@
 
 .nav-menu {
   display: flex;
+  order: 2;
 }
 
 li {
@@ -45,6 +46,12 @@ li {
   font-size: 14px;
   height: 41px;
   text-align: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  order: 1;
 }
 
 .btn:hover {

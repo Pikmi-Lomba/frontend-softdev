@@ -68,7 +68,7 @@ const LoginAdminPage = () => {
             <div className="logoCompany">
               {/* <img src={image} alt="aaa.png" /> */}
             </div>
-            <div className="contents flex">
+            <div className="contentsSign">
               <h2 className="title">Masuk</h2>
               <p className="subtitle">Silahkan masuk untuk melanjutkan</p>
             </div>

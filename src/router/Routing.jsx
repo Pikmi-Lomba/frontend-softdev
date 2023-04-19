@@ -51,6 +51,7 @@ import DetailKulinerDash from "../pages/dashboard/manageMenu/actionsKuliner/Deta
 import CreateMakanan from "../pages/dashboard/manageMenu/actionsKuliner/CreateMakanan";
 
 import UpdateKuliner from "../pages/dashboard/manageMenu/actionsKuliner/UpdateKuliner";
+import MitraPageLanding from "../pages/aboutMitra/MitraPage";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -62,6 +63,7 @@ const Routing = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/about-page" element={<AboutPage />} />
           <Route path="/contact-page" element={<ContactPage />} />
+          <Route path="/mitra-page" element={<MitraPageLanding />} />
           {/* Food Menu */}
           <Route path="/kuliner-page">
             <Route index element={<FoodPage />} />

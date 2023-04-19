@@ -63,7 +63,7 @@ const SignUpPage = () => {
             <div className="logoCompany">
               {/* <img src={image} alt="aaa.png" /> */}
             </div>
-            <div className="contents flex">
+            <div className="contentsSign">
               <h2 className="title">Daftar</h2>
 
               <p className="subtitle">Silahkan daftar untuk melanjutkan</p>
@@ -119,7 +119,10 @@ const SignUpPage = () => {
               )}
               <button className="btn radius-2">Beralih Login</button>
               <div className="link">
-                Sudah Punya akun? <Link to={`/login`}>Masuk</Link>
+                Sudah Punya akun?{" "}
+                <Link to={`/login`}>
+                  <span className="clr">Masuk</span>
+                </Link>
               </div>
             </form>
           </div>

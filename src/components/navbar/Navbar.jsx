@@ -23,15 +23,18 @@ function Navbar() {
         <NavLink to="/contact-page" smooth={true} duration={500}>
           <li>Contact Us</li>
         </NavLink>
+        <NavLink to="/mitra-page" smooth={true} duration={500}>
+          <li>Mitra</li>
+        </NavLink>
       </ul>
       <div className={nav ? "logo dark" : "logo"}>
         <h2>TravtinID</h2>
       </div>
-      <div className="nav-icons">
+      {/* <div className="nav-icons">
         <Link to={`/login`} className="btn radius-3">
           Login{" "}
         </Link>
-      </div>
+      </div> */}
       <div className="hamburger" onClick={handleNav}>
         {!nav ? (
           <HiOutlineMenuAlt4 className="icon" />

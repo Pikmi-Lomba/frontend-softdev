@@ -55,6 +55,7 @@
     z-index: 1000;
     padding: 14px 42px;
     .navMenu {
+      order: 2;
       ul {
         li {
           padding: 0.5rem;
@@ -66,8 +67,9 @@
         }
       }
     }
-    .logoNavbar {
+    .logo {
       color: yellow;
+      order: 2;
     }
     .btn {
       padding: 10px 20px;

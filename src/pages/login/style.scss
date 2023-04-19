@@ -59,11 +59,17 @@
       justify-content: center;
       width: 80%;
 
-      .contents {
+      .contentsSign {
+        display: flex;
+        align-items: center;
         flex-direction: column;
         justify-content: center;
         margin-bottom: 24px;
         gap: 4px;
+        .title {
+          font-size: 30px;
+          font-weight: 700;
+        }
       }
       .getUser {
         width: 60%;
@@ -220,4 +226,8 @@
       display: none;
     }
   }
+}
+
+.clr {
+  color: var(--zompColor50);
 }

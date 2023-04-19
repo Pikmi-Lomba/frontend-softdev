@@ -1,10 +1,13 @@
 .ManageMenuContainer {
   height: 100%;
   margin: 20px 40px;
-
   color: var(--zompColor50);
   .topContent {
     margin-bottom: 32px;
+    .title {
+      font-size: 28px;
+      font-weight: bold;
+    }
   }
   .centerContent {
     justify-content: flex-end;
