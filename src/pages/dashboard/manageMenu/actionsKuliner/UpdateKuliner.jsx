@@ -1,42 +1,54 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Sidebar from "../../../../components/sidebar/AdminSidebar";
 import { AxiosInstanceUser } from "../../../../apis/Api";
+import { useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 
-const CreateKuliner = () => {
+const UpdateKuliner = () => {
   const navigate = useNavigate();
   const backPage = () => {
     navigate(`/dashboard-admin/kuliner`);
   };
-
-  // initial data form put data
+  const { id } = useParams();
   const initialValues = {
     name_resto: "",
     telp_resto: "",
-    image_resto: "",
-    link_resto: "",
-    city_resto: "",
     location_resto: "",
+    city_resto: "",
+    link_resto: "",
+    image_resto: "",
   };
-
-  const [formData, setFormData] = useState(initialValues);
+  const [isLoading, setIsLoading] = useState(true);
+  const [dataKuliner, setDataKuliner] = useState(initialValues);
+  useEffect(() => {
+    AxiosInstanceUser.get(`food/${id}`).then((res) => {
+      setIsLoading(false);
+      setDataKuliner({
+        name_resto: res.data.list_resto_by_pk.name_resto,
+        telp_resto: res.data.list_resto_by_pk.telp_resto,
+        location_resto: res.data.list_resto_by_pk.location_resto,
+        city_resto: res.data.list_resto_by_pk.city_resto,
+        link_resto: res.data.list_resto_by_pk.link_resto,
+        image_resto: res.data.list_resto_by_pk.image_resto,
+      });
+    });
+  }, [isLoading]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setDataKuliner({ ...dataKuliner, [name]: value });
   };
 
-  // end initial data form put data
+  // Change data
 
-  const handleAddUser = async (e) => {
+  const handleChangeDataKuliner = async (e) => {
     e.preventDefault();
-
-    await AxiosInstanceUser.post("/food", formData)
+    await AxiosInstanceUser.put(`/food/${id}`, dataKuliner)
       .then(() => {
         navigate(-1);
         Swal.fire({
-          title: `Data Resto Berhasil Di Tambahkan`,
+          title: `Data Resto Berhasil Di Update`,
           icon: "success",
           showClass: { popup: "animate__animated animate__fadeInDown" },
           hideClass: { popup: "animate__animated animate__fadeOutUp" },
@@ -48,10 +60,11 @@ const CreateKuliner = () => {
         });
       })
 
-      .catch(() => {
+      .catch((err) => {
+        console.log(err.response.data);
         Swal.fire({
-          title: `Data Resto Gagal Di Tambahkan`,
-          icon: "success",
+          title: `Data Resto Gagal Di Update`,
+          icon: "error",
           showClass: { popup: "animate__animated animate__fadeInDown" },
           hideClass: { popup: "animate__animated animate__fadeOutUp" },
           customClass: {
@@ -63,11 +76,12 @@ const CreateKuliner = () => {
       });
   };
 
+  console.log(dataKuliner);
   return (
     <Sidebar>
       <section className="ActionContainer">
         <div className="top flex">
-          <h1>Tambah Kuliner</h1>
+          <h1>Edit Kuliner</h1>
         </div>
         <form className="bottom flex radius-5">
           <div className="right flex">
@@ -75,6 +89,7 @@ const CreateKuliner = () => {
               <label className="title">Nama Resto</label>
               <input
                 name="name_resto"
+                value={dataKuliner.name_resto}
                 className="radius-2"
                 type="text"
                 placeholder="Nama Resto..."
@@ -85,6 +100,7 @@ const CreateKuliner = () => {
               <label className="title">Telepon Resto</label>
               <input
                 name="telp_resto"
+                value={dataKuliner.telp_resto}
                 className="radius-2"
                 type="number"
                 placeholder="Telepon Resto..."
@@ -95,6 +111,7 @@ const CreateKuliner = () => {
               <label className="title">Alamat Resto</label>
               <input
                 name="location_resto"
+                value={dataKuliner.location_resto}
                 className="radius-2"
                 type="text"
                 placeholder="Alamat Resto..."
@@ -105,6 +122,7 @@ const CreateKuliner = () => {
               <label className="title">Kota Resto</label>
               <input
                 name="city_resto"
+                value={dataKuliner.city_resto}
                 className="radius-2"
                 type="text"
                 placeholder="Kota Resto..."
@@ -115,6 +133,7 @@ const CreateKuliner = () => {
               <label className="title">Link Website Resto</label>
               <input
                 name="link_resto"
+                value={dataKuliner.link_resto}
                 className="radius-2"
                 type="text"
                 placeholder="Link Website..."
@@ -125,6 +144,7 @@ const CreateKuliner = () => {
               <label className="title">Image Copy Address</label>
               <input
                 name="image_resto"
+                value={dataKuliner.image_resto}
                 className="radius-2"
                 type="text"
                 placeholder="Image Copy Address..."
@@ -136,8 +156,8 @@ const CreateKuliner = () => {
             <button className=" btn radius-2" onClick={backPage}>
               Kembali
             </button>
-            <button className=" btn radius-2" onClick={handleAddUser}>
-              Tambah Kuliner
+            <button className=" btn radius-2" onClick={handleChangeDataKuliner}>
+              Simpan
             </button>
           </div>
         </form>
@@ -146,12 +166,4 @@ const CreateKuliner = () => {
   );
 };
 
-export default CreateKuliner;
-
-// const dataKuliner = new FormData();
-// dataKuliner.append("name_resto", formData.name_resto);
-// dataKuliner.append("telp_resto", formData.telp_resto);
-// dataKuliner.append("location_resto", formData.location_resto);
-// dataKuliner.append("city_resto", formData.city_resto);
-// dataKuliner.append("link_resto", formData.link_resto);
-// dataKuliner.append("image_resto", formData.image_resto);
+export default UpdateKuliner;

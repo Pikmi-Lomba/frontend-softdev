@@ -17,13 +17,12 @@ const TripComp = () => {
   useEffect(() => {
     AxiosInstanceUser.get(`/trip`)
       .then((res) => {
-        console.log(res.data.menu_wisata);
         setDatatrip(res.data.menu_wisata.slice(0, limitData));
         setDatatrip2(res.data.menu_wisata);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, limitData]);
 

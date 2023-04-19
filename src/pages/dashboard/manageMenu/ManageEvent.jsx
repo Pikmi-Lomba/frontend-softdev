@@ -6,6 +6,14 @@ import { Box } from "@mui/material";
 import { MenuColumns } from "./ManageMenuColumns";
 import { useEffect, useState } from "react";
 import { AxiosLocal, getDataEvent } from "../../../apis/Api";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import Loading from "../../../utils/loading";
 
 const ManageEvent = () => {
   const [dataEvent, setDataEvent] = useState([]);
@@ -21,36 +29,22 @@ const ManageEvent = () => {
         setisLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading]);
-
-  console.log(dataEvent);
-
-  // const handleSearch = (e) => {
-  //   const getSearch = e.target.value;
-  //   setSearch(getSearch);
-  //   if (getSearch !== "") {
-  //     const searchData = dataEvent.filter((item) =>
-  //       item.name_event.toLowerCase().includes(getSearch)
-  //     );
-  //     setDataEvent(searchData);
-  //   } else {
-  //     setLoading(true);
-  //     setDataEvent(dataEvent);
-  //   }
-  // };
-
   return (
     <>
       <Sidebar>
-        <section className="ManageMenuContainer">
-          <div className="topContent">
-            <h2 className="title">Menu Event</h2>
-            <h5 className="subTitle">{`Dashboard > Menu Event`}</h5>
-          </div>
-          <div className="centerContent flex">
-            {/* <div className="searchComponent radius-2">
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <section className="ManageMenuContainer">
+            <div className="topContent">
+              <h2 className="title">Menu Event</h2>
+              <h5 className="subTitle">{`Dashboard > Menu Event`}</h5>
+            </div>
+            <div className="centerContent flex">
+              {/* <div className="searchComponent radius-2">
               <AiOutlineSearch className="icon" />
               <input
                 type="text"
@@ -61,7 +55,7 @@ const ManageEvent = () => {
                 }}
               />
             </div> */}
-            {/* <div className="addData">
+              {/* <div className="addData">
               <Link
                 to={`/dashboard-admin/event/create`}
                 className="btn radius-2"
@@ -69,27 +63,53 @@ const ManageEvent = () => {
                 Tambah Event
               </Link>
             </div> */}
-          </div>
-          <div className="FormData">
-            <Box sx={{ height: 371, width: "100%" }}>
-              <DataGrid
-                rows={dataEvent}
-                columns={MenuColumns}
-                getRowId={(row) => row.id_event}
-                initialState={{
-                  pagination: {
-                    paginationModel: {
-                      pageSize: 5,
-                    },
-                  },
-                }}
-                pageSizeOptions={[5]}
-                checkboxSelection
-                disableRowSelectionOnClick
-              />
-            </Box>
-          </div>
-        </section>
+            </div>
+
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                <TableHead sx={{ background: "#45969b" }}>
+                  <TableRow>
+                    <TableCell sx={{ color: "white" }}>No.</TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Nama Event
+                    </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Telepon Event
+                    </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Alamat Hotel
+                    </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Kota Hotel
+                    </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Kategori
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {dataEvent.map((row, i) => (
+                    <TableRow
+                      key={i}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row">
+                        {i++}
+                      </TableCell>
+                      <TableCell align="center">{row.nama_event}</TableCell>
+                      <TableCell align="center">
+                        {row.telepon_personal}
+                      </TableCell>
+                      <TableCell align="center">{row.alamat}</TableCell>
+                      <TableCell align="center">{row.lokasi_kota}</TableCell>
+                      <TableCell align="center">{row.kategori}</TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </section>
+        )}
       </Sidebar>
     </>
   );

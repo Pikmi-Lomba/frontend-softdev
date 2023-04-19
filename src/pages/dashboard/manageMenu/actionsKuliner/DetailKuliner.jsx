@@ -9,6 +9,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { MdDelete } from "react-icons/md";
+import { Tooltip } from "@mui/material";
+import Swal from "sweetalert2";
+
 const DetailKulinerDash = () => {
   const { id } = useParams();
   const [dataDetail, setDataDetail] = useState();
@@ -25,9 +29,49 @@ const DetailKulinerDash = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, id]);
+
+  const handleDelete = (id_makanan) => {
+    Swal.fire({
+      title: "Apakah Admin Yakin Menghapus Menu Makanan?",
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+      customClass: {
+        title: "titleSwal",
+        popup: "popupSwal",
+        actions: "popupSwal",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        AxiosInstanceUser.delete(`/menusfood/${id_makanan}`);
+        setIsLoading(true);
+        Swal.fire({
+          title: "Berhasil Menghapus Menu Makanan",
+          icon: "success",
+          customClass: {
+            title: "titleSwal",
+            popup: "popupSwal",
+            icon: "iconSwal",
+          },
+        });
+      } else if (result.isDenied) {
+        Swal.fire({
+          title: "Gagal Menghapus Menu Makanan",
+          icon: "error",
+          customClass: {
+            title: "titleSwal",
+            popup: "popupSwal",
+            icon: "iconSwal",
+          },
+        });
+      }
+    });
+  };
+
   return (
     <AdminSidebar>
       {dataDetail && (
@@ -86,12 +130,15 @@ const DetailKulinerDash = () => {
                     <TableCell sx={{ color: "white" }} align="center">
                       Harga Makanan
                     </TableCell>
+                    <TableCell sx={{ color: "white" }} align="center">
+                      Action
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {dataDetail.menu_makanans.map((row, i = 1) => (
+                  {dataDetail.menu_makanans.map((row, i) => (
                     <TableRow
-                      key={row.name}
+                      key={i}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
@@ -106,6 +153,16 @@ const DetailKulinerDash = () => {
                       </TableCell>
                       <TableCell align="center">{row.nama_makanan}</TableCell>
                       <TableCell align="center">{row.harga_makanan}</TableCell>
+                      <TableCell align="center">
+                        <Tooltip title="Delete Menu Makanan">
+                          <div
+                            className="detailMenuList"
+                            onClick={() => handleDelete(row.id_makanan)}
+                          >
+                            <MdDelete className="icon deleteActionList" />
+                          </div>
+                        </Tooltip>
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

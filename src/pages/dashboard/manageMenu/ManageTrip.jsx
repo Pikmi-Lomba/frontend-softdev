@@ -21,9 +21,6 @@ const ManageTrip = () => {
   const [dataWisata, setDataWisata] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const [data, setData] = useState(dataEvent);
-  const [search, setSearch] = useState("");
-
   useEffect(() => {
     AxiosInstanceUser.get(`/trip`)
       .then((res) => {
@@ -73,24 +70,6 @@ const ManageTrip = () => {
       }
     });
   };
-
-  console.log(isLoading);
-
-  console.log(dataWisata);
-
-  // const handleSearch = (e) => {
-  //   const getSearch = e.target.value;
-  //   setSearch(getSearch);
-  //   if (getSearch !== "") {
-  //     const searchData = dataEvent.filter((item) =>
-  //       item.name_event.toLowerCase().includes(getSearch)
-  //     );
-  //     setDataEvent(searchData);
-  //   } else {
-  //     setLoading(true);
-  //     setDataEvent(dataEvent);
-  //   }
-  // };
 
   return (
     <>
@@ -151,6 +130,7 @@ const ManageTrip = () => {
                 <TableBody>
                   {dataWisata.map((row, i) => (
                     <TableRow
+                      key={i}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">

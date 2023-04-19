@@ -1,18 +1,24 @@
 import Sidebar from "../../../components/sidebar/AdminSidebar";
-import { Link } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
 import Cookies from "js-cookie";
 import { AxiosInstanceAdmin } from "../../../apis/Api";
 import { useEffect, useState } from "react";
-import { MitraColumns } from "./ManageMitraColumns";
 import { BreadcrumbMitra } from "../../../components/breadCrumbs/BreadCrumbs";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { MdDelete, MdInfo, MdInfoOutline } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 
 const MitraPages = () => {
   const tokenAdmin = Cookies.get("tokenAdmin");
   const [isLoading, setIsLoading] = useState(true);
 
-  const [data, setData] = useState([]);
+  const [dataMitra, setDataMitra] = useState([]);
 
   useEffect(() => {
     AxiosInstanceAdmin.get("/get/mitra", {
@@ -21,13 +27,11 @@ const MitraPages = () => {
       },
     })
       .then((res) => {
-        console.log(res.data.data.mitra);
-        setData(res.data.data.mitra);
-        console.log("halaman mitra");
+        setDataMitra(res.data.data.mitra);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, tokenAdmin]);
 
@@ -41,7 +45,7 @@ const MitraPages = () => {
               <BreadcrumbMitra />
             </h5>
           </div>
-          <div className="centerContent flex">
+          {/* <div className="centerContent flex">
             <div className="addData">
               <Link
                 to={`/dashboard-admin/mitra/create`}
@@ -50,28 +54,57 @@ const MitraPages = () => {
                 Tambah Mitra
               </Link>
             </div>
-          </div>
+          </div> */}
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 500 }} aria-label="simple table">
+              <TableHead sx={{ background: "#45969b" }}>
+                <TableRow>
+                  <TableCell sx={{ color: "white" }}>No.</TableCell>
+                  <TableCell sx={{ color: "white" }} align="center">
+                    Nama Mitra
+                  </TableCell>
+                  <TableCell sx={{ color: "white" }} align="center">
+                    Telepon Mitra
+                  </TableCell>
+                  <TableCell sx={{ color: "white" }} align="center">
+                    Email Mitra
+                  </TableCell>
+                  <TableCell sx={{ color: "white" }} align="center">
+                    Action
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {dataMitra.map((row, i) => (
+                  <TableRow
+                    key={i}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell component="th" scope="row">
+                      {i++}
+                    </TableCell>
+                    <TableCell align="center">{row.nama_mitra}</TableCell>
+                    <TableCell align="center">{row.telepon}</TableCell>
+                    <TableCell align="center">{row.email}</TableCell>
 
-          <div className="FormData">
-            <Box sx={{ height: 371, width: "100%" }}>
-              <DataGrid
-                rows={data}
-                columns={MitraColumns}
-                getRowId={(row) => row.id_mitra}
-                isCellEditable={(params) => params.row.age % 2 === 0}
-                initialState={{
-                  pagination: {
-                    paginationModel: {
-                      pageSize: 5,
-                    },
-                  },
-                }}
-                pageSizeOptions={[5]}
-                checkboxSelection
-                disableRowSelectionOnClick
-              />
-            </Box>
-          </div>
+                    <TableCell
+                      // width={180}
+                      className=" actionMenuList"
+                    >
+                      <Tooltip title="View Detail">
+                        <Link
+                          className="detailMenuList"
+                          to={`detail/${row.id_mitra}`}
+                        >
+                          <MdInfoOutline className="icon detailActionList" />
+                        </Link>
+                      </Tooltip>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </section>
       </Sidebar>
     </>

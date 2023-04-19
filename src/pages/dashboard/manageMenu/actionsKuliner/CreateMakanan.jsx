@@ -21,8 +21,6 @@ const CreateMakanan = () => {
 
   const [formData, setFormData] = useState(initialValues);
 
-  console.log(formData);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -63,8 +61,6 @@ const CreateMakanan = () => {
         });
       });
   };
-
-  console.log("data", formData);
 
   return (
     <Sidebar>

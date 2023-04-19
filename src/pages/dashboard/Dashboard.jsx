@@ -15,7 +15,6 @@ import { useEffect, useState } from "react";
 const DashboardAdmin = () => {
   const tokenAdmin = Cookies.get("tokenAdmin");
   const [isLoading, setIsLoading] = useState(true);
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -25,13 +24,11 @@ const DashboardAdmin = () => {
       },
     })
       .then((res) => {
-        console.log(res.data.data.mitra);
         setData(res.data.data.mitra);
-        console.log("halaman mitra");
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, tokenAdmin]);
   return (
@@ -58,7 +55,7 @@ const DashboardAdmin = () => {
               <TableBody>
                 {data.map((row, i) => (
                   <TableRow
-                    key={row.name}
+                    key={i}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell component="th" scope="row">

@@ -1,8 +1,7 @@
 import "./card.scss";
+import { useState, useEffect } from "react";
 import { MdLocationPin } from "react-icons/md";
 import { AxiosInstanceUser } from "../../apis/Api";
-import { useState } from "react";
-import { useEffect } from "react";
 
 const CardDestination = () => {
   const [dataPopular, setDataPopular] = useState([]);
@@ -19,7 +18,7 @@ const CardDestination = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading]);
 

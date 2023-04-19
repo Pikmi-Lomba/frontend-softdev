@@ -18,13 +18,12 @@ const FoodComp = () => {
   useEffect(() => {
     AxiosInstanceUser.get(`/food`)
       .then((res) => {
-        console.log("ini data", res.data.list_resto);
         setDataKuliner(res.data.list_resto.slice(0, limitData));
         setDataKuliner2(res.data.list_resto);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, limitData]);
 
