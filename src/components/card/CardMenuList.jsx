@@ -1,7 +1,5 @@
 import { MdLocationPin } from "react-icons/md";
-import { Link } from "react-router-dom";
-import { BsHeart } from "react-icons/bs";
-import axios from "axios";
+
 const CardMenuList = ({ nama, lokasi, gambar, id }) => {
   return (
     <>
@@ -9,7 +7,6 @@ const CardMenuList = ({ nama, lokasi, gambar, id }) => {
         {/* <div className="iconMenu" onClick={handleLike}>
           <BsHeart className="icon" />
         </div> */}
-
         <div className="imageContent">
           <img className="radius-2" src={gambar} alt="image_menu_list" />
         </div>

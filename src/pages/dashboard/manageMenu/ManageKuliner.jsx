@@ -20,18 +20,14 @@ const ManageKuliner = () => {
   const [dataKuliner, setDataKuliner] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const [data, setData] = useState(dataEvent);
-  const [search, setSearch] = useState("");
-
   useEffect(() => {
     AxiosInstanceUser.get(`/food`)
       .then((res) => {
-        console.log("ini data", res.data.list_resto);
         setDataKuliner(res.data.list_resto);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading]);
 
@@ -73,24 +69,6 @@ const ManageKuliner = () => {
       }
     });
   };
-
-  console.log(isLoading);
-
-  console.log(dataKuliner);
-
-  // const handleSearch = (e) => {
-  //   const getSearch = e.target.value;
-  //   setSearch(getSearch);
-  //   if (getSearch !== "") {
-  //     const searchData = dataEvent.filter((item) =>
-  //       item.name_event.toLowerCase().includes(getSearch)
-  //     );
-  //     setDataEvent(searchData);
-  //   } else {
-  //     setLoading(true);
-  //     setDataEvent(dataEvent);
-  //   }
-  // };
 
   return (
     <>
@@ -151,6 +129,7 @@ const ManageKuliner = () => {
                 <TableBody>
                   {dataKuliner.map((row, i) => (
                     <TableRow
+                      key={i}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">

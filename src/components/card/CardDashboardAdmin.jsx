@@ -1,7 +1,6 @@
-import { useState } from "react";
 import "./card.scss";
+import { useState, useEffect } from "react";
 import { MdPeople, MdFestival } from "react-icons/md";
-import { useEffect } from "react";
 import { AxiosInstanceAdmin } from "../../apis/Api";
 import Cookies from "js-cookie";
 
@@ -14,10 +13,13 @@ const CardDashboardAdmin = () => {
       headers: {
         Authorization: `Bearer ${Cookies.get("tokenAdmin")}`,
       },
-    }).then((res) => {
-      console.log(res.data.data.count);
-      setDataCountMitra(res.data.data.count);
-    });
+    })
+      .then((res) => {
+        setDataCountMitra(res.data.data.count);
+      })
+      .catch((err) => {
+        alert("terjadi kesalahan dalam memproses data");
+      });
   });
 
   useEffect(() => {
@@ -25,10 +27,13 @@ const CardDashboardAdmin = () => {
       headers: {
         Authorization: `Bearer ${Cookies.get("tokenAdmin")}`,
       },
-    }).then((res) => {
-      console.log(res.data.data.count);
-      setDataCountEvents(res.data.data.count);
-    });
+    })
+      .then((res) => {
+        setDataCountEvents(res.data.data.count);
+      })
+      .catch((err) => {
+        alert("terjadi kesalahan dalam memproses data");
+      });
   });
 
   return (

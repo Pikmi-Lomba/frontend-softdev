@@ -1,7 +1,7 @@
 const CardMakanan = ({ data }) => {
   return (
     <div className="cardMenu ">
-      <img className="image radius-3" src={data.gambar_makanan} alt=""></img>
+      <img className="image radius-3" src={data.gambar_makanan} alt="food" />
       <p className="nameCard">{data.nama_makanan}</p>
       <p className="priceMenu">{`Rp. ${data.harga_makanan}`}</p>
     </div>

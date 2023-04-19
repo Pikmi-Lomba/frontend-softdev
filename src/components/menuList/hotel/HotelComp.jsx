@@ -22,7 +22,7 @@ const HotelComp = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, limitData]);
 

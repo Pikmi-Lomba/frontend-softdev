@@ -29,7 +29,7 @@ const ManageEvent = () => {
         setisLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading]);
   return (
@@ -90,6 +90,7 @@ const ManageEvent = () => {
                 <TableBody>
                   {dataEvent.map((row, i) => (
                     <TableRow
+                      key={i}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">

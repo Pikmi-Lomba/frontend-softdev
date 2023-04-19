@@ -27,13 +27,11 @@ const MitraPages = () => {
       },
     })
       .then((res) => {
-        console.log(res.data.data.mitra);
         setDataMitra(res.data.data.mitra);
-        console.log("halaman mitra");
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading, tokenAdmin]);
 

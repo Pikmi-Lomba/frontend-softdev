@@ -21,49 +21,16 @@ const ManageHotel = () => {
   const [dataHotel, setDataHotel] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const [data, setData] = useState(dataEvent);
-  const [search, setSearch] = useState("");
-
   useEffect(() => {
     AxiosInstanceUser.get(`/hotel`)
       .then((res) => {
-        console.log("ini data", res.data.menu_hotel);
         setDataHotel(res.data.menu_hotel);
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        alert("terjadi kesalahan dalam memproses data");
       });
   }, [isLoading]);
-
-  //   const handleDelete = (id_hotel) => {
-  //     AxiosInstanceUser.delete(`/hotel/${id_hotel}`)
-  //       .then(() => {
-  //         setIsLoading(true);
-  //         Swal.fire({
-  //           text: `Resto Berhasil Dihapus`,
-  //           icon: "success",
-  //           showClass: {
-  //             popup: "animate__animated animate__fadeInDown",
-  //           },
-  //           hideClass: {
-  //             popup: "animate__animated animate__fadeOutUp",
-  //           },
-  //         });
-  //       })
-  //       .catch(() => {
-  //         Swal.fire({
-  //           text: `Resto Gagal Dihapus`,
-  //           icon: "error",
-  //           showClass: {
-  //             popup: "animate__animated animate__fadeInDown",
-  //           },
-  //           hideClass: {
-  //             popup: "animate__animated animate__fadeOutUp",
-  //           },
-  //         });
-  //       });
-  //   };
 
   const handleDelete = (id_hotel) => {
     Swal.fire({
@@ -103,24 +70,6 @@ const ManageHotel = () => {
       }
     });
   };
-
-  console.log(isLoading);
-
-  console.log(dataHotel);
-
-  // const handleSearch = (e) => {
-  //   const getSearch = e.target.value;
-  //   setSearch(getSearch);
-  //   if (getSearch !== "") {
-  //     const searchData = dataEvent.filter((item) =>
-  //       item.name_event.toLowerCase().includes(getSearch)
-  //     );
-  //     setDataEvent(searchData);
-  //   } else {
-  //     setLoading(true);
-  //     setDataEvent(dataEvent);
-  //   }
-  // };
 
   return (
     <>
@@ -181,6 +130,7 @@ const ManageHotel = () => {
                 <TableBody>
                   {dataHotel.map((row, i) => (
                     <TableRow
+                      key={i}
                       sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                     >
                       <TableCell component="th" scope="row">
