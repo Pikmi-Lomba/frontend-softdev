@@ -73,3 +73,21 @@
     }
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .MitraComp {
+    margin: 5rem 10rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .MitraComp {
+    margin: 5rem 5rem;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .MitraComp {
+    margin: 5rem 1rem;
+  }
+}

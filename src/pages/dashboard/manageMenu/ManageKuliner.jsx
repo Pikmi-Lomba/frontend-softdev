@@ -13,7 +13,7 @@ import { AxiosInstanceUser } from "../../../apis/Api";
 import Swal from "sweetalert2";
 import { BreadcrumbKuliner } from "../../../components/breadCrumbs/BreadCrumbs";
 import Loading from "../../../utils/loading";
-import { MdDelete, MdEdit, MdInfo, MdInfoOutline } from "react-icons/md";
+import { MdDelete, MdInfoOutline } from "react-icons/md";
 import { Tooltip } from "@mui/material";
 import { ModeEditOutline } from "@mui/icons-material";
 
@@ -85,17 +85,6 @@ const ManageKuliner = () => {
               </h5>
             </div>
             <div className="centerContent flex">
-              {/* <div className="searchComponent radius-2">
-              <AiOutlineSearch className="icon" />
-              <input
-                type="text"
-                value={search}
-                placeholder="Search..."
-                onChange={(e) => {
-                  handleSearch(e);
-                }}
-              />
-            </div> */}
               <div className="addData">
                 <Link
                   to={`/dashboard-admin/kuliner/create`}

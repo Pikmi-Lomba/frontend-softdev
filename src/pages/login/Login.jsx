@@ -8,7 +8,6 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { useRef } from "react";
 import { AxiosIntanceMitra } from "../../apis/Api";
 
 const LoginPage = () => {
@@ -121,7 +120,7 @@ const LoginPage = () => {
           </div>
         </div>
         <div className="imageLog flex">
-          <img src={image} alt="login image" />
+          <img src={image} alt="login_image" />
         </div>
       </div>
     </>

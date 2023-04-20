@@ -17,6 +17,7 @@ const DetailHeroEvent = () => {
   useEffect(() => {
     axios.get(`http://localhost:5000/api/events/${id}`).then((res) => {
       setDetailEvent(res.data.data.event);
+      console.log(res.data.data.event);
       setisLoading(false);
       if (res.data.data.event.like_decision === "true") {
         setLiked(true);
@@ -35,11 +36,6 @@ const DetailHeroEvent = () => {
     await AxiosIntanceLikeEvent.post(`/${id}/like`)
       .then((res) => {
         setisLoading(true);
-        // if (res.data.data.decision === "like") {
-        //   setLiked(true);
-        // } else if (res.data.data.decision === "unlike") {
-        //   setLiked(false);
-        // }
       })
       .catch((err) =>
         alert("Anda diharuskan login sebelum like postingan ini")
@@ -79,7 +75,6 @@ const DetailHeroEvent = () => {
                           color: liked ? "red" : "black",
                         }}
                       />
-                      {/* {liked ? "like" : "unlike"} */}
                     </div>
                     <div className="linkEvent">
                       <button onClick={openNewPage} className="btn radius-2">
