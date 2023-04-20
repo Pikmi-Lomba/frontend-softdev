@@ -19,7 +19,7 @@ const MitraLanding = () => {
             beberapa fitur lain dalam kemudahan mencari tempat yang rekomen
             untuk dikunjungi. Menjadi Bagian keluarga TrivtinID akan mendapatkan
             kunjungan dari menu Event yang ditampilkan. Berikut Beberapa cara
-            mendaftar menjadi Mitra TrivtinID
+            mendaftar menjadi Mitra TrivtinIDx
           </div>
         </div>
         <div className="daftarMitra">
@@ -56,7 +56,7 @@ const MitraLanding = () => {
             <div className="subtitle">Dokumen</div>
             <div className="desc">
               <li>e-KTP Asli</li>
-              <li>{`Nomor NPWM (Tidak Wajib)`}</li>
+              <li>{`Nomor NPWP (Tidak Wajib)`}</li>
             </div>
           </div>
         </div>
