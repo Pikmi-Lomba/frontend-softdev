@@ -117,7 +117,9 @@ const CreateMenuEventMitra = () => {
     form.append("alamat", formData.alamat);
     form.append("tanggal_mulai", formData.tanggal_mulai);
     form.append("tanggal_akhir", formData.tanggal_akhir);
-    form.append("image_event", image);
+    if (image) {
+      form.append("image_event", image);
+    }
 
     await AxiosIntanceMitra.post("/add/events", form, {
       headers: {
@@ -136,7 +138,7 @@ const CreateMenuEventMitra = () => {
         });
         navigate("/dashboard-mitra/events");
       })
-      .catch(({response: res}) => {
+      .catch(({ response: res }) => {
         console.log(res);
         setisModalOpen(true);
         setModalData({
