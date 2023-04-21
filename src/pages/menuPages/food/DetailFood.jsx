@@ -16,15 +16,21 @@ const DetailFood = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    AxiosInstanceUser.get(`/food/${id}`)
+    AxiosInstanceUser.get(`/food2/${id}`)
       .then((res) => {
         setDataDetail(res.data?.list_resto_by_pk);
+        console.log(res.data?.list_resto_by_pk);
         setIsLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [isLoading, id]);
+
+  const openNewPage = () => {
+    const link = dataDetail.link_resto;
+    window.open(`${link}`, "_blank");
+  };
 
   return (
     <>
@@ -57,7 +63,7 @@ const DetailFood = () => {
               <div className="location radius-4">
                 <MdShare className="icon" />
               </div>
-              <div className="location flex radius-4">
+              <div onClick={openNewPage} className="location flex radius-4">
                 <MdLocationPin className="icon" />
                 <p className="subtitle2">Website</p>
               </div>

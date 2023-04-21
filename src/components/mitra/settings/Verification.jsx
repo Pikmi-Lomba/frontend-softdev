@@ -135,8 +135,8 @@ const VerificationMitra = () => {
         console.log(data);
         setisModalOpen(true);
         setModalData({
-          title: 'Data Di update',
-          desc: 'Mohon menunggu Proses Verifikasi ulang',
+          title: "Data Di update",
+          desc: "Mohon menunggu Proses Verifikasi ulang",
           okText: "Oke",
           resStatus: status,
           redirect: true,
@@ -196,7 +196,6 @@ const VerificationMitra = () => {
                   onChange={(e) => handleChange(e)}
                 />
               </div>
-              <button>submit</button>
             </form>
           ) : null}
           <div className="uploadKtp flex" onSubmit={submitHandler}>
@@ -238,7 +237,7 @@ const VerificationMitra = () => {
             </div>
           </div>
           <button
-            className="btn radius-2 verifikasiButton"
+            className=" radius-2 verifikasiButton"
             onClick={submitHandler}
           >
             Verifikasi Akun
