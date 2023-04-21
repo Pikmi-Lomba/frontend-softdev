@@ -87,80 +87,82 @@ const DetailMitraDash = () => {
   return (
     <AdminSidebar>
       <div className="DetailMitraAdmin flex">
-        {detailDataMitra && (
-          <div className="CardsDetailInformation">
-            <div className="CardDetailInformation radius-4 flex">
-              <div className="topDetailInformation flex">
-                <div className={`menu verify ${detailDataMitra.verify}`}>
-                  {detailDataMitra.verify}
+        <div className="cardDetailMitra">
+          {detailDataMitra && (
+            <div className="CardsDetailInformation">
+              <div className="CardDetailInformation radius-4 flex">
+                <div className="topDetailInformation flex">
+                  <div className={`menu verify ${detailDataMitra.verify}`}>
+                    {detailDataMitra.verify}
+                  </div>
+                  <div className="imageMitra">
+                    <img
+                      src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+                      alt="kosong"
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        borderRadius: "50%",
+                      }}
+                    />
+                  </div>
+                  <div className="contentMitra flex">
+                    <div className="title">{detailDataMitra.nama_mitra}</div>
+                    <div className="menu">{detailDataMitra.alamat}</div>
+                  </div>
                 </div>
-                <div className="imageMitra">
-                  <img
-                    src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
-                    alt="kosong"
-                    style={{
-                      width: "100px",
-                      height: "100px",
-                      borderRadius: "50%",
-                    }}
-                  />
-                </div>
-                <div className="contentMitra flex">
-                  <div className="title">{detailDataMitra.nama_mitra}</div>
-                  <div className="menu">{detailDataMitra.alamat}</div>
+                <div className="line"></div>
+                <div className="bottomDetailInformation flex">
+                  <div className="menu flex">
+                    <div className="nameData">Email</div>
+                    <div className="nameData">{detailDataMitra.email}</div>
+                  </div>
+                  <div className="menu flex">
+                    <div className="nameData">Telepon</div>
+                    <div className="nameData">{detailDataMitra.telepon}</div>
+                  </div>
+                  <div className="menu flex">
+                    <div className="nameData">Kategori</div>
+                    <div className="nameData">
+                      {detailDataMitra.npwp === null ? (
+                        <p>Non - pemerintah</p>
+                      ) : (
+                        <p>Pemerintah </p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="menu flex">
+                    <div className="nameData">no NPWP</div>
+                    <div className="nameData">
+                      {detailDataMitra.npwp === null ? (
+                        <p>-</p>
+                      ) : (
+                        <p>{detailDataMitra.npwp}</p>
+                      )}
+                    </div>
+                  </div>
+                  <div className="menu flex">
+                    <div className="nameData">nama usaha</div>
+                    <div className="nameData">
+                      {detailDataMitra.nama_usaha === null ? (
+                        <p>-</p>
+                      ) : (
+                        <p>{detailDataMitra.nama_usaha}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="line"></div>
-              <div className="bottomDetailInformation flex">
-                <div className="menu flex">
-                  <div className="nameData">Email</div>
-                  <div className="nameData">{detailDataMitra.email}</div>
-                </div>
-                <div className="menu flex">
-                  <div className="nameData">Telepon</div>
-                  <div className="nameData">{detailDataMitra.telepon}</div>
-                </div>
-                <div className="menu flex">
-                  <div className="nameData">Kategori</div>
-                  <div className="nameData">
-                    {detailDataMitra.npwp === null ? (
-                      <p>Non - pemerintah</p>
-                    ) : (
-                      <p>Pemerintah </p>
-                    )}
-                  </div>
-                </div>
-                <div className="menu flex">
-                  <div className="nameData">no NPWP</div>
-                  <div className="nameData">
-                    {detailDataMitra.npwp === null ? (
-                      <p>-</p>
-                    ) : (
-                      <p>{detailDataMitra.npwp}</p>
-                    )}
-                  </div>
-                </div>
-                <div className="menu flex">
-                  <div className="nameData">nama usaha</div>
-                  <div className="nameData">
-                    {detailDataMitra.nama_usaha === null ? (
-                      <p>-</p>
-                    ) : (
-                      <p>{detailDataMitra.nama_usaha}</p>
-                    )}
-                  </div>
+              <div className="CardKTP radius-4 ">
+                <p className="title">Foto KTP:</p>
+                <div className="image radius-4 ">
+                  <img src={detailDataMitra.ktp_image} alt="ktp_image" />
                 </div>
               </div>
             </div>
-            <div className="CardKTP radius-4 ">
-              <p className="title">Foto KTP:</p>
-              <div className="image radius-4 ">
-                <img src={detailDataMitra.ktp_image} alt="ktp_image" />
-              </div>
-            </div>
-          </div>
-        )}
-        <div></div>
+          )}
+        </div>
+
         <div className="flex verificationCard radius-2 ">
           <p className="title">Verifikasi Akun Mitra: </p>
           <div className="optionVefication flex">

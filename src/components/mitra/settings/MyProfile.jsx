@@ -31,7 +31,7 @@ const ProfileMitra = () => {
           Authorization: `Bearer ${Cookies.get("token")}`,
         },
       }).then((e) => {
-        const { mitra } = e.data.data
+        const { mitra } = e.data.data;
 
         const dataState = {
           nama_mitra: mitra.nama_mitra,
@@ -43,13 +43,13 @@ const ProfileMitra = () => {
           email_personal: mitra.email_personal,
           telepon_personal: mitra.telepon_personal,
           alamat_personal: mitra.alamat_personal,
-        }
+        };
 
-        setFormData(dataState)
-      })
-    }
-    getDataMitra()
-  }, [])
+        setFormData(dataState);
+      });
+    };
+    getDataMitra();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
