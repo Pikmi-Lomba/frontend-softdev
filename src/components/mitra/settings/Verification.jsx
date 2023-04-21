@@ -49,7 +49,6 @@ const VerificationMitra = () => {
             desc: data.message,
             okText: "Oke",
             resStatus: status,
-            redirect: true,
           });
         });
     };
@@ -252,16 +251,12 @@ const VerificationMitra = () => {
         onOk={() =>
           modalData.resStatus === 401
             ? navigate("/login")
-            : modalData.redirect
-            ? navigate("/dashboard-mitra/settings/")
-            : setisModalOpen(false)
+            : navigate("/dashboard-mitra/settings")
         }
         onCancel={() =>
           modalData.resStatus === 401
             ? navigate("/login")
-            : modalData.redirect
-            ? navigate("/dashboard-mitra/settings/")
-            : setisModalOpen(false)
+            : navigate("/dashboard-mitra/settings")
         }
       />
     </>
