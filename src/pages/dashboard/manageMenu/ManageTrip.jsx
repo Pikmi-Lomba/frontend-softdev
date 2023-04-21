@@ -85,17 +85,6 @@ const ManageTrip = () => {
               </h5>
             </div>
             <div className="centerContent flex">
-              {/* <div className="searchComponent radius-2">
-              <AiOutlineSearch className="icon" />
-              <input
-                type="text"
-                value={search}
-                placeholder="Search..."
-                onChange={(e) => {
-                  handleSearch(e);
-                }}
-              />
-            </div> */}
               <div className="addData">
                 <Link
                   to={`/dashboard-admin/wisata/create`}
@@ -141,19 +130,21 @@ const ManageTrip = () => {
                       <TableCell align="center">{row.location_trip}</TableCell>
                       <TableCell align="center">{row.city_trip}</TableCell>
                       <TableCell className="actionMenuList">
-                        <Tooltip title="Edit Wisata">
-                          <Link to={`#`}>
-                            <RiEdit2Line className="icon editActionList" />
-                          </Link>
-                        </Tooltip>
-                        <Tooltip title="Delete Wisata">
-                          <div
-                            className="detailMenuList"
-                            onClick={() => handleDelete(row.id_trip)}
-                          >
-                            <MdDelete className="icon deleteActionList" />
-                          </div>
-                        </Tooltip>
+                        <div className="listActionListMenu">
+                          <Tooltip title="Edit Wisata">
+                            <Link to={`update/${row.id_trip}`}>
+                              <RiEdit2Line className="icon editActionList" />
+                            </Link>
+                          </Tooltip>
+                          <Tooltip title="Delete Wisata">
+                            <div
+                              className="detailMenuList"
+                              onClick={() => handleDelete(row.id_trip)}
+                            >
+                              <MdDelete className="icon deleteActionList" />
+                            </div>
+                          </Tooltip>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))}

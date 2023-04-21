@@ -61,10 +61,12 @@
 }
 
 .actionMenuList {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  // gap: 10px !important;
+  .listActionListMenu {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
 }
 
 .detailActionList {

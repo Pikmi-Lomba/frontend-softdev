@@ -128,3 +128,35 @@ export function BreadcrumbTrip() {
     </nav>
   );
 }
+
+export function BreadcrumbEvent() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <Link
+        to="/dashboard-admin"
+        className={
+          location.pathname === "/dashboard-admin"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Dashboard
+      </Link>
+      <span className="breadcrumb-arrow">&gt;</span>
+
+      <Link
+        to="/dashboard-admin/wisata"
+        className={
+          location.pathname === "/dashboard-admin/event"
+            ? "breadcrumb-active"
+            : "breadcrumb-not-active"
+        }
+      >
+        Event
+      </Link>
+      {/* <span className="breadcrumb-arrow">&gt;</span> */}
+    </nav>
+  );
+}

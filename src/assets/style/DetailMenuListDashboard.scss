@@ -72,6 +72,17 @@
   height: 80px;
 }
 
+// Action Detail Makanan
+.actionMenuMakanan {
+  height: 80px;
+  .listActionMenuMakanan {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+
 .notFoundMenuMakanan {
   width: 100%;
   height: 300px;

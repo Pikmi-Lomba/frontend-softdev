@@ -106,7 +106,7 @@ const CreateMakanan = () => {
               Kembali
             </button>
             <button className=" btn radius-2" onClick={handleAddUser}>
-              Tambah Makanan
+              Tambah
             </button>
           </div>
         </form>

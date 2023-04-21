@@ -11,17 +11,15 @@ import {
   MdHotel,
 } from "react-icons/md";
 import { BsGrid3X3GapFill } from "react-icons/bs";
-import { Link, NavLink } from "react-router-dom";
-import { Auth, AuthAdmin } from "../../utils/Auth";
+import { NavLink } from "react-router-dom";
+import { AuthAdmin } from "../../utils/Auth";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
-import NotifToastify from "../modal/notifToastify";
 
 const AdminSidebar = ({ children }) => {
   const activeLink = "activeSidebar MenuSide flex";
   const normalLink = "MenuSide flex";
   const [navigate, setNavigate] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     AuthAdmin.signOut();

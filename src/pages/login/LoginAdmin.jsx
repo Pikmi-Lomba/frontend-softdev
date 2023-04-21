@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
 // Icons
@@ -8,14 +8,12 @@ import { BsEyeSlashFill, BsEyeFill } from "react-icons/bs";
 
 import "./style.scss";
 import image from "../../assets/image/img-hero.jpg";
-import { AxiosInstanceAdmin, AxiosLocal } from "../../apis/Api";
-import { useRef } from "react";
+import { AxiosInstanceAdmin } from "../../apis/Api";
 import Swal from "sweetalert2";
 
 const LoginAdminPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errMsg, setErrMsg] = useState("");
   const [navigate, setNavigate] = useState(false);
 
   // Show Password
@@ -102,7 +100,6 @@ const LoginAdminPage = () => {
                   </div>
                 </div>
               </div>
-              {errMsg && <div>{errMsg}</div>}
               <button className="btn radius-2">Masuk Sekarang</button>
               {/* <div className="link">
                 Belum Punya akun? <Link to={`/register`}>Daftar</Link>

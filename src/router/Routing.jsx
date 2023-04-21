@@ -52,6 +52,8 @@ import CreateMakanan from "../pages/dashboard/manageMenu/actionsKuliner/CreateMa
 
 import UpdateKuliner from "../pages/dashboard/manageMenu/actionsKuliner/UpdateKuliner";
 import MitraPageLanding from "../pages/aboutMitra/MitraPage";
+import UpdateHotel from "../pages/dashboard/manageMenu/actionsHotel/UpdateHotel";
+import UpdateTrip from "../pages/dashboard/manageMenu/actionsTrip/UpdateTrip";
 // import DeleteMitraDash from "../pages/dashboard/manageAcount/actionsMitra/DeleteMitra";
 
 const Routing = () => {
@@ -150,6 +152,7 @@ const Routing = () => {
             {/* Manage Menu Hotel */}
             <Route path="/dashboard-admin/hotel">
               <Route index element={<ManageHotel />} />
+              <Route path="update/:id" element={<UpdateHotel />} />
               {/* <Route path="detail/:id" element={<DetailEventDash />} /> */}
               <Route path="create" element={<CreateHotel />} />
             </Route>
@@ -157,6 +160,7 @@ const Routing = () => {
             <Route path="/dashboard-admin/wisata">
               <Route index element={<ManageTrip />} />
               <Route path="detail/:id" element={<DetailEventDash />} />
+              <Route path="update/:id" element={<UpdateTrip />} />
               <Route path="create" element={<CreateTrip />} />
             </Route>
           </Route>

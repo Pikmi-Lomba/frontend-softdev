@@ -1,11 +1,7 @@
 import Sidebar from "../../../components/sidebar/AdminSidebar";
 import "./manageMenu.scss";
-import { Link } from "react-router-dom";
-import { DataGrid } from "@mui/x-data-grid";
-import { Box } from "@mui/material";
-import { MenuColumns } from "./ManageMenuColumns";
 import { useEffect, useState } from "react";
-import { AxiosLocal, getDataEvent } from "../../../apis/Api";
+import { AxiosLocal } from "../../../apis/Api";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -14,13 +10,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Loading from "../../../utils/loading";
+import { BreadcrumbEvent } from "../../../components/breadCrumbs/BreadCrumbs";
 
 const ManageEvent = () => {
   const [dataEvent, setDataEvent] = useState([]);
   const [isLoading, setisLoading] = useState(true);
-
-  // const [data, setData] = useState(dataEvent);
-  const [search, setSearch] = useState("");
 
   useEffect(() => {
     AxiosLocal.get("/events")
@@ -42,29 +36,11 @@ const ManageEvent = () => {
           <section className="ManageMenuContainer">
             <div className="topContent">
               <h2 className="title">Menu Event</h2>
-              <h5 className="subTitle">{`Dashboard > Menu Event`}</h5>
+              <h5 className="subTitle">
+                <BreadcrumbEvent />
+              </h5>
             </div>
-            <div className="centerContent flex">
-              {/* <div className="searchComponent radius-2">
-              <AiOutlineSearch className="icon" />
-              <input
-                type="text"
-                value={search}
-                placeholder="Search..."
-                onChange={(e) => {
-                  handleSearch(e);
-                }}
-              />
-            </div> */}
-              {/* <div className="addData">
-              <Link
-                to={`/dashboard-admin/event/create`}
-                className="btn radius-2"
-              >
-                Tambah Event
-              </Link>
-            </div> */}
-            </div>
+            <div className="centerContent flex"></div>
 
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">

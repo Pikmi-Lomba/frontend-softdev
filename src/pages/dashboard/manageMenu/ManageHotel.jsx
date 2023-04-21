@@ -85,17 +85,6 @@ const ManageHotel = () => {
               </h5>
             </div>
             <div className="centerContent flex">
-              {/* <div className="searchComponent radius-2">
-              <AiOutlineSearch className="icon" />
-              <input
-                type="text"
-                value={search}
-                placeholder="Search..."
-                onChange={(e) => {
-                  handleSearch(e);
-                }}
-              />
-            </div> */}
               <div className="addData">
                 <Link
                   to={`/dashboard-admin/hotel/create`}
@@ -141,19 +130,21 @@ const ManageHotel = () => {
                       <TableCell align="center">{row.location_hotel}</TableCell>
                       <TableCell align="center">{row.city_hotel}</TableCell>
                       <TableCell className="actionMenuList">
-                        <Tooltip title="Edit Hotel">
-                          <Link to={`#`}>
-                            <RiEdit2Line className="icon editActionList" />
-                          </Link>
-                        </Tooltip>
-                        <Tooltip title="Delete Hotel">
-                          <div
-                            className="detailMenuList"
-                            onClick={() => handleDelete(row.id_hotel)}
-                          >
-                            <MdDelete className="icon deleteActionList" />
-                          </div>
-                        </Tooltip>
+                        <div className="listActionListMenu">
+                          <Tooltip title="Edit Hotel">
+                            <Link to={`update/${row.id_hotel}`}>
+                              <RiEdit2Line className="icon editActionList" />
+                            </Link>
+                          </Tooltip>
+                          <Tooltip title="Delete Hotel">
+                            <div
+                              className="detailMenuList"
+                              onClick={() => handleDelete(row.id_hotel)}
+                            >
+                              <MdDelete className="icon deleteActionList" />
+                            </div>
+                          </Tooltip>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))}

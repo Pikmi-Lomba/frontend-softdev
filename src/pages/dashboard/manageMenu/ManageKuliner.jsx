@@ -129,34 +129,33 @@ const ManageKuliner = () => {
                       <TableCell align="center">{row.telp_resto}</TableCell>
                       <TableCell align="center">{row.location_resto}</TableCell>
                       <TableCell align="center">{row.city_resto}</TableCell>
-                      <TableCell
-                        // width={180}
-                        className=" actionMenuList"
-                      >
-                        <Tooltip title="View Detail">
-                          <Link
-                            className="detailMenuList"
-                            to={`detail/${row.id_resto}`}
-                          >
-                            <MdInfoOutline className="icon detailActionList" />
-                          </Link>
-                        </Tooltip>
-                        <Tooltip title="View Edit">
-                          <Link
-                            className="detailMenuList"
-                            to={`update/${row.id_resto}`}
-                          >
-                            <ModeEditOutline className="icon detailActionList" />
-                          </Link>
-                        </Tooltip>
-                        <Tooltip title="Delete Kuliner">
-                          <div
-                            className="detailMenuList"
-                            onClick={() => handleDelete(row.id_resto)}
-                          >
-                            <MdDelete className="icon deleteActionList" />
-                          </div>
-                        </Tooltip>
+                      <TableCell className="actionMenuList">
+                        <div className="listActionListMenu">
+                          <Tooltip title="Detail Kuliner">
+                            <Link
+                              className="detailMenuList"
+                              to={`detail/${row.id_resto}`}
+                            >
+                              <MdInfoOutline className="icon detailActionList" />
+                            </Link>
+                          </Tooltip>
+                          <Tooltip title="Edit Kuliner">
+                            <Link
+                              className="detailMenuList"
+                              to={`update/${row.id_resto}`}
+                            >
+                              <ModeEditOutline className="icon editActionList " />
+                            </Link>
+                          </Tooltip>
+                          <Tooltip title="Delete Kuliner">
+                            <div
+                              className="detailMenuList"
+                              onClick={() => handleDelete(row.id_resto)}
+                            >
+                              <MdDelete className="icon deleteActionList" />
+                            </div>
+                          </Tooltip>
+                        </div>
                       </TableCell>
                     </TableRow>
                   ))}
